@@ -1,0 +1,10 @@
+// normalize
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none; // list no dots or whatever
+    outline: none;
+    font-family: -apple-system, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
