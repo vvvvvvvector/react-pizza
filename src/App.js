@@ -15,7 +15,7 @@ function App() {
       <div className="header">
         <div className="container">
           <div className="header__logo">
-            <img width={40} alt="store-logo" src={logoSVG} />
+            <img width={39} alt="store-logo" src={logoSVG} />
             <div>
               <h1>react pizza</h1>
               <p>The best pizza in the universe</p>
