@@ -1,8 +1,8 @@
-@import 'normalize';
-@import 'variables';
+@import './libs/normalize';
+@import './variables';
 
 body {
-    background-color: $orange;
+    background-color: $background;
 }
 
 .wrapper {

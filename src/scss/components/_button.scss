@@ -1,0 +1,51 @@
+@import '../variables';
+
+.button {
+    // ------all buttons behaviour, style------
+
+    cursor: pointer;
+    background-color: $orange;
+    border-radius: 30px;
+    transition: background-color $duration ease-in-out;
+
+    &:hover {
+        background-color: darken($orange, 8%);
+    }
+
+    &:active {
+        background-color: darken($orange, 12%);
+        transform: translateY(1px);
+    }
+
+    // ------all buttons behaviour, style------
+
+    // header cart button
+    &--cart {
+        line-height: 23px;
+        display: flex;
+        align-items: center;
+        padding: 12px 25px;
+
+        // cost and amount 
+        span {
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        // div == delimiter
+        div {
+            width: 1px;
+            height: 25px;
+            background-color: rgba(255, 255, 255, 0.25);
+            margin-left: 14px;
+            margin-right: 14px;
+        }
+
+        // shopping-cart
+        img {
+            margin-right: 5px;
+            margin-bottom: 3px;
+        }
+    }
+}

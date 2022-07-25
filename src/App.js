@@ -1,4 +1,9 @@
-import './scss/components/_header.scss'
+import logoSVG from './assets/images/store-logo.svg';
+import './scss/components/_header.scss';
+
+import cartSVG from './assets/images/shopping-cart.svg';
+import lensSVG from './assets/images/search-lens.svg';
+import './scss/components/_button.scss';
 
 function Content() {
   return (<h1>hello world!</h1>);
@@ -10,20 +15,26 @@ function App() {
       <div className="header">
         <div className="container">
           <div className="header__logo">
-            <img alt="store-logo" src={require("./assets/images/store-logo.jpg")} />
+            <img width={40} alt="store-logo" src={logoSVG} />
             <div>
               <h1>react pizza</h1>
-              <p>the best pizza in the universe</p>
+              <p>The best pizza in the universe</p>
             </div>
           </div>
-          here will be button
+          <div className="header__search">
+            <img alt="search-lens" src={lensSVG}/>
+            <input placeholder="Search pizza..."/>
+          </div>
+          <div className="header__cart">
+            <div className="button button--cart">
+              <span>20 $</span>
+              <div></div>
+              <img alt="shopping-cart" src={cartSVG} />
+              <span>2</span>
+            </div>
+          </div>
         </div>
       </div>
-      <Content />
-      <Content />
-      <Content />
-      <Content />
-      <Content />
       <Content />
       <Content />
       <Content />

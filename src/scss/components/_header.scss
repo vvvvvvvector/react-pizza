@@ -1,4 +1,4 @@
-@import '../libs/variables';
+@import '../variables';
 
 .header {
     padding: 40px;
@@ -8,6 +8,31 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+
+    &__search {
+        position: relative;
+        left: -150px;
+        border: 1px solid rgba(0, 0, 0, .1);
+        border-radius: 10px;
+        padding: 12px 20px 12px 42px;
+
+        &:focus-within {
+            border-color: darken(#f3f3f3, 12%);
+        }
+
+        img {
+            position: absolute;
+            left: 14px;
+            bottom: 16px;
+        }
+
+        input {
+            border: 0px;
+            font-size: 16px;
+            width: 350px;
+            outline: none;
+        }
     }
 
     &__logo {
@@ -21,7 +46,7 @@
             color: #181818;
             font-size: 24px;
             font-weight: 800;
-            letter-spacing: 1%;
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
 
