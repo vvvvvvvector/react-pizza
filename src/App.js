@@ -5,6 +5,8 @@ import cartSVG from './assets/images/shopping-cart.svg';
 import lensSVG from './assets/images/search-lens.svg';
 import './scss/components/_button.scss';
 
+import './scss/components/_categories.scss';
+
 function Content() {
   return (<h1>hello world!</h1>);
 }
@@ -22,8 +24,8 @@ function App() {
             </div>
           </div>
           <div className="header__search">
-            <img alt="search-lens" src={lensSVG}/>
-            <input placeholder="Search pizza..."/>
+            <img alt="search-lens" src={lensSVG} />
+            <input placeholder="Search pizza..." />
           </div>
           <div className="header__cart">
             <div className="button button--cart">
@@ -35,28 +37,53 @@ function App() {
           </div>
         </div>
       </div>
-      <Content />
-      <Content />
-      <Content />
-      <Content />
-      <Content />
-      <Content />
-      <Content />
-      <Content />
-      <Content />
-      <Content />
-      <Content />
-      <Content />
-      <Content />
-      <Content />
-      <Content />
-      <Content />
-      <Content />
-      <Content />
-      <Content />
-      <Content />
-      <Content />
-      <Content />
+      <div className="content">
+        <div className="content__container">
+          <div className="content__top">
+            <div className="categories">
+              <ul>
+                <li>All</li>
+                <li>Meat</li>
+                <li>Vegetarian</li>
+                <li>Grill</li>
+                <li>Spicy</li>
+                <li>Closed</li>
+              </ul>
+            </div>
+            <div className="sort">
+              sort will be here
+            </div>
+          </div>
+          <h2 className="content__title">
+            All pizzas
+          </h2>
+          <div className="content__items">
+
+          </div>
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+        </div>
+      </div>
     </div>
   );
 }

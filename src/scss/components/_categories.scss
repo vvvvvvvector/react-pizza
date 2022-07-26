@@ -1,0 +1,25 @@
+@import '../variables';
+
+.categories {
+    ul {
+        display: flex; // items in one line
+
+        li {
+            margin-right: 10px;
+            background-color: #f9f9f9;
+            padding: 13px 30px; // top&bottom left&right
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color $duration ease-in-out;
+
+            &:hover {
+                background-color: darken(#f9f9f9, 2%);
+            }
+
+            &:active {
+                background-color: darken(#f9f9f9, 7%);
+            }
+        }
+    }
+}
