@@ -1,0 +1,22 @@
+@import '../variables';
+
+.sort {
+    &__label {
+        display: flex;
+        align-items: center;
+        
+        img {
+            margin-right: 7px;
+        }
+
+        b {
+            margin-right: 7px;
+        }
+
+        span {
+            color: $orange;
+            border-bottom: 1px dashed $orange;
+            cursor: pointer;
+        }
+    }
+}

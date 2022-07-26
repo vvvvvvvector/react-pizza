@@ -20,6 +20,12 @@
             &:active {
                 background-color: darken(#f9f9f9, 7%);
             }
+
+            // selected category
+            &.active {
+                background-color: #282828;
+                color: #fff;
+            }
         }
     }
 }

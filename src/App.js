@@ -7,6 +7,9 @@ import './scss/components/_button.scss';
 
 import './scss/components/_categories.scss';
 
+import './scss/components/_sort.scss';
+import arrowSVG from './assets/images/categories-arrow.svg';
+
 function Content() {
   return (<h1>hello world!</h1>);
 }
@@ -42,7 +45,7 @@ function App() {
           <div className="content__top">
             <div className="categories">
               <ul>
-                <li>All</li>
+                <li className="active">All</li>
                 <li>Meat</li>
                 <li>Vegetarian</li>
                 <li>Grill</li>
@@ -51,7 +54,14 @@ function App() {
               </ul>
             </div>
             <div className="sort">
-              sort will be here
+              <div className="sort__label">
+                <img alt="arrow" src={arrowSVG} />
+                <b>Sort by: </b>
+                <span>popularity (DESC)</span>
+              </div>
+              <div className="sort__popup">
+
+              </div>
             </div>
           </div>
           <h2 className="content__title">
