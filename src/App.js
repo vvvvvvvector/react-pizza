@@ -14,6 +14,8 @@ import arrowSVG from './assets/images/categories-arrow.svg';
 
 import './scss/components/_pizza.scss';
 
+import './scss/components/_pagination.scss';
+
 function App() {
   const [showPopup, setShowPopup] = React.useState(false);
 
@@ -173,6 +175,15 @@ function App() {
                 </button>
               </div>
             </div>
+          </div>
+          <div className="pagination">
+            <ul>
+              <li><a>←</a></li>
+              <li><a className="active">1</a></li>
+              <li><a>2</a></li>
+              <li><a>3</a></li>
+              <li><a>→</a></li>
+            </ul>
           </div>
         </div>
       </div>

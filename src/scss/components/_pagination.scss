@@ -1,0 +1,33 @@
+@import '../variables';
+
+.pagination {
+    ul {
+        li {
+            margin-right: 10px;
+            display: inline-block; // list items in one line
+
+            a {
+                width: 45px;
+                height: 45px;
+                cursor: pointer;
+                text-align: center; // that aligned text in oX
+                line-height: 46px; // that aligned/shifted text in oY
+                border: 1px solid $orange;
+                color: $orange;
+                border-radius: 30px;
+                display: inline-block; // after that, the buttons became round if border radius = x px, if not buttons are square
+
+                &:hover {
+                    background-color: $orange;
+                    color: #ffffff;
+                }
+
+                &.active {
+                    background-color: $orange;
+                    color: #ffffff;
+                    cursor: auto;
+                }
+            }
+        }
+    }
+}
