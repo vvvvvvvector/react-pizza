@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Pagination() {
+export function Pagination() {
     return (
         <div className="pagination">
             <ul>
@@ -13,5 +13,3 @@ function Pagination() {
         </div>
     );
 }
-
-export default Pagination;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import arrowSVG from '../assets/images/categories-arrow.svg';
 
-function Sort() {
+export function Sort() {
     const [showPopup, setShowPopup] = React.useState(false);
 
     return (
@@ -26,5 +26,3 @@ function Sort() {
         </div>
     );
 }
-
-export default Sort;

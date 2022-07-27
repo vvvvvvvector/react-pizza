@@ -1,8 +1,8 @@
 import React from "react";
 
-function Overlay({ selectedPizzaURL, onCloseOverlay }) {
+export function Overlay({ selectedPizzaURL, onCloseOverlay }) {
     return (
-        <div onClick={onCloseOverlay} className="overlay">
+        <div className="overlay">
             <div className="pizza-details-wrapper">
                 <div className="pizza-details-wrapper__image">
                     <img alt="pizza" src={selectedPizzaURL} />
@@ -18,5 +18,3 @@ function Overlay({ selectedPizzaURL, onCloseOverlay }) {
         </div>
     );
 }
-
-export default Overlay;

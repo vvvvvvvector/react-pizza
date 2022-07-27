@@ -4,7 +4,7 @@ import logoSVG from '../assets/images/store-logo.svg';
 import cartSVG from '../assets/images/shopping-cart.svg';
 import lensSVG from '../assets/images/search-lens.svg';
 
-function Header() {
+export function Header() {
     return (
         <div className="header">
             <div className="container">
@@ -31,5 +31,3 @@ function Header() {
         </div>
     );
 }
-
-export default Header;

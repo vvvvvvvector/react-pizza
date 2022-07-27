@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Categories() {
+export function Categories() {
     return (
         <div className="categories">
             <ul>
@@ -13,5 +13,3 @@ function Categories() {
             </ul>
         </div>);
 }
-
-export default Categories;

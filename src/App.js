@@ -1,11 +1,6 @@
 import React from 'react';
 
-import Overlay from './components/Overlay.jsx';
-import Header from './components/Header.jsx';
-import Categories from './components/Categories.jsx';
-import Sort from './components/Sort.jsx';
-import Pizza from './components/Pizza.jsx';
-import Pagination from './components/Pagination.jsx';
+import { Overlay, Header, Categories, Sort, Pizza, Pagination } from './components';
 
 import './scss/components/_all.scss';
 

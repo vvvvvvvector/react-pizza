@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Pizza({ onImage, pizzaCost, pizzaName, pizzaImageURL }) {
+export function Pizza({ onImage, pizzaCost, pizzaName, pizzaImageURL }) {
     return (
         <div className="pizza-component">
             <img onClick={() => onImage(pizzaImageURL)} className="pizza-component__image" alt="pizza-img" src={pizzaImageURL} />
@@ -28,5 +28,3 @@ function Pizza({ onImage, pizzaCost, pizzaName, pizzaImageURL }) {
         </div>
     );
 }
-
-export default Pizza;
