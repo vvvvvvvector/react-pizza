@@ -23,6 +23,7 @@
     }
 
     &__popup {
+        z-index: 1;
         position: absolute; // in this example popup don't shift design to bottom
         right: 0;
         background: #ffffff;

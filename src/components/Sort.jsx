@@ -10,10 +10,10 @@ export function Sort() {
             <div className="sort__label">
                 <img alt="arrow" src={arrowSVG} />
                 <b>Sort by: </b>
-                <span onMouseOver={() => setShowPopup(!showPopup)}>popularity ↑</span>
+                <span onClick={() => setShowPopup(!showPopup)}>popularity ↑</span>
             </div>
             {showPopup ?
-                <div onMouseLeave={() => setShowPopup(!showPopup)} className="sort__popup">
+                <div className="sort__popup">
                     <ul>
                         <li className="active">popularity ↑</li>
                         <li>popularity ↓</li>
