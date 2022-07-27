@@ -1,0 +1,64 @@
+.pizza-component {
+    width: 260px;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+    padding: 10px;
+    margin-bottom: 50px;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
+
+    &__image {
+        width: 260px;
+        height: 260px;
+    }
+
+    &__name {
+        font-size: 20px;
+        font-weight: 900;
+        margin-bottom: 20px;
+    }
+
+    &__selector {
+        background-color: #f3f3f3;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        padding: 6px;
+
+        ul {
+            display: flex;
+
+            &:first-of-type {
+                margin-bottom: 6px;
+            }
+
+            li {
+                flex: 1; // li takes all allowed width
+                cursor: pointer;
+                font-weight: 600;
+                font-size: 16px;
+                padding: 8px;
+
+                &.active {
+                    background-color: #ffffff;
+                    border-radius: 7px;
+                    cursor: auto; // if option already selected -> !cursor: pointer
+                    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04); // x, y, blur radius, color
+                }
+            }
+        }
+    }
+
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__price {
+        margin-left: 5px;
+        font-size: 22px;
+        font-weight: 700;
+    }
+}

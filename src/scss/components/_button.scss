@@ -7,6 +7,9 @@
     background-color: $orange;
     border-radius: 30px;
     transition: background-color $duration ease-in-out;
+    padding: 10px 20px;
+    text-align: center;
+    border: 1px solid transparent;
 
     &:hover {
         background-color: darken($orange, 8%);
@@ -14,7 +17,6 @@
 
     &:active {
         background-color: darken($orange, 12%);
-        transform: translateY(1px);
     }
 
     // ------all buttons behaviour, style------
@@ -46,6 +48,44 @@
         img {
             margin-right: 5px;
             margin-bottom: 3px;
+        }
+    }
+
+    // pizza-component add button
+    &--default {
+        background-color: #ffffff;
+        border-color: $orange;
+
+        span {
+            font-size: 16px;
+            font-weight: 600;
+            color: $orange;
+        }
+
+        svg {
+            margin-right: 8px;
+
+            path {
+                fill: $orange;
+            }
+        }
+
+        &:hover {
+            background-color: $orange;
+
+            span {
+                color: #ffffff;
+            }
+
+            svg {
+                path {
+                    fill: #ffffff;
+                }
+            }
+        }
+
+        &:active {
+            background-color: darken($orange, 10%);
         }
     }
 }

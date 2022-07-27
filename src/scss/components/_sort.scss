@@ -1,10 +1,12 @@
 @import '../variables';
 
 .sort {
+    position: relative; // for popup right 0
+
     &__label {
         display: flex;
         align-items: center;
-        
+
         img {
             margin-right: 7px;
         }
@@ -17,6 +19,33 @@
             color: $orange;
             border-bottom: 1px dashed $orange;
             cursor: pointer;
+        }
+    }
+
+    &__popup {
+        position: absolute; // in this example popup don't shift design to bottom
+        right: 0;
+        background: #ffffff;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+        border-radius: 10px;
+        margin-top: 15px;
+        padding: 10px 0; // top&bottom left&right
+
+        ul {
+            li {
+                cursor: pointer;
+                padding: 12px 25px;
+
+                &:hover {
+                    background: rgba(254, 95, 30, 0.05);
+                }
+
+                &.active {
+                    background: rgba(254, 95, 30, 0.05);
+                    font-weight: bold;
+                    color: $orange;
+                }
+            }
         }
     }
 }

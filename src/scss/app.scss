@@ -36,4 +36,10 @@ body {
         margin-bottom: 50px;
         margin-top: 50px;
     }
+
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); // 4 columns
+        grid-column-gap: 25px;
+    }
 }
