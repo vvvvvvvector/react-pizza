@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Pizza({ pizzaCost, pizzaName, pizzaImageURL }) {
+function Pizza({ onImage, pizzaCost, pizzaName, pizzaImageURL }) {
     return (
         <div className="pizza-component">
-            <img className="pizza-component__image" alt="pizza-img" src={pizzaImageURL} />
+            <img onClick={() => onImage(pizzaImageURL)} className="pizza-component__image" alt="pizza-img" src={pizzaImageURL} />
             <h4 className="pizza-component__name">{pizzaName}</h4>
             <div className="pizza-component__selector">
                 <ul>

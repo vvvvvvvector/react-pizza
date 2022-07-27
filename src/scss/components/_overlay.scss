@@ -1,0 +1,58 @@
+.overlay {
+    position: fixed;
+    z-index: 1;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    .pizza-details-wrapper {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 850px;
+        height: 600px;
+        background: #FFFFFF;
+        border-radius: 20px;
+        display: flex;
+
+        &__image {
+            display: flex;
+            flex: 1;
+            border-right: 1px solid #f1f1f1;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                width: 370px;
+                height: 370px;
+            }
+        }
+
+        &__description {
+            display: flex;
+            flex-direction: column;
+            padding: 10px 20px;
+            width: 330px;
+            background: #f9f9f9;
+            border-bottom-right-radius: 20px;
+            border-top-right-radius: 20px;
+
+            svg {
+                cursor: pointer;
+                position: absolute;
+                right: -42px;
+
+                path {
+                    fill: #ffffff;
+                }
+
+                &:hover {
+                    transform: scale(1.04);
+                }
+            }
+        }
+    }
+}
