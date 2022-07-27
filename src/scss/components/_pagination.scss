@@ -16,10 +16,15 @@
                 color: $orange;
                 border-radius: 30px;
                 display: inline-block; // after that, the buttons became round if border radius = x px, if not buttons are square
+                transition: background-color $duration ease-in-out;
 
                 &:hover {
                     background-color: $orange;
                     color: #ffffff;
+                }
+
+                &:active {
+                    background-color: darken($orange, 12%);
                 }
 
                 &.active {

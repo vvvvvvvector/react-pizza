@@ -1,17 +1,17 @@
 .pizza-component {
     width: 260px;
     text-align: center;
-    transition: all 0.2s ease-in-out;
     padding: 10px;
     margin-bottom: 50px;
-
-    &:hover {
-        transform: translateY(-5px);
-    }
 
     &__image {
         width: 260px;
         height: 260px;
+        transition: transform 0.2s ease-in-out;
+
+        &:hover {
+            transform: translateY(4px);
+        }
     }
 
     &__name {
