@@ -1,52 +1,56 @@
 [
     {
+        "id": 0,
         "types": [
-            "thin",
-            "traditional"
+            "Thin",
+            "Traditional"
         ],
         "sizes": [
-            "25 cm.",
-            "35 cm.",
-            "40 cm."
+            "Small",
+            "Medium",
+            "Big"
         ],
         "cost": 7,
         "name": "Margherita",
         "imageURL": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg"
     },
     {
+        "id": 1,
         "types": [
-            "thin"
+            "Thin"
         ],
         "sizes": [
-            "25 cm.",
-            "30 cm.",
-            "35 cm."
+            "Small",
+            "Medium",
+            "Big"
         ],
         "cost": 9,
         "name": "Four Seasons",
         "imageURL": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg"
     },
     {
+        "id": 2,
         "types": [
-            "thin",
-            "traditional"
+            "Thin",
+            "Traditional"
         ],
         "sizes": [
-            "27 cm.",
-            "40 cm."
+            "Medium",
+            "Big"
         ],
         "cost": 8,
         "name": "Pepperoni",
         "imageURL": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d2e337e9-e07a-4199-9cc1-501cc44cb8f8.jpg"
     },
     {
+        "id": 3,
         "types": [
-            "traditional"
+            "Traditional"
         ],
         "sizes": [
-            "25 cm.",
-            "30 cm.",
-            "35 cm."
+            "Small",
+            "Medium",
+            "Big"
         ],
         "cost": 10,
         "name": "Cheeseburger-pizza",

@@ -4,21 +4,29 @@ import { Overlay, Header, Categories, Sort, Pizza, Pagination } from './componen
 
 import './scss/components/_all.scss';
 
-import pizzas from './assets/pizzas.json';
-
 function App() {
+  const [fetchedPizzas, setFetchedPizzas] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch("https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas").then((res) => {
+      return res.json();
+    }).then((json) => {
+      setFetchedPizzas(json);
+    });
+  }, []);
+
   // --------overlay--------
-  const [isOverlayOpened, setIsOverlayOpened] = React.useState(false);
+  const [overlayOpened, setOverlayOpened] = React.useState(false);
   const [selectedPizza, setSelectedPizza] = React.useState(null);
 
   const onClickPizzaImage = (pizzaObj) => {
-    setIsOverlayOpened(true);
+    setOverlayOpened(true);
     document.body.style.overflow = 'hidden';
     setSelectedPizza(pizzaObj);
   };
 
   const onClickCloseOverlay = () => {
-    setIsOverlayOpened(false);
+    setOverlayOpened(false);
     document.body.style.overflow = 'visible';
   }
   // --------overlay--------
@@ -26,10 +34,9 @@ function App() {
   return (
     <>
       {
-        isOverlayOpened ?
-          <Overlay
-            onCloseOverlay={onClickCloseOverlay}
-            pizza={selectedPizza} /> : null
+        overlayOpened && (<Overlay
+          onCloseOverlay={onClickCloseOverlay}
+          pizza={selectedPizza} />)
       }
       <div className="wrapper">
         <Header />
@@ -44,15 +51,11 @@ function App() {
             </h2>
             <div className="content__items">
               {
-                pizzas.map((pizza, index) => (
+                fetchedPizzas.map((pizza) => (
                   <Pizza
-                    key={index}
+                    key={pizza.id}
                     onClickImage={onClickPizzaImage}
-                    types={pizza.types}
-                    sizes={pizza.sizes}
-                    name={pizza.name}
-                    cost={pizza.cost}
-                    imageURL={pizza.imageURL} />
+                    {...pizza} />
                 ))
               }
             </div>

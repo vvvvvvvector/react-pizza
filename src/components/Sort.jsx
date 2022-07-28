@@ -15,16 +15,17 @@ export function Sort() {
                 <b>Sort by: </b>
                 <span onClick={() => setShowPopup(!showPopup)}>{sortParameters[selectedSortParameter]}</span>
             </div>
-            {showPopup ?
-                <div className="sort__popup">
+            {
+                showPopup && (<div className="sort__popup">
                     <ul>
                         {
                             sortParameters.map((parameter, id) => (
-                                <li onClick={() => setSelectedSortParameter(id)} key={id} className={id === selectedSortParameter ? "active" : null}>{parameter}</li>
+                                <li onClick={() => { setSelectedSortParameter(id); setShowPopup(false); }} key={id} className={id === selectedSortParameter ? "active" : null}>{parameter}</li>
                             ))
                         }
                     </ul>
-                </div> : null}
+                </div>)
+            }
         </div>
     );
 }
