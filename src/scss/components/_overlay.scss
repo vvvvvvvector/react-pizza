@@ -18,6 +18,21 @@
         border-radius: 20px;
         display: flex;
 
+        svg {
+            cursor: pointer;
+            position: absolute;
+            right: -42px;
+            transition: transform 0.2s ease-in-out;
+
+            path {
+                fill: #ffffff;
+            }
+
+            &:hover {
+                transform: scale(1.04);
+            }
+        }
+
         &__image {
             display: flex;
             flex: 1;
@@ -39,21 +54,6 @@
             background: #f9f9f9;
             border-bottom-right-radius: 20px;
             border-top-right-radius: 20px;
-
-            svg {
-                cursor: pointer;
-                position: absolute;
-                right: -42px;
-                transition: transform 0.2s ease-in-out;
-
-                path {
-                    fill: #ffffff;
-                }
-
-                &:hover {
-                    transform: scale(1.04);
-                }
-            }
         }
     }
 }

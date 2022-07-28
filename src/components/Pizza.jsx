@@ -1,9 +1,6 @@
 import React from 'react';
 
-const types = ["thin", "traditional"];
-const sizes = ["25 cm.", "30 cm.", "35 cm."];
-
-export function Pizza({ onImageClick, cost, name, imageURL }) {
+export function Pizza({ onClickImage, types, sizes, name, cost, imageURL }) {
     const [selectedType, setSelectedType] = React.useState(0);
     const [selectedSize, setSelectedSize] = React.useState(0);
 
@@ -11,20 +8,20 @@ export function Pizza({ onImageClick, cost, name, imageURL }) {
 
     return (
         <div className="pizza-component">
-            <img onClick={() => onImageClick(pizzaObj)} className="pizza-component__image" alt="pizza-img" src={imageURL} />
+            <img onClick={() => onClickImage(pizzaObj)} className="pizza-component__image" alt="pizza-img" src={imageURL} />
             <h4 className="pizza-component__name">{name}</h4>
             <div className="pizza-component__selector">
                 <ul>
                     {
-                        types.map((type, id) => (
-                            <li key={id} onClick={() => setSelectedType(id)} className={id === selectedType ? "active" : null}>{type}</li>
+                        types.map((type, index) => (
+                            <li key={index} onClick={() => setSelectedType(index)} className={index === selectedType ? "active" : null}>{type}</li>
                         ))
                     }
                 </ul>
                 <ul>
                     {
-                        sizes.map((size, id) => (
-                            <li key={id} onClick={() => setSelectedSize(id)} className={id === selectedSize ? "active" : null}>{size}</li>
+                        sizes.map((size, index) => (
+                            <li key={index} onClick={() => setSelectedSize(index)} className={index === selectedSize ? "active" : null}>{size}</li>
                         ))
                     }
                 </ul>

@@ -6,7 +6,7 @@ const sortParameters = ["popularity ↑", "popularity ↓", "cost ↑", "cost �
 
 export function Sort() {
     const [showPopup, setShowPopup] = React.useState(false);
-    const [selectedSortParameter, setSelectedSortParameter] = React.useState(4);
+    const [selectedSortParameter, setSelectedSortParameter] = React.useState(0);
 
     return (
         <div className="sort">
