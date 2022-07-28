@@ -1,15 +1,16 @@
 import React from 'react';
 
-export function Categories() {
+const categories = ["All", "Meat", "Vegetarian", "Grill", "Spicy", "Closed"];
+
+export function Categories({ selectedCategory, setSelectedCategory }) {
     return (
         <div className="categories">
             <ul>
-                <li className="active">All</li>
-                <li>Meat</li>
-                <li>Vegetarian</li>
-                <li>Grill</li>
-                <li>Spicy</li>
-                <li>Closed</li>
+                {
+                    categories.map((category, id) => (
+                        <li onClick={() => setSelectedCategory(id)} key={id} className={id === selectedCategory ? "active" : null}>{category}</li>
+                    ))
+                }
             </ul>
-        </div>);
+        </div >);
 }
