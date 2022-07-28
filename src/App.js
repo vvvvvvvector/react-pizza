@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import { Overlay, Header, Categories, Sort, Pizza, Pagination } from './components';
 
@@ -8,11 +9,13 @@ function App() {
   const [fetchedPizzas, setFetchedPizzas] = React.useState([]);
 
   React.useEffect(() => {
-    fetch("https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas").then((res) => {
-      return res.json();
-    }).then((json) => {
-      setFetchedPizzas(json);
-    });
+    async function fetchData() {
+      const pizzasResponse = await axios.get("https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas");
+
+      setFetchedPizzas(pizzasResponse.data);
+    }
+
+    fetchData();
   }, []);
 
   // --------overlay--------
