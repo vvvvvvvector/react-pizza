@@ -1,16 +1,19 @@
 import React from 'react';
 import axios from 'axios';
 
-import { Overlay, Header, Categories, Sort, Pizza, Pagination } from './components';
+import { Overlay, Header, Categories, Sort, Pizza, Skeleton, Pagination } from './components';
 
 import './scss/components/_all.scss';
 
 function App() {
+  const [loading, setLoading] = React.useState(true);
   const [fetchedPizzas, setFetchedPizzas] = React.useState([]);
 
   React.useEffect(() => {
     async function fetchData() {
       const pizzasResponse = await axios.get("https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas");
+
+      setLoading(false);
 
       setFetchedPizzas(pizzasResponse.data);
     }
@@ -34,6 +37,14 @@ function App() {
   }
   // --------overlay--------
 
+  const pizzas = fetchedPizzas.map((pizza) => (
+    <Pizza key={pizza.id} onClickImage={onClickPizzaImage} {...pizza} />
+  ));
+
+  const skeletons = [...new Array(4)].map((_, index) => (
+    <Skeleton key={index} />
+  ));
+
   return (
     <>
       {
@@ -54,12 +65,7 @@ function App() {
             </h2>
             <div className="content__items">
               {
-                fetchedPizzas.map((pizza) => (
-                  <Pizza
-                    key={pizza.id}
-                    onClickImage={onClickPizzaImage}
-                    {...pizza} />
-                ))
+                loading ? skeletons : pizzas
               }
             </div>
             <Pagination />
