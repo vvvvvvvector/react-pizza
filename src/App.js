@@ -9,6 +9,14 @@ function App() {
   const [loading, setLoading] = React.useState(true);
   const [fetchedPizzas, setFetchedPizzas] = React.useState([]);
 
+  const [categoryName, setCategoryName] = React.useState("All");
+
+  const [searchValue, setSearchValue] = React.useState("");
+
+  const onChangeSearchInput = (event) => {
+    setSearchValue(event.target.value);
+  }
+
   React.useEffect(() => {
     async function fetchData() {
       const pizzasResponse = await axios.get("https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas");
@@ -53,15 +61,15 @@ function App() {
           pizza={selectedPizza} />)
       }
       <div className="wrapper">
-        <Header />
+        <Header onChangeSearchInput={onChangeSearchInput} />
         <div className="content">
           <div className="content__container">
             <div className="content__top">
-              <Categories />
+              <Categories setCategoryName={setCategoryName} />
               <Sort />
             </div>
             <h2 className="content__title">
-              All pizzas
+              {searchValue ? `Search for: ${searchValue}` : `${categoryName} pizzas`}
             </h2>
             <div className="content__items">
               {

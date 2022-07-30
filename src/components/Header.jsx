@@ -4,7 +4,7 @@ import logoSVG from '../assets/images/store-logo.svg';
 import cartSVG from '../assets/images/shopping-cart.svg';
 import lensSVG from '../assets/images/search-lens.svg';
 
-export function Header() {
+export function Header({ onChangeSearchInput }) {
     return (
         <div className="header">
             <div className="container">
@@ -17,7 +17,7 @@ export function Header() {
                 </div>
                 <div className="header__search">
                     <img alt="search-lens" src={lensSVG} />
-                    <input placeholder="Search pizza..." />
+                    <input onChange={onChangeSearchInput} placeholder="Search pizza..." />
                 </div>
                 <div className="header__cart">
                     <div className="button button--cart">
