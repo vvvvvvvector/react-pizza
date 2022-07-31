@@ -6,16 +6,10 @@ import { Overlay, Header, Categories, Sort, Pizza, Skeleton, Pagination } from '
 import './scss/components/_all.scss';
 
 function App() {
-  const [loading, setLoading] = React.useState(true);
   const [fetchedPizzas, setFetchedPizzas] = React.useState([]);
-
+  const [loading, setLoading] = React.useState(true);
   const [categoryName, setCategoryName] = React.useState("All");
-
   const [searchValue, setSearchValue] = React.useState("");
-
-  const onChangeSearchInput = (event) => {
-    setSearchValue(event.target.value);
-  }
 
   React.useEffect(() => {
     async function fetchData() {
@@ -45,13 +39,19 @@ function App() {
   }
   // --------overlay--------
 
-  const pizzas = fetchedPizzas.map((pizza) => (
-    <Pizza key={pizza.id} onClickImage={onClickPizzaImage} {...pizza} />
-  ));
+  const renderContentItems = () => {
+    const skeletons = [...new Array(4)].map((_, index) => (
+      <Skeleton key={index} />
+    ));
 
-  const skeletons = [...new Array(4)].map((_, index) => (
-    <Skeleton key={index} />
-  ));
+    const filteredPizzas = fetchedPizzas.filter((item) => (
+      item.name.toLowerCase().includes(searchValue.toLowerCase())
+    )).map((pizza) => (
+      <Pizza key={pizza.id} onClickImage={onClickPizzaImage} {...pizza} />
+    ));
+
+    return loading ? skeletons : filteredPizzas;
+  };
 
   return (
     <>
@@ -61,7 +61,7 @@ function App() {
           pizza={selectedPizza} />)
       }
       <div className="wrapper">
-        <Header onChangeSearchInput={onChangeSearchInput} />
+        <Header onChangeSearchInput={(event) => setSearchValue(event.target.value)} />
         <div className="content">
           <div className="content__container">
             <div className="content__top">
@@ -71,11 +71,7 @@ function App() {
             <h2 className="content__title">
               {searchValue ? `Search for: ${searchValue}` : `${categoryName} pizzas`}
             </h2>
-            <div className="content__items">
-              {
-                loading ? skeletons : pizzas
-              }
-            </div>
+            <div className="content__items">{renderContentItems()}</div>
             <Pagination />
           </div>
         </div>
