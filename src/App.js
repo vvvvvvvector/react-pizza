@@ -61,7 +61,7 @@ function App() {
           pizza={selectedPizza} />)
       }
       <div className="wrapper">
-        <Header onChangeSearchInput={(event) => setSearchValue(event.target.value)} />
+        <Header searchValue={searchValue} setSearchValue={setSearchValue} />
         <div className="content">
           <div className="content__container">
             <div className="content__top">

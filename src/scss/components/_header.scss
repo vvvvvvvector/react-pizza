@@ -13,11 +13,12 @@
     }
 
     &__search {
+        display: flex;
         position: relative;
         left: -130px;
         border: 1px solid rgba(0, 0, 0, .1);
         border-radius: 10px;
-        padding: 12px 20px 12px 42px;
+        padding: 12px 30px 12px 42px;
 
         &:focus-within {
             border-color: darken(#f3f3f3, 12%);
@@ -32,8 +33,26 @@
         input {
             border: 0px;
             font-size: 16px;
-            width: 350px;
+            width: 335px;
+            margin-right: 10px;
             outline: none;
+        }
+
+        svg {
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            width: 21px;
+            height: 21px;
+            opacity: 0.5;
+
+            &:hover {
+                opacity: 0.8;
+            }
+
+            &:active {
+                opacity: 1;
+            }
         }
     }
 
