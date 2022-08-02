@@ -1,0 +1,27 @@
+.emptyCart {
+    width: 400px;
+    text-align: center;
+    margin: 80px auto;
+
+    h2 {
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 20px;
+        color: #777777;
+        margin-bottom: 20px;
+    }
+
+    img {
+        margin-bottom: 20px;
+    }
+
+    button {
+        span {
+            font-size: 15px;
+            font-weight: bold;
+        }
+    }
+}

@@ -88,4 +88,19 @@
             background-color: darken($orange, 10%);
         }
     }
+
+    // go home button in emptyCart component
+    &--emptyCart {
+        width: 200px;
+        color: #ffffff;
+        background-color: #282828;
+
+        &:hover {
+            background-color: lighten(#282828, 7%);
+        }
+
+        &:active {
+            background-color: lighten(#282828, 12%);
+        }
+    }
 }

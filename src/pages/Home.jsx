@@ -1,7 +1,7 @@
-import React from "react";
-import axios from "axios";
+import React from 'react';
+import axios from 'axios';
 
-import { Overlay, Categories, Sort, Pizza, Skeleton, Pagination } from "../components/"
+import { Overlay, Categories, Sort, Pizza, Skeleton, Pagination } from '../components/';
 
 export const Home = ({ searchValue }) => {
     const [loading, setLoading] = React.useState(true);

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import logoSVG from '../assets/images/store-logo.svg';
 import cartSVG from '../assets/images/shopping-cart.svg';
@@ -26,14 +27,16 @@ export const Header = ({ searchValue, setSearchValue }) => {
                         </svg>
                     }
                 </div>
-                <div className="header__cart">
-                    <div className="button button--cart">
-                        <span>0 $</span>
-                        <div></div>
-                        <img alt="shopping-cart" src={cartSVG} />
-                        <span>0</span>
+                <Link to="/cart">
+                    <div className="header__cart">
+                        <div className="button button--cart">
+                            <span>0 $</span>
+                            <div></div>
+                            <img alt="shopping-cart" src={cartSVG} />
+                            <span>0</span>
+                        </div>
                     </div>
-                </div>
+                </Link>
             </div>
         </div>
     );
