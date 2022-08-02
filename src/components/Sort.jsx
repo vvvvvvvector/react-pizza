@@ -4,7 +4,7 @@ import arrowSVG from '../assets/images/categories-arrow.svg';
 
 const sortParameters = ["popularity ↑", "popularity ↓", "cost ↑", "cost ↓", "alphabet ↑", "alphabet ↓"];
 
-export function Sort() {
+export const Sort = () => {
     const [showPopup, setShowPopup] = React.useState(false);
     const [selectedSortParameter, setSelectedSortParameter] = React.useState(0);
 

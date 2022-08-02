@@ -19,6 +19,7 @@
         border: 1px solid rgba(0, 0, 0, .1);
         border-radius: 10px;
         padding: 12px 30px 12px 42px;
+        transition: border-color $duration ease-in-out;
 
         &:focus-within {
             border-color: darken(#f3f3f3, 12%);

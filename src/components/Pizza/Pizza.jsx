@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Pizza({ onClickImage, types, sizes, name, cost, imageURL }) {
+export const Pizza = ({ onClickImage, types, sizes, name, cost, imageURL }) => {
     const [selectedType, setSelectedType] = React.useState(0);
     const [selectedSize, setSelectedSize] = React.useState(0);
 

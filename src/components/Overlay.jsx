@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Overlay({ pizza, onCloseOverlay }) {
+export const Overlay = ({ pizza, onCloseOverlay }) => {
     return (
         <div className="overlay">
             <div className="pizza-details-wrapper">

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Pagination() {
+export const Pagination = () => {
     return (
         <div className="pagination">
             <ul>

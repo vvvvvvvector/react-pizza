@@ -2,7 +2,7 @@ import React from 'react';
 
 const categories = ["All", "Meat", "Vegetarian", "Grill", "Spicy", "Closed"];
 
-export function Categories({ setCategoryName }) {
+export const Categories = ({ setCategoryName }) => {
     const [selectedCategory, setSelectedCategory] = React.useState(0);
 
     const onClickCategory = (index) => {
@@ -19,5 +19,6 @@ export function Categories({ setCategoryName }) {
                     ))
                 }
             </ul>
-        </div >);
+        </div >
+    );
 }

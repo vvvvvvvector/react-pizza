@@ -4,7 +4,7 @@ import logoSVG from '../assets/images/store-logo.svg';
 import cartSVG from '../assets/images/shopping-cart.svg';
 import lensSVG from '../assets/images/search-lens.svg';
 
-export function Header({ searchValue, setSearchValue }) {
+export const Header = ({ searchValue, setSearchValue }) => {
     return (
         <div className="header">
             <div className="container">

@@ -1,7 +1,7 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 
-export function Skeleton() {
+export const Skeleton = () => {
     return (
         <ContentLoader
             speed={2}
