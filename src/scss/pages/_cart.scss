@@ -57,8 +57,123 @@
         margin-top: 30px;
         margin-bottom: 40px;
 
-        .pizza-item {
-            background-color: antiquewhite;
+        .cart-item {
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #F6F6F6;
+
+            img {
+                display: flex;
+                height: 80px;
+                width: 80px;
+                margin-right: 10px;
+            }
+
+            .info {
+                width: 40%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                h3 {
+                    font-size: 22px;
+                    text-overflow: ellipsis; 
+                    overflow: hidden; 
+                    white-space: nowrap; 
+                }
+
+                p {
+                    font-size: 18px;
+                    color: #8d8d8d;
+                }
+            }
+
+            .amount {
+                margin-left: 10px;
+                display: flex;
+                align-items: center;
+
+                b {
+                    font-size: 22px;
+                    margin-right: 24px;
+                }
+
+                a {
+                    cursor: pointer;
+                    width: 30px;
+                    height: 30px;
+                    text-align: center;
+                    line-height: 31px;
+                    border: 2px solid $orange;
+                    border-radius: 30px;
+                    display: inline-block;
+                    transition: all $duration ease-in-out;
+
+                    &:first-of-type {
+                        margin-right: 24px;
+                    }
+
+                    &:hover {
+                        background-color: $orange;
+
+                        svg {
+                            path {
+                                fill: #ffffff;
+                            }
+                        }
+                    }
+
+                    &:active {
+                        background-color: darken($orange, 10%);
+                        border-color: darken($orange, 10%);
+                    }
+                }
+            }
+
+            .cost {
+                width: 30%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                b {
+                    font-size: 22px;
+                }
+            }
+
+            .remove {
+                display: flex;
+                align-items: center;
+
+                a {
+                    cursor: pointer;
+                    width: 30px;
+                    height: 30px;
+                    text-align: center;
+                    line-height: 31px;
+                    border: 2px solid #D0D0D0;
+                    border-radius: 30px;
+                    display: inline-block;
+                    transition: all $duration ease-in-out;
+
+                    &:hover {
+                        background-color: #2a2a2a;
+                        border-color: #2a2a2a;
+
+                        svg {
+                            path {
+                                fill: #ffffff;
+                            }
+                        }
+                    }
+
+                    &:active {
+                        background-color: lighten(#2a2a2a, 8%);
+                        border-color: lighten(#2a2a2a, 8%);
+                    }
+                }
+            }
         }
     }
 
