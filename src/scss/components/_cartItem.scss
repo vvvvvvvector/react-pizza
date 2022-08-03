@@ -21,7 +21,7 @@
         h3 {
             font-size: 22px;
             text-overflow: ellipsis;
-            overflow: hidden;
+            overflow: scroll;
             white-space: nowrap;
         }
 
@@ -43,34 +43,51 @@
             margin-right: 10px;
         }
 
-        i {
+        button {
             cursor: pointer;
             width: 30px;
+            background-color: #ffffff;
             height: 30px;
             text-align: center;
             line-height: 31px;
-            border: 2px solid $orange;
+            border: 2px solid #D0D0D0;
             border-radius: 30px;
             display: inline-block;
             transition: all $duration ease-in-out;
+
+            svg {
+                path {
+                    fill: #D0D0D0;
+                }
+            }
 
             &:first-of-type {
                 margin-right: 10px;
             }
 
-            &:hover {
-                background-color: $orange;
+            &.active {
+                border-color: $orange;
 
                 svg {
                     path {
-                        fill: #ffffff;
+                        fill: $orange;
                     }
                 }
-            }
 
-            &:active {
-                background-color: darken($orange, 10%);
-                border-color: darken($orange, 10%);
+                &:hover {
+                    background-color: $orange;
+
+                    svg {
+                        path {
+                            fill: #ffffff;
+                        }
+                    }
+                }
+
+                &:active {
+                    background-color: darken($orange, 10%);
+                    border-color: darken($orange, 10%);
+                }
             }
         }
     }
@@ -90,9 +107,10 @@
         display: flex;
         align-items: center;
 
-        i {
+        button {
             cursor: pointer;
             width: 30px;
+            background-color: #ffffff;
             height: 30px;
             text-align: center;
             line-height: 31px;

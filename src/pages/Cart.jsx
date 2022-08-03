@@ -5,6 +5,29 @@ import { EmptyCart, CartItem } from '../components';
 
 import cartSVG from '../assets/images/order-pizza-cart-top.svg';
 
+const pizzas = [{
+    "type": "Thin",
+    "size": "Medium",
+    "name": "Margherita",
+    "cost": 7,
+    "imageURL": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
+    "amount": 3
+}, {
+    "type": "Traditional",
+    "size": "Big",
+    "name": "Four seasons",
+    "cost": 9,
+    "imageURL": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
+    "amount": 1
+}, {
+    "type": "Thin",
+    "size": "Small",
+    "name": "Pepperoni",
+    "cost": 7,
+    "imageURL": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d2e337e9-e07a-4199-9cc1-501cc44cb8f8.jpg",
+    "amount": 2
+}];
+
 export const Cart = () => {
     const cartIsEmpty = false;
 
@@ -30,9 +53,11 @@ export const Cart = () => {
                 </div>
             </div>
             <div className="cart__items">
-                <CartItem />
-                <CartItem />
-                <CartItem />
+                {
+                    pizzas.map((pizza, index) => (
+                        <CartItem key={index} {...pizza} />
+                    ))
+                }
             </div>
             <div className="cart__bottom">
                 <div className="summary">
