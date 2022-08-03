@@ -15,31 +15,3 @@ body {
     box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.03);
     border-radius: 10px;
 }
-
-.content {
-    padding: 40px 0; // top&bottom left&right
-
-    &__container {
-        width: $content-width;
-        margin: 0 auto;
-    }
-
-    &__top {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    &__title {
-        font-size: 38px;
-        font-weight: 800;
-        margin-bottom: 50px;
-        margin-top: 50px;
-    }
-
-    &__items {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr); // 4 columns
-        grid-column-gap: 25px;
-    }
-}

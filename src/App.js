@@ -6,7 +6,9 @@ import { Header } from './components';
 import { Home } from './pages/Home';
 import { Cart } from './pages/Cart';
 
-import './scss/components/_all.scss';
+import './scss/components/_all_components.scss';
+import './scss/pages/_all_pages.scss';
+
 
 function App() {
   const [searchValue, setSearchValue] = React.useState("");
