@@ -103,4 +103,50 @@
             background-color: lighten(#282828, 12%);
         }
     }
+
+    // go back cart if cart is not empty
+    &-go-back {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FFFFFF;
+        border: 1px solid #CACACA;
+
+        span {
+            color: #CACACA;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        svg {
+            margin-right: 10px;
+        }
+
+        &:hover {
+            background-color: #282828;
+            border-color: #282828;
+
+            span {
+                color: #FFFFFF;
+            }
+
+            svg {
+                path {
+                    stroke: #FFFFFF;
+                }
+            }
+        }
+
+        &:active {
+            background-color: lighten(#282828, 10%);
+        }
+    }
+
+    &-make-order {
+        span {
+            color: #FFFFFF;
+            font-weight: 600;
+            font-size: 16px;
+        }
+    }
 }
