@@ -6,7 +6,13 @@ import { Overlay, Categories, Sort, Pizza, Skeleton, Pagination } from '../compo
 export const Home = ({ searchValue }) => {
     const [loading, setLoading] = React.useState(true);
     const [fetchedPizzas, setFetchedPizzas] = React.useState([]);
+
+    // category component
     const [categoryName, setCategoryName] = React.useState("All");
+    const [selectedCategory, setSelectedCategory] = React.useState(0);
+
+    // sort component
+    const [selectedSortParameter, setSelectedSortParameter] = React.useState(0);
 
     React.useEffect(() => {
         async function fetchData() {
@@ -59,8 +65,13 @@ export const Home = ({ searchValue }) => {
                 )
             }
             <div className="content__top">
-                <Categories setCategoryName={setCategoryName} />
-                <Sort />
+                <Categories
+                    selectedCategoryIndex={selectedCategory}
+                    setCategory={(index) => setSelectedCategory(index)}
+                    setCategoryName={(name) => setCategoryName(name)} />
+                <Sort
+                    selectedSortParameterIndex={selectedSortParameter}
+                    setSortParameter={(index) => setSelectedSortParameter(index)} />
             </div>
             <h2 className="content__title">
                 {searchValue ? `Search for: ${searchValue}` : `${categoryName} pizzas`}

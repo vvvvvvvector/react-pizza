@@ -2,11 +2,9 @@ import React from 'react';
 
 const categories = ["All", "Meat", "Vegetarian", "Grill", "Spicy", "Closed"];
 
-export const Categories = ({ setCategoryName }) => {
-    const [selectedCategory, setSelectedCategory] = React.useState(0);
-
+export const Categories = ({ selectedCategoryIndex, setCategory, setCategoryName }) => {
     const onClickCategory = (index) => {
-        setSelectedCategory(index);
+        setCategory(index);
         setCategoryName(categories[index]);
     }
 
@@ -14,8 +12,8 @@ export const Categories = ({ setCategoryName }) => {
         <div className="categories">
             <ul>
                 {
-                    categories.map((category, index) => (
-                        <li onClick={() => onClickCategory(index)} key={index} className={index === selectedCategory ? "active" : null}>{category}</li>
+                    categories.map((_, index) => (
+                        <li onClick={() => onClickCategory(index)} key={index} className={index === selectedCategoryIndex ? "active" : null}>{categories[index]}</li>
                     ))
                 }
             </ul>
