@@ -16,7 +16,9 @@ export const Home = ({ searchValue }) => {
 
     React.useEffect(() => {
         async function fetchData() {
-            const pizzasResponse = await axios.get("https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas");
+            setLoading(true);
+
+            const pizzasResponse = await axios.get(`https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas?categories=${selectedCategory}`);
 
             setLoading(false);
 
@@ -24,7 +26,7 @@ export const Home = ({ searchValue }) => {
         }
 
         fetchData();
-    }, []);
+    }, [selectedCategory]);
 
     // --------overlay--------
     const [overlayOpened, setOverlayOpened] = React.useState(false);
