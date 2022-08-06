@@ -3,6 +3,8 @@ import axios from 'axios';
 
 import { Overlay, Categories, Sort, Pizza, Skeleton, Pagination } from '../components/';
 
+const sortParameters = ["popularity", "popularity", "cost", "cost", "name", "name"];
+
 export const Home = ({ searchValue }) => {
     const [loading, setLoading] = React.useState(true);
     const [fetchedPizzas, setFetchedPizzas] = React.useState([]);
@@ -18,7 +20,7 @@ export const Home = ({ searchValue }) => {
         async function fetchData() {
             setLoading(true);
 
-            const pizzasResponse = await axios.get(`https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas?categories=${selectedCategory}`);
+            const pizzasResponse = await axios.get(`https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas?categories=${selectedCategory}&sortBy=${sortParameters[selectedSortParameter]}&order=${selectedSortParameter % 2 == 0 ? "asc" : "desc"}`);
 
             setLoading(false);
 
@@ -26,7 +28,7 @@ export const Home = ({ searchValue }) => {
         }
 
         fetchData();
-    }, [selectedCategory]);
+    }, [selectedCategory, selectedSortParameter]);
 
     // --------overlay--------
     const [overlayOpened, setOverlayOpened] = React.useState(false);
