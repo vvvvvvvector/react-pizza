@@ -71,11 +71,11 @@ export const Home = ({ searchValue }) => {
             <div className="content__top">
                 <Categories
                     selectedCategoryIndex={selectedCategory}
-                    setCategory={(index) => setSelectedCategory(index)}
-                    setCategoryName={(name) => setCategoryName(name)} />
+                    onChangeCategory={(index) => setSelectedCategory(index)}
+                    onChangeCategoryName={(name) => setCategoryName(name)} />
                 <Sort
                     selectedSortParameterIndex={selectedSortParameter}
-                    setSortParameter={(index) => setSelectedSortParameter(index)} />
+                    onChangeSortParameter={(index) => setSelectedSortParameter(index)} />
             </div>
             <h2 className="content__title">
                 {searchValue ? `Search for: ${searchValue}` : `${categoryName} pizzas`}

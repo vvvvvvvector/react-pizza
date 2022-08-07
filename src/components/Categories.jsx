@@ -2,10 +2,10 @@ import React from 'react';
 
 const categories = ["All", "Meat", "Vegetarian", "Grill", "Spicy", "Closed"];
 
-export const Categories = ({ selectedCategoryIndex, setCategory, setCategoryName }) => {
+export const Categories = ({ selectedCategoryIndex, onChangeCategory, onChangeCategoryName }) => {
     const onClickCategory = (index) => {
-        setCategory(index);
-        setCategoryName(categories[index]);
+        onChangeCategory(index);
+        onChangeCategoryName(categories[index]);
     }
 
     return (

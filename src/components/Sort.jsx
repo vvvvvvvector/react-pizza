@@ -4,7 +4,7 @@ import arrowSVG from '../assets/images/categories-arrow.svg';
 
 const sortParameters = ["popularity ↑", "popularity ↓", "cost ↑", "cost ↓", "alphabet ↑", "alphabet ↓"];
 
-export const Sort = ({ selectedSortParameterIndex, setSortParameter }) => {
+export const Sort = ({ selectedSortParameterIndex, onChangeSortParameter }) => {
     const [showPopup, setShowPopup] = React.useState(false);
 
     return (
@@ -15,15 +15,17 @@ export const Sort = ({ selectedSortParameterIndex, setSortParameter }) => {
                 <span onClick={() => setShowPopup(!showPopup)}>{sortParameters[selectedSortParameterIndex]}</span>
             </div>
             {
-                showPopup && (<div className="sort__popup">
-                    <ul>
-                        {
-                            sortParameters.map((parameter, index) => (
-                                <li onClick={() => { setSortParameter(index); setShowPopup(false); }} key={index} className={index === selectedSortParameterIndex ? "active" : null}>{parameter}</li>
-                            ))
-                        }
-                    </ul>
-                </div>)
+                showPopup && (
+                    <div className="sort__popup">
+                        <ul>
+                            {
+                                sortParameters.map((parameter, index) => (
+                                    <li onClick={() => { onChangeSortParameter(index); setShowPopup(false); }} key={index} className={index === selectedSortParameterIndex ? "active" : null}>{parameter}</li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                )
             }
         </div>
     );

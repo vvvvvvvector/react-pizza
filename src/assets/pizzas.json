@@ -1,6 +1,13 @@
 [
     {
         "id": 0,
+        "categories": [
+            0,
+            1
+        ],
+        "popularity": [
+            0
+        ],
         "types": [
             "Thin",
             "Traditional"
@@ -16,6 +23,13 @@
     },
     {
         "id": 1,
+        "categories": [
+            0,
+            1
+        ],
+        "popularity": [
+            1
+        ],
         "types": [
             "Thin"
         ],
@@ -30,6 +44,13 @@
     },
     {
         "id": 2,
+        "categories": [
+            0,
+            1
+        ],
+        "popularity": [
+            2
+        ],
         "types": [
             "Thin",
             "Traditional"
@@ -44,6 +65,13 @@
     },
     {
         "id": 3,
+        "categories": [
+            0,
+            1
+        ],
+        "popularity": [
+            3
+        ],
         "types": [
             "Traditional"
         ],
@@ -55,5 +83,69 @@
         "cost": 10,
         "name": "Cheeseburger-pizza",
         "imageURL": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+    },
+    {
+        "id": 4,
+        "categories": [
+            0,
+            2
+        ],
+        "popularity": [
+            2
+        ],
+        "types": [
+            "Thin"
+        ],
+        "sizes": [
+            "Small",
+            "Medium",
+            "Big"
+        ],
+        "cost": 6,
+        "name": "Cheese 🧀",
+        "imageURL": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/2ffc31bb-132c-4c99-b894-53f7107a1441.jpg"
+    },
+    {
+        "id": 5,
+        "categories": [
+            0,
+            2
+        ],
+        "popularity": [
+            3
+        ],
+        "types": [
+            "Traditional",
+            "Thin"
+        ],
+        "sizes": [
+            "Small",
+            "Medium",
+            "Big"
+        ],
+        "cost": 11,
+        "name": "Vegetable 🥗",
+        "imageURL": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/30367198-f3bd-44ed-9314-6f717960da07.jpg"
+    },
+    {
+        "id": 6,
+        "categories": [
+            0,
+            4
+        ],
+        "popularity": [
+            3
+        ],
+        "types": [
+            "Thin"
+        ],
+        "sizes": [
+            "Small",
+            "Medium",
+            "Big"
+        ],
+        "cost": 10,
+        "name": "Crazy pepperoni 🌶",
+        "imageURL": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/1e1a6e80-b3ba-4a44-b6b9-beae5b1fbf27.jpg"
     }
 ]
