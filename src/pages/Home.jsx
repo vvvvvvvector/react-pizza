@@ -8,6 +8,8 @@ const sortParameters = ["popularity", "popularity", "cost", "cost", "name", "nam
 export const Home = ({ searchValue }) => {
     const [loading, setLoading] = React.useState(true);
     const [fetchedPizzas, setFetchedPizzas] = React.useState([]);
+
+    // pagination component
     const [currentPage, setCurrentPage] = React.useState(0);
 
     // category component
@@ -66,7 +68,8 @@ export const Home = ({ searchValue }) => {
             {
                 overlayOpened && (
                     <Overlay
-                        onCloseOverlay={onClickCloseOverlay} pizza={selectedPizza} />
+                        pizza={selectedPizza}
+                        onCloseOverlay={onClickCloseOverlay} />
                 )
             }
             <div className="content__top">
@@ -81,7 +84,11 @@ export const Home = ({ searchValue }) => {
             <h2 className="content__title">
                 {searchValue ? `Search for: ${searchValue}` : `${categoryName} pizzas`}
             </h2>
-            <div className="content__items">{renderContentItems()}</div>
+            <div className="content__items">
+                {
+                    renderContentItems()
+                }
+            </div>
             <Pagination
                 selectedPageIndex={currentPage}
                 onChangePage={(index) => setCurrentPage(index)} />
