@@ -1,22 +1,17 @@
 import React from 'react';
 
+const pages = [...new Array(2)];
 
-export const Pagination = ({ onChangePage }) => {
-    const pages = [...new Array(2)];
-
-    const [selectedPage, setSelectedPage] = React.useState(0);
-
+export const Pagination = ({ selectedPageIndex, onChangePage }) => {
     const onClickPrevious = () => {
-        if (selectedPage > 0) {
-            setSelectedPage(selectedPage - 1);
-            onChangePage(selectedPage - 1);
+        if (selectedPageIndex > 0) {
+            onChangePage(selectedPageIndex - 1);
         }
     };
 
     const onClickNext = () => {
-        if (selectedPage < pages.length - 1) {
-            setSelectedPage(selectedPage + 1)
-            onChangePage(selectedPage + 1);
+        if (selectedPageIndex < pages.length - 1) {
+            onChangePage(selectedPageIndex + 1);
         }
     };
 
@@ -26,7 +21,7 @@ export const Pagination = ({ onChangePage }) => {
                 <li><a onClick={onClickPrevious}>←</a></li>
                 {
                     pages.map((_, index) => (
-                        <li key={index}><a onClick={() => { setSelectedPage(index); onChangePage(index) }} className={index === selectedPage ? "active" : ""}>{index + 1}</a></li>
+                        <li key={index}><a onClick={() => { onChangePage(index) }} className={index === selectedPageIndex ? "active" : ""}>{index + 1}</a></li>
                     ))
                 }
                 <li><a onClick={onClickNext}>→</a></li>

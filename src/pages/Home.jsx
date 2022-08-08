@@ -82,7 +82,9 @@ export const Home = ({ searchValue }) => {
                 {searchValue ? `Search for: ${searchValue}` : `${categoryName} pizzas`}
             </h2>
             <div className="content__items">{renderContentItems()}</div>
-            <Pagination onChangePage={(index) => setCurrentPage(index)} />
+            <Pagination
+                selectedPageIndex={currentPage}
+                onChangePage={(index) => setCurrentPage(index)} />
         </>
     );
 }
