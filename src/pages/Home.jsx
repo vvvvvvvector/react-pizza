@@ -8,6 +8,7 @@ const sortParameters = ["popularity", "popularity", "cost", "cost", "name", "nam
 export const Home = ({ searchValue }) => {
     const [loading, setLoading] = React.useState(true);
     const [fetchedPizzas, setFetchedPizzas] = React.useState([]);
+    const [currentPage, setCurrentPage] = React.useState(0);
 
     // category component
     const [categoryName, setCategoryName] = React.useState("All");
@@ -20,7 +21,7 @@ export const Home = ({ searchValue }) => {
         async function fetchData() {
             setLoading(true);
 
-            const pizzasResponse = await axios.get(`https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas?categories=${selectedCategory}&sortBy=${sortParameters[selectedSortParameter]}&order=${selectedSortParameter % 2 == 0 ? "asc" : "desc"}`);
+            const pizzasResponse = await axios.get(`https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas?page=${currentPage + 1}&limit=4&categories=${selectedCategory}&sortBy=${sortParameters[selectedSortParameter]}&order=${selectedSortParameter % 2 === 0 ? "asc" : "desc"}`);
 
             setLoading(false);
 
@@ -28,7 +29,7 @@ export const Home = ({ searchValue }) => {
         }
 
         fetchData();
-    }, [selectedCategory, selectedSortParameter]);
+    }, [selectedCategory, selectedSortParameter, currentPage]);
 
     // --------overlay--------
     const [overlayOpened, setOverlayOpened] = React.useState(false);
@@ -81,7 +82,7 @@ export const Home = ({ searchValue }) => {
                 {searchValue ? `Search for: ${searchValue}` : `${categoryName} pizzas`}
             </h2>
             <div className="content__items">{renderContentItems()}</div>
-            <Pagination />
+            <Pagination onChangePage={(index) => setCurrentPage(index)} />
         </>
     );
 }
