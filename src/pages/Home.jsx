@@ -1,29 +1,37 @@
 import React from 'react';
 import axios from 'axios';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentPage } from '../redux/slices/filterSlice';
+
 import { Overlay, Categories, Sort, Pizza, Skeleton, Pagination } from '../components/';
 
 const sortParameters = ["popularity", "popularity", "cost", "cost", "name", "name"];
 
 export const Home = ({ searchValue }) => {
+    const dispatch = useDispatch();
+
     const [loading, setLoading] = React.useState(true);
     const [fetchedPizzas, setFetchedPizzas] = React.useState([]);
 
     // pagination component
-    const [currentPage, setCurrentPage] = React.useState(0);
+    const currentPage = useSelector((state) => state.filter.currentPage);
+    const onChangePage = (page) => {
+        dispatch(setCurrentPage(page));
+    }
 
     // category component
-    const [categoryName, setCategoryName] = React.useState("All");
-    const [selectedCategory, setSelectedCategory] = React.useState(0);
+    const selectedCategory = useSelector((state) => state.filter.selectedCategoryIndex);
+    const selectedCategoryName = useSelector((state) => state.filter.selectedCategoryName);
 
     // sort component
-    const [selectedSortParameter, setSelectedSortParameter] = React.useState(0);
+    const selectedSortParameter = useSelector((state) => state.filter.selectedSortParameterIndex);
 
     React.useEffect(() => {
         async function fetchData() {
             setLoading(true);
 
-            const pizzasResponse = await axios.get(`https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas?page=${currentPage + 1}&limit=4&categories=${selectedCategory}&sortBy=${sortParameters[selectedSortParameter]}&order=${selectedSortParameter % 2 === 0 ? "asc" : "desc"}`);
+            const pizzasResponse = await axios.get(`https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas?page=${currentPage}&limit=4&categories=${selectedCategory}&sortBy=${sortParameters[selectedSortParameter]}&order=${selectedSortParameter % 2 === 0 ? "asc" : "desc"}`);
 
             setLoading(false);
 
@@ -73,16 +81,11 @@ export const Home = ({ searchValue }) => {
                 )
             }
             <div className="content__top">
-                <Categories
-                    selectedCategoryIndex={selectedCategory}
-                    onChangeCategory={(index) => setSelectedCategory(index)}
-                    onChangeCategoryName={(name) => setCategoryName(name)} />
-                <Sort
-                    selectedSortParameterIndex={selectedSortParameter}
-                    onChangeSortParameter={(index) => setSelectedSortParameter(index)} />
+                <Categories />
+                <Sort />
             </div>
             <h2 className="content__title">
-                {searchValue ? `Search for: ${searchValue}` : `${categoryName} pizzas`}
+                {searchValue ? `Search for: ${searchValue}` : `${selectedCategoryName} pizzas`}
             </h2>
             <div className="content__items">
                 {
@@ -91,7 +94,7 @@ export const Home = ({ searchValue }) => {
             </div>
             <Pagination
                 selectedPageIndex={currentPage}
-                onChangePage={(index) => setCurrentPage(index)} />
+                onChangePage={onChangePage} />
         </>
     );
 }
