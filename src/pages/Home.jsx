@@ -1,15 +1,18 @@
 import React from 'react';
-import axios from 'axios';
 
+import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { setCurrentPage } from '../redux/slices/filterSlice';
 
 import { Overlay, Categories, Sort, Pizza, Skeleton, Pagination } from '../components/';
 
 const sortParameters = ["popularity", "popularity", "cost", "cost", "name", "name"];
 
-export const Home = ({ searchValue }) => {
+export const Home = () => {
     const dispatch = useDispatch();
+
+    const searchValue = useSelector((state) => state.filter.searchValue);
 
     const [loading, setLoading] = React.useState(true);
     const [fetchedPizzas, setFetchedPizzas] = React.useState([]);
@@ -21,8 +24,7 @@ export const Home = ({ searchValue }) => {
     }
 
     // category component
-    const selectedCategory = useSelector((state) => state.filter.selectedCategoryIndex);
-    const selectedCategoryName = useSelector((state) => state.filter.selectedCategoryName);
+    const { selectedCategoryIndex, selectedCategoryName } = useSelector((state) => state.filter);
 
     // sort component
     const selectedSortParameter = useSelector((state) => state.filter.selectedSortParameterIndex);
@@ -31,7 +33,8 @@ export const Home = ({ searchValue }) => {
         async function fetchData() {
             setLoading(true);
 
-            const pizzasResponse = await axios.get(`https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas?page=${currentPage}&limit=4&categories=${selectedCategory}&sortBy=${sortParameters[selectedSortParameter]}&order=${selectedSortParameter % 2 === 0 ? "asc" : "desc"}`);
+            const pizzasResponse = await
+                axios.get(`https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas?page=${currentPage}&limit=4&categories=${selectedCategoryIndex}&sortBy=${sortParameters[selectedSortParameter]}&order=${selectedSortParameter % 2 === 0 ? "asc" : "desc"}`);
 
             setLoading(false);
 
@@ -39,7 +42,7 @@ export const Home = ({ searchValue }) => {
         }
 
         fetchData();
-    }, [selectedCategory, selectedSortParameter, currentPage]);
+    }, [selectedCategoryIndex, selectedSortParameter, currentPage]);
 
     // --------overlay--------
     const [overlayOpened, setOverlayOpened] = React.useState(false);

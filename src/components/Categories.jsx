@@ -7,7 +7,6 @@ const categories = ["All", "Meat", "Vegetarian", "Spicy"];
 
 export const Categories = () => {
     const dispatch = useDispatch();
-
     const selectedCategory = useSelector((state) => state.filter.selectedCategoryIndex);
 
     return (
