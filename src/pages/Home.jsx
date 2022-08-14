@@ -30,18 +30,13 @@ export const Home = () => {
     const selectedSortParameter = useSelector((state) => state.filter.selectedSortParameterIndex);
 
     React.useEffect(() => {
-        async function fetchData() {
-            setLoading(true);
+        setLoading(true);
 
-            const pizzasResponse = await
-                axios.get(`https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas?page=${currentPage}&limit=4&categories=${selectedCategoryIndex}&sortBy=${sortParameters[selectedSortParameter]}&order=${selectedSortParameter % 2 === 0 ? "asc" : "desc"}`);
-
-            setLoading(false);
-
-            setFetchedPizzas(pizzasResponse.data);
-        }
-
-        fetchData();
+        axios.get(`https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas?page=${currentPage}&limit=4&categories=${selectedCategoryIndex}&sortBy=${sortParameters[selectedSortParameter]}&order=${selectedSortParameter % 2 === 0 ? "asc" : "desc"}`)
+            .then((response) => {
+                setFetchedPizzas(response.data);
+                setLoading(false);
+            });
     }, [selectedCategoryIndex, selectedSortParameter, currentPage]);
 
     // --------overlay--------
