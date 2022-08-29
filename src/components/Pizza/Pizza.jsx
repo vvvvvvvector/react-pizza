@@ -1,10 +1,10 @@
 import React from 'react';
 
-export const Pizza = ({ onClickImage, types, sizes, name, cost, imageURL, weight, diameter }) => {
+export const Pizza = ({ onClickImage, types, sizes, name, cost, imageURL, weight, diameter, description }) => {
     const [selectedType, setSelectedType] = React.useState(0);
     const [selectedSize, setSelectedSize] = React.useState(0);
 
-    const pizzaObj = { types, sizes, name, cost, imageURL, weight, diameter };
+    const pizzaObj = { types, sizes, name, cost, imageURL, weight, diameter, description };
 
     return (
         <div className="pizza-component">

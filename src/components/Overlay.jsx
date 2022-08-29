@@ -17,6 +17,11 @@ export const Overlay = ({ pizza, onCloseOverlay }) => {
                             `${pizza.diameter[selectedSize]} cm, ${pizza.types[selectedType].toLowerCase()}, ${pizza.weight[selectedSize]} g`
                         }
                     </span>
+                    <div className="description">
+                        <span>
+                            {pizza.description}
+                        </span>
+                    </div>
                     <div className="selector">
                         <ul>
                             {
