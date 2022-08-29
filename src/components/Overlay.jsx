@@ -1,6 +1,9 @@
 import React from 'react';
 
 export const Overlay = ({ pizza, onCloseOverlay }) => {
+    const [selectedType, setSelectedType] = React.useState(0);
+    const [selectedSize, setSelectedSize] = React.useState(0);
+
     return (
         <div className="overlay">
             <div className="pizza-details-wrapper">
@@ -10,22 +13,29 @@ export const Overlay = ({ pizza, onCloseOverlay }) => {
                 <div className="pizza-details-wrapper__rightpart">
                     <h2>{pizza.name}</h2>
                     <span className="characteristics">
-                        small, thin, 360 g.
+                        {
+                            `${pizza.diameter[selectedSize]} cm, ${pizza.types[selectedType].toLowerCase()}, ${pizza.weight[selectedSize]} g`
+                        }
                     </span>
                     <div className="selector">
                         <ul>
-                            <li className="active">Thin</li>
-                            <li>Traditional</li>
+                            {
+                                pizza.types.map((type, index) => (
+                                    <li key={index} onClick={() => setSelectedType(index)} className={selectedType === index ? "active" : ""}>{type}</li>
+                                ))
+                            }
                         </ul>
                         <ul>
-                            <li className="active">Small</li>
-                            <li>Medium</li>
-                            <li>Big</li>
+                            {
+                                pizza.sizes.map((size, index) => (
+                                    <li key={index} onClick={() => setSelectedSize(index)} className={selectedSize === index ? "active" : ""}>{size}</li>
+                                ))
+                            }
                         </ul>
                     </div>
                     <div className="bottom">
                         <div className="button button-make-order">
-                            <span>Add to cart for 7 $</span>
+                            <span>Add to cart for {pizza.cost} $</span>
                         </div>
                     </div>
                 </div>
