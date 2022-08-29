@@ -47,6 +47,7 @@ export const Home = () => {
         setOverlayOpened(true);
         document.body.style.overflow = 'hidden';
         setSelectedPizza(pizzaObj);
+        console.log(pizzaObj);
     };
 
     const onClickCloseOverlay = () => {
