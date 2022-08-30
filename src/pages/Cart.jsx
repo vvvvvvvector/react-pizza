@@ -10,7 +10,7 @@ export const Cart = () => {
         [{
             "id": 1,
             "type": "Thin",
-            "size": "Medium",
+            "diameter": 30,
             "name": "Margherita",
             "cost": 7,
             "imageURL": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
@@ -18,7 +18,7 @@ export const Cart = () => {
         }, {
             "id": 2,
             "type": "Traditional",
-            "size": "Big",
+            "diameter": 35,
             "name": "Four seasons",
             "cost": 9,
             "imageURL": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
@@ -26,7 +26,7 @@ export const Cart = () => {
         }, {
             "id": 3,
             "type": "Thin",
-            "size": "Small",
+            "diameter": 25,
             "name": "Pepperoni",
             "cost": 7,
             "imageURL": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d2e337e9-e07a-4199-9cc1-501cc44cb8f8.jpg",
@@ -39,9 +39,17 @@ export const Cart = () => {
         return <EmptyCart />;
     }
 
-    const onRemove = (cartItemId) => {
-        const updatedPizzas = pizzas.filter((pizza) => pizza.id != cartItemId);
-        setPizzas(updatedPizzas);
+    const onRemoveCartItem = (cartItemId) => {
+        if (window.confirm("Do you really want to remove this pizza from the cart?")) {
+            const updatedPizzas = pizzas.filter((pizza) => pizza.id != cartItemId);
+            setPizzas(updatedPizzas);
+        }
+    }
+
+    const onClearCart = () => {
+        if (window.confirm("Do you really want to clear the cart?")) {
+            setPizzas([]);
+        }
     }
 
     return (
@@ -58,13 +66,13 @@ export const Cart = () => {
                         <path d="M8.33337 9.16667V14.1667" stroke="#B6B6B6" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M11.6666 9.16667V14.1667" stroke="#B6B6B6" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                    <span onClick={() => setPizzas([])}>Clear cart</span>
+                    <span onClick={onClearCart}>Clear cart</span>
                 </div>
             </div>
             <div className="cart__items">
                 {
                     pizzas.map((pizza, index) => (
-                        <CartItem key={index} onRemove={onRemove} {...pizza} />
+                        <CartItem key={index} onRemove={onRemoveCartItem} {...pizza} />
                     ))
                 }
             </div>

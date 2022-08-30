@@ -1,5 +1,7 @@
 import React from 'react';
 
+const pizzaImageSizes = [300, 370, 410];
+
 export const Overlay = ({ pizza, onCloseOverlay }) => {
     const [selectedType, setSelectedType] = React.useState(0);
     const [selectedSize, setSelectedSize] = React.useState(0);
@@ -8,13 +10,13 @@ export const Overlay = ({ pizza, onCloseOverlay }) => {
         <div className="overlay">
             <div className="pizza-details-wrapper">
                 <div className="pizza-details-wrapper__leftpart">
-                    <img alt="pizza" src={pizza.imageURL} />
+                    <img width={pizzaImageSizes[selectedSize]} height={pizzaImageSizes[selectedSize]} alt="pizza" src={pizza.imageURL} />
                 </div>
                 <div className="pizza-details-wrapper__rightpart">
                     <h2>{pizza.name}</h2>
                     <span className="characteristics">
                         {
-                            `${pizza.diameter[selectedSize]} cm, ${pizza.types[selectedType].toLowerCase()}, ${pizza.weight[selectedSize]} g`
+                            `${pizza.diameter[selectedSize]} cm, ${pizza.types[selectedType].toLowerCase()} dough, ${pizza.weight[selectedSize]} g`
                         }
                     </span>
                     <div className="description">

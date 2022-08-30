@@ -1,6 +1,6 @@
 import React from "react";
 
-export const CartItem = ({ id, type, size, name, cost, imageURL, amount, onRemove }) => {
+export const CartItem = ({ id, type, diameter, name, cost, imageURL, amount, onRemove }) => {
     const [pizzaAmount, setPizzaAmount] = React.useState(amount);
 
     return (
@@ -10,7 +10,7 @@ export const CartItem = ({ id, type, size, name, cost, imageURL, amount, onRemov
                 <h3>
                     {name}
                 </h3>
-                <p>{type} dough, {size} size</p>
+                <p>{type} dough, {diameter} cm</p>
             </div>
             <div className="amount">
                 <button disabled={pizzaAmount === 1} className={pizzaAmount > 1 ? "active" : ""} onClick={() => setPizzaAmount(pizzaAmount - 1)}>
