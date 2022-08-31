@@ -7,11 +7,11 @@ export const CartItem = ({ id, type, diameter, name, cost, amount, imageURL, onR
     const dispatch = useDispatch();
 
     const onClickPlus = () => {
-        dispatch(incrementAmount(id));
+        dispatch(incrementAmount({ name, type, diameter }));
     };
 
     const onClickMinus = () => {
-        dispatch(decrementAmount(id));
+        dispatch(decrementAmount({ name, type, diameter }));
     };
 
     return (

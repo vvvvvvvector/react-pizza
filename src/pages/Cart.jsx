@@ -11,15 +11,15 @@ import cartSVG from '../assets/images/order-pizza-cart-top.svg';
 export const Cart = () => {
     const dispatch = useDispatch();
 
-    const { pizzas, orderTotal, pizzasAmount } = useSelector((state) => state.cart);
+    const { pizzas, orderTotal, amountTotal } = useSelector((state) => state.cart);
 
     if (pizzas.length === 0) {
         return <EmptyCart />;
     }
 
-    const onRemoveCartItem = (id) => {
+    const onRemoveCartItem = (pizza) => {
         if (window.confirm("Do you really want to remove this pizza from the cart?")) {
-            dispatch(removePizza(id));
+            dispatch(removePizza(pizza));
         }
     }
 
@@ -49,7 +49,7 @@ export const Cart = () => {
             <div className="cart__items">
                 {
                     pizzas.map((pizza, index) => (
-                        <CartItem key={index} onRemove={onRemoveCartItem} {...pizza} />
+                        <CartItem key={index} onRemove={() => onRemoveCartItem(pizza)} {...pizza} />
                     ))
                 }
             </div>
@@ -57,7 +57,7 @@ export const Cart = () => {
                 <div className="summary">
                     <span>
                         Pizzas amount:
-                        <b>{pizzasAmount}</b>
+                        <b>{amountTotal}</b>
                     </span>
                     <span>
                         Order total:

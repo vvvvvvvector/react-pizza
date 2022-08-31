@@ -14,7 +14,7 @@ export const Header = () => {
     const location = useLocation();
 
     const searchValue = useSelector((state) => state.home.searchValue);
-    const { orderTotal, pizzasAmount } = useSelector((state) => state.cart);
+    const { orderTotal, amountTotal } = useSelector((state) => state.cart);
 
     const searchReference = React.useRef(null);
 
@@ -55,7 +55,7 @@ export const Header = () => {
                                 <span>{orderTotal} $</span>
                                 <div></div>
                                 <img alt="shopping-cart" src={cartSVG} />
-                                <span>{pizzasAmount}</span>
+                                <span>{amountTotal}</span>
                             </div>
                         </div>
                     </Link>
