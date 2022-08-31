@@ -1,8 +1,13 @@
 import React from 'react';
 
+import { useDispatch } from 'react-redux';
+import { addPizza } from '../redux/slices/cartSlice';
+
 const pizzaImageSizes = [300, 370, 410];
 
 export const Overlay = ({ pizza, onCloseOverlay }) => {
+    const dispatch = useDispatch();
+
     const [selectedType, setSelectedType] = React.useState(0);
     const [selectedSize, setSelectedSize] = React.useState(0);
 
@@ -24,6 +29,18 @@ export const Overlay = ({ pizza, onCloseOverlay }) => {
 
         return () => document.body.removeEventListener("click", clickOutsideWrapper); // delete event listener(unmount)
     }, []);
+
+    const onClickAdd = () => {
+        dispatch(addPizza({
+            id: pizza.id,
+            type: pizza.types[selectedType],
+            diameter: pizza.diameter[selectedSize],
+            name: pizza.name,
+            amount: 1,
+            cost: pizza.cost,
+            imageURL: pizza.imageURL
+        }));
+    };
 
     return (
         <div className="overlay">
@@ -61,7 +78,7 @@ export const Overlay = ({ pizza, onCloseOverlay }) => {
                     </div>
                     <div className="bottom">
                         <div className="button button-make-order">
-                            <span>Add to cart for {pizza.cost} $</span>
+                            <span onClick={() => onClickAdd()}>Add to cart for {pizza.cost} $</span>
                         </div>
                     </div>
                 </div>

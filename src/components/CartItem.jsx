@@ -1,6 +1,6 @@
 import React from "react";
 
-export const CartItem = ({ id, type, diameter, name, cost, imageURL, amount, onRemove }) => {
+export const CartItem = ({ id, type, diameter, name, cost, amount, imageURL, onRemove }) => {
     const [pizzaAmount, setPizzaAmount] = React.useState(amount);
 
     return (

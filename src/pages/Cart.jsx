@@ -11,15 +11,15 @@ import cartSVG from '../assets/images/order-pizza-cart-top.svg';
 export const Cart = () => {
     const dispatch = useDispatch();
 
-    const pizzas = useSelector((state) => state.cart.pizzas);
+    const { pizzas, orderTotal, pizzasAmount } = useSelector((state) => state.cart);
 
     if (pizzas.length === 0) {
         return <EmptyCart />;
     }
 
-    const onRemoveCartItem = (cartItemId) => {
+    const onRemoveCartItem = (id) => {
         if (window.confirm("Do you really want to remove this pizza from the cart?")) {
-            dispatch(removePizza(cartItemId));
+            dispatch(removePizza(id));
         }
     }
 
@@ -57,11 +57,11 @@ export const Cart = () => {
                 <div className="summary">
                     <span>
                         Pizzas amount:
-                        <b>1</b>
+                        <b>{pizzasAmount}</b>
                     </span>
                     <span>
                         Order total:
-                        <b>10 $</b>
+                        <b>{orderTotal} $</b>
                     </span>
                 </div>
                 <div className="buttons">
@@ -74,7 +74,7 @@ export const Cart = () => {
                         </div>
                     </Link>
                     <div className="button button-make-order">
-                        <span>Make an order</span>
+                        <span>Make an order!</span>
                     </div>
                 </div>
             </div>
