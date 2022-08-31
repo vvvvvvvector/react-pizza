@@ -1,54 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { removePizza, clearCart } from '../redux/slices/cartSlice';
+
 import { EmptyCart, CartItem } from '../components';
 
 import cartSVG from '../assets/images/order-pizza-cart-top.svg';
 
 export const Cart = () => {
-    const [pizzas, setPizzas] = React.useState(
-        [{
-            "id": 1,
-            "type": "Thin",
-            "diameter": 30,
-            "name": "Margherita",
-            "cost": 7,
-            "imageURL": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
-            "amount": 3
-        }, {
-            "id": 2,
-            "type": "Traditional",
-            "diameter": 35,
-            "name": "Four seasons",
-            "cost": 9,
-            "imageURL": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
-            "amount": 1
-        }, {
-            "id": 3,
-            "type": "Thin",
-            "diameter": 25,
-            "name": "Pepperoni",
-            "cost": 7,
-            "imageURL": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d2e337e9-e07a-4199-9cc1-501cc44cb8f8.jpg",
-            "amount": 2
-        }]);
+    const dispatch = useDispatch();
 
-    const cartIsEmpty = pizzas.length === 0;
+    const pizzas = useSelector((state) => state.cart.pizzas);
 
-    if (cartIsEmpty) {
+    if (pizzas.length === 0) {
         return <EmptyCart />;
     }
 
     const onRemoveCartItem = (cartItemId) => {
         if (window.confirm("Do you really want to remove this pizza from the cart?")) {
-            const updatedPizzas = pizzas.filter((pizza) => pizza.id != cartItemId);
-            setPizzas(updatedPizzas);
+            dispatch(removePizza(cartItemId));
         }
     }
 
     const onClearCart = () => {
         if (window.confirm("Do you really want to clear the cart?")) {
-            setPizzas([]);
+            dispatch(clearCart());
         }
     }
 
