@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { setSortParameter } from '../redux/slices/filterSlice';
+import { setSortParameter } from '../redux/slices/homeSlice';
 
 import arrowSVG from '../assets/images/categories-arrow.svg';
 
@@ -10,7 +10,7 @@ const sortParameters = ["popularity ↑", "popularity ↓", "cost ↑", "cost �
 export const Sort = () => {
     const dispatch = useDispatch();
 
-    const selectedSortParameter = useSelector((state) => state.filter.selectedSortParameterIndex);
+    const selectedSortParameter = useSelector((state) => state.home.selectedSortParameterIndex);
 
     const [showPopup, setShowPopup] = React.useState(false);
 

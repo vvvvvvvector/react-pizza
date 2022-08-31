@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { setCategoryIndex, setCategoryName } from '../redux/slices/filterSlice';
+import { setCategoryIndex, setCategoryName } from '../redux/slices/homeSlice';
 
 const categories = ["All", "Meat", "Vegetarian", "Spicy"];
 
 export const Categories = () => {
     const dispatch = useDispatch();
-    const selectedCategory = useSelector((state) => state.filter.selectedCategoryIndex);
+    const selectedCategory = useSelector((state) => state.home.selectedCategoryIndex);
 
     return (
         <div className="categories">

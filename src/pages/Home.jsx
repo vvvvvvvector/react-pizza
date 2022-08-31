@@ -3,7 +3,7 @@ import React from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setCurrentPage } from '../redux/slices/filterSlice';
+import { setCurrentPage } from '../redux/slices/homeSlice';
 
 import { Overlay, Categories, Sort, Pizza, Skeleton, Pagination } from '../components/';
 
@@ -12,22 +12,22 @@ const sortParameters = ["popularity", "popularity", "cost", "cost", "name", "nam
 export const Home = () => {
     const dispatch = useDispatch();
 
-    const searchValue = useSelector((state) => state.filter.searchValue);
+    const searchValue = useSelector((state) => state.home.searchValue);
 
     const [loading, setLoading] = React.useState(true);
     const [fetchedPizzas, setFetchedPizzas] = React.useState([]);
 
     // pagination component
-    const currentPage = useSelector((state) => state.filter.currentPage);
+    const currentPage = useSelector((state) => state.home.currentPage);
     const onChangePage = (page) => {
         dispatch(setCurrentPage(page));
     }
 
     // category component
-    const { selectedCategoryIndex, selectedCategoryName } = useSelector((state) => state.filter);
+    const { selectedCategoryIndex, selectedCategoryName } = useSelector((state) => state.home);
 
     // sort component
-    const selectedSortParameter = useSelector((state) => state.filter.selectedSortParameterIndex);
+    const selectedSortParameter = useSelector((state) => state.home.selectedSortParameterIndex);
 
     React.useEffect(() => {
         setLoading(true);

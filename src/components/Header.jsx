@@ -3,7 +3,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { setSearchValue } from '../redux/slices/filterSlice';
+import { setSearchValue } from '../redux/slices/homeSlice';
 
 import logoSVG from '../assets/images/store-logo.svg';
 import cartSVG from '../assets/images/shopping-cart.svg';
@@ -13,7 +13,7 @@ export const Header = () => {
     const dispatch = useDispatch();
     const location = useLocation();
 
-    const searchValue = useSelector((state) => state.filter.searchValue);
+    const searchValue = useSelector((state) => state.home.searchValue);
 
     const searchReference = React.useRef(null);
 
