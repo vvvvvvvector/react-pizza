@@ -6,9 +6,28 @@ export const Overlay = ({ pizza, onCloseOverlay }) => {
     const [selectedType, setSelectedType] = React.useState(0);
     const [selectedSize, setSelectedSize] = React.useState(0);
 
+    const wrapperRef = React.useRef(null);
+    const isFirstRender = React.useRef(false); // because overlay immediately closed when i clicked on the pizza
+
+    // clickOutsideWrapper is working only when overlay component is on page(mounted?)
+    React.useEffect(() => {
+        const clickOutsideWrapper = (event) => {
+            if (isFirstRender.current) {
+                if (!event.composedPath().includes(wrapperRef.current)) {
+                    onCloseOverlay();
+                }
+            }
+            isFirstRender.current = true;
+        };
+
+        document.body.addEventListener("click", clickOutsideWrapper); // add event listener on first render
+
+        return () => document.body.removeEventListener("click", clickOutsideWrapper); // delete event listener(unmount)
+    }, []);
+
     return (
         <div className="overlay">
-            <div className="pizza-details-wrapper">
+            <div ref={wrapperRef} className="pizza-details-wrapper">
                 <div className="pizza-details-wrapper__leftpart">
                     <img width={pizzaImageSizes[selectedSize]} height={pizzaImageSizes[selectedSize]} alt="pizza" src={pizza.imageURL} />
                 </div>

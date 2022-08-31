@@ -47,13 +47,7 @@ export const Home = () => {
         setOverlayOpened(true);
         document.body.style.overflow = 'hidden';
         setSelectedPizza(pizzaObj);
-        console.log(pizzaObj);
     };
-
-    const onClickCloseOverlay = () => {
-        setOverlayOpened(false);
-        document.body.style.overflow = 'visible';
-    }
     // --------overlay--------
 
     const renderContentItems = () => {
@@ -76,7 +70,7 @@ export const Home = () => {
                 overlayOpened && (
                     <Overlay
                         pizza={selectedPizza}
-                        onCloseOverlay={onClickCloseOverlay} />
+                        onCloseOverlay={() => { setOverlayOpened(false); document.body.style.overflow = 'visible'; }} />
                 )
             }
             <div className="content__top">
