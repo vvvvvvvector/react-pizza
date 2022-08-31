@@ -77,8 +77,8 @@ export const Overlay = ({ pizza, onCloseOverlay }) => {
                         </ul>
                     </div>
                     <div className="bottom">
-                        <div className="button button-make-order">
-                            <span onClick={() => onClickAdd()}>Add to cart for {pizza.cost} $</span>
+                        <div onClick={onClickAdd} className="button button-make-order">
+                            <span>Add to cart for {pizza.cost} $</span>
                         </div>
                     </div>
                 </div>
