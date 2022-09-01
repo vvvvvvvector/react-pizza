@@ -1,9 +1,8 @@
 import React from 'react';
 
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { setCurrentPage } from '../redux/slices/homeSlice';
+import { fetchHomePizzas } from '../redux/slices/fetchSlice';
 
 import { Overlay, Categories, Sort, Pizza, Skeleton, Pagination } from '../components/';
 
@@ -13,9 +12,7 @@ export const Home = () => {
     const dispatch = useDispatch();
 
     const searchValue = useSelector((state) => state.home.searchValue);
-
-    const [loading, setLoading] = React.useState(true);
-    const [fetchedPizzas, setFetchedPizzas] = React.useState([]);
+    const { homePizzas, status } = useSelector((state) => state.fetch);
 
     // pagination component
     const currentPage = useSelector((state) => state.home.currentPage);
@@ -30,13 +27,12 @@ export const Home = () => {
     const selectedSortParameter = useSelector((state) => state.home.selectedSortParameterIndex);
 
     React.useEffect(() => {
-        setLoading(true);
-
-        axios.get(`https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas?page=${currentPage}&limit=4&categories=${selectedCategoryIndex}&sortBy=${sortParameters[selectedSortParameter]}&order=${selectedSortParameter % 2 === 0 ? "asc" : "desc"}`)
-            .then((response) => {
-                setFetchedPizzas(response.data);
-                setLoading(false);
-            });
+        dispatch(fetchHomePizzas({
+            currentPage: currentPage,
+            categoryIndex: selectedCategoryIndex,
+            sortParameterName: sortParameters[selectedSortParameter],
+            sortParameterIndex: selectedSortParameter
+        }));
     }, [selectedCategoryIndex, selectedSortParameter, currentPage]);
 
     // --------overlay--------
@@ -55,13 +51,13 @@ export const Home = () => {
             <Skeleton key={index} />
         ));
 
-        const filteredPizzas = fetchedPizzas.filter((item) => (
+        const filteredPizzas = homePizzas.filter((item) => (
             item.name.toLowerCase().includes(searchValue.toLowerCase())
         )).map((pizza) => (
             <Pizza key={pizza.id} onClickImage={onClickPizzaImage} {...pizza} />
         ));
 
-        return loading ? skeletons : filteredPizzas;
+        return status === "loading" ? skeletons : filteredPizzas;
     };
 
     return (
