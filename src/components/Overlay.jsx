@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addPizza } from '../redux/slices/cartSlice';
 
 const pizzaImageSizes = [300, 370, 410];
@@ -10,6 +10,9 @@ export const Overlay = ({ pizza, onCloseOverlay }) => {
 
     const [selectedType, setSelectedType] = React.useState(0);
     const [selectedSize, setSelectedSize] = React.useState(0);
+
+    const currentPizza = useSelector((state) => state.cart.pizzas.find((obj) => obj.name === pizza.name && obj.type === pizza.types[selectedType] && obj.diameter === pizza.diameter[selectedSize]));
+    const amount = currentPizza ? currentPizza.amount : 0;
 
     const wrapperRef = React.useRef(null);
     const isFirstRender = React.useRef(false); // because overlay immediately closed when i clicked on the pizza
@@ -78,7 +81,7 @@ export const Overlay = ({ pizza, onCloseOverlay }) => {
                     </div>
                     <div className="bottom">
                         <div onClick={onClickAdd} className="button button-make-order">
-                            <span>Add to cart for {pizza.cost} $</span>
+                            <span>Add to cart for {pizza.cost} $ {amount ? `Already in cart: ${amount}` : ""}</span>
                         </div>
                     </div>
                 </div>

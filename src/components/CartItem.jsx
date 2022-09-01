@@ -37,7 +37,7 @@ export const CartItem = ({ id, type, diameter, name, cost, amount, imageURL, onR
                 </button>
             </div>
             <div className="cost">
-                <b>{cost} $</b>
+                <b>{cost * amount} $</b>
             </div>
             <div className="remove">
                 <button onClick={() => onRemove(id)}>
