@@ -1,6 +1,6 @@
 import React from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
+
 import { addPizza } from '../../redux/slices/cartSlice';
 
 export const Pizza = ({ onClickImage, id, types, sizes, name, cost, imageURL, weight, diameter, description }) => {

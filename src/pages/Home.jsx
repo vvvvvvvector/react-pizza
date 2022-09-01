@@ -1,6 +1,6 @@
 import React from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
+
 import { setCurrentPage } from '../redux/slices/homeSlice';
 import { fetchHomePizzas } from '../redux/slices/fetchSlice';
 
@@ -11,29 +11,31 @@ const sortParameters = ["popularity", "popularity", "cost", "cost", "name", "nam
 export const Home = () => {
     const dispatch = useDispatch();
 
-    const searchValue = useSelector((state) => state.home.searchValue);
-    const { homePizzas, status } = useSelector((state) => state.fetch);
+    const {
+        status,
+        homePizzas
+    } = useSelector((state) => state.fetch);
 
-    // pagination component
-    const currentPage = useSelector((state) => state.home.currentPage);
+    const {
+        selectedCategoryIndex,
+        selectedCategoryName,
+        selectedSortParameterIndex,
+        currentPage,
+        searchValue
+    } = useSelector((state) => state.home);
+
     const onChangePage = (page) => {
         dispatch(setCurrentPage(page));
     }
-
-    // category component
-    const { selectedCategoryIndex, selectedCategoryName } = useSelector((state) => state.home);
-
-    // sort component
-    const selectedSortParameter = useSelector((state) => state.home.selectedSortParameterIndex);
 
     React.useEffect(() => {
         dispatch(fetchHomePizzas({
             currentPage: currentPage,
             categoryIndex: selectedCategoryIndex,
-            sortParameterName: sortParameters[selectedSortParameter],
-            sortParameterIndex: selectedSortParameter
+            sortParameterName: sortParameters[selectedSortParameterIndex],
+            sortParameterIndex: selectedSortParameterIndex
         }));
-    }, [selectedCategoryIndex, selectedSortParameter, currentPage]);
+    }, [selectedCategoryIndex, selectedSortParameterIndex, currentPage]);
 
     // --------overlay--------
     const [overlayOpened, setOverlayOpened] = React.useState(false);
@@ -57,7 +59,7 @@ export const Home = () => {
             <Pizza key={pizza.id} onClickImage={onClickPizzaImage} {...pizza} />
         ));
 
-        return status === "loading" ? skeletons : filteredPizzas;
+        return status === "pending" ? skeletons : filteredPizzas;
     };
 
     return (

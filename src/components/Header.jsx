@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -13,8 +12,14 @@ export const Header = () => {
     const dispatch = useDispatch();
     const location = useLocation();
 
-    const searchValue = useSelector((state) => state.home.searchValue);
-    const { orderTotal, amountTotal } = useSelector((state) => state.cart);
+    const {
+        searchValue
+    } = useSelector((state) => state.home);
+
+    const {
+        orderTotal,
+        amountTotal
+    } = useSelector((state) => state.cart);
 
     const searchReference = React.useRef(null);
 

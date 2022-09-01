@@ -1,6 +1,6 @@
 import React from 'react';
-
 import { useSelector, useDispatch } from 'react-redux';
+
 import { setSortParameter } from '../redux/slices/homeSlice';
 
 import arrowSVG from '../assets/images/categories-arrow.svg';
@@ -10,7 +10,9 @@ const sortParameters = ["popularity ↑", "popularity ↓", "cost ↑", "cost �
 export const Sort = () => {
     const dispatch = useDispatch();
 
-    const selectedSortParameter = useSelector((state) => state.home.selectedSortParameterIndex);
+    const {
+        selectedSortParameterIndex
+    } = useSelector((state) => state.home);
 
     const [showPopup, setShowPopup] = React.useState(false);
 
@@ -33,9 +35,9 @@ export const Sort = () => {
     return (
         <div ref={popupRef} className="sort">
             <div className="sort__label">
-                <img alt="arrow" src={arrowSVG} />
+                <img className={showPopup ? "active" : ""} alt="arrow" src={arrowSVG} />
                 <b>Sort by: </b>
-                <span onClick={() => setShowPopup(!showPopup)}>{sortParameters[selectedSortParameter]}</span>
+                <span onClick={() => setShowPopup(!showPopup)}>{sortParameters[selectedSortParameterIndex]}</span>
             </div>
             {
                 showPopup && (
@@ -43,7 +45,7 @@ export const Sort = () => {
                         <ul>
                             {
                                 sortParameters.map((parameter, index) => (
-                                    <li onClick={() => { dispatch(setSortParameter(index)); setShowPopup(false); }} key={index} className={index === selectedSortParameter ? "active" : null}>{parameter}</li>
+                                    <li onClick={() => { dispatch(setSortParameter(index)); setShowPopup(false); }} key={index} className={index === selectedSortParameterIndex ? "active" : null}>{parameter}</li>
                                 ))
                             }
                         </ul>

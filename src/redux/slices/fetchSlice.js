@@ -20,20 +20,20 @@ export const fetchHomePizzas = createAsyncThunk("fetch/homePizzas", async (param
 export const fetchSlice = createSlice({
     name: "fetch",
     initialState: {
-        status: "loading",
+        status: "pending",
         homePizzas: []
     },
     extraReducers: {
         [fetchHomePizzas.pending]: (state) => {
-            state.status = "loading";
+            state.status = "pending";
             state.homePizzas = [];
         },
         [fetchHomePizzas.fulfilled]: (state, action) => {
-            state.status = "success";
+            state.status = "succeeded";
             state.homePizzas = action.payload;
         },
         [fetchHomePizzas.rejected]: (state) => {
-            state.status = "error";
+            state.status = "failed";
             state.homePizzas = [];
         }
     }

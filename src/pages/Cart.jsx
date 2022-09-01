@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import { useSelector, useDispatch } from 'react-redux';
+
 import { removePizza, clearCart } from '../redux/slices/cartSlice';
 
 import { EmptyCart, CartItem } from '../components';
@@ -11,7 +11,11 @@ import cartSVG from '../assets/images/order-pizza-cart-top.svg';
 export const Cart = () => {
     const dispatch = useDispatch();
 
-    const { pizzas, orderTotal, amountTotal } = useSelector((state) => state.cart);
+    const {
+        pizzas,
+        orderTotal,
+        amountTotal
+    } = useSelector((state) => state.cart);
 
     if (pizzas.length === 0) {
         return <EmptyCart />;

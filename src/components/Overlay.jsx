@@ -1,6 +1,6 @@
 import React from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
+
 import { addPizza } from '../redux/slices/cartSlice';
 
 const pizzaImageSizes = [300, 370, 410];
