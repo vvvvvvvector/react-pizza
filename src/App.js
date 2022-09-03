@@ -19,7 +19,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/cart" element={<Cart />} />
-              <Route path="*" element={<h1>Page not found :(</h1>} />
+              <Route path="*" element={<h1>Page not found 😭</h1>} />
             </Routes>
           </div>
         </div>

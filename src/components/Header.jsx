@@ -10,7 +10,7 @@ import lensSVG from '../assets/images/search-lens.svg';
 
 export const Header = () => {
     const dispatch = useDispatch();
-    const location = useLocation();
+    const { pathname } = useLocation();
 
     const {
         searchValue
@@ -39,7 +39,7 @@ export const Header = () => {
                     </div>
                 </div>
                 {
-                    location.pathname !== '/cart' &&
+                    pathname !== '/cart' &&
                     <div className="header__search">
                         <img alt="search-lens" src={lensSVG} />
                         <input ref={searchReference} onChange={(event) => dispatch(setSearchValue(event.target.value))} value={searchValue} placeholder="Search pizza..." />
@@ -53,7 +53,7 @@ export const Header = () => {
                     </div>
                 }
                 {
-                    location.pathname !== '/cart' &&
+                    pathname !== '/cart' &&
                     <Link to="/cart">
                         <div className="header__cart">
                             <div className="button button--cart">

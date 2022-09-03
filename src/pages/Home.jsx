@@ -12,6 +12,10 @@ export const Home = () => {
     const dispatch = useDispatch();
 
     const {
+        opened
+    } = useSelector((state) => state.overlay);
+
+    const {
         status,
         homePizzas
     } = useSelector((state) => state.fetch);
@@ -37,17 +41,6 @@ export const Home = () => {
         }));
     }, [selectedCategoryIndex, selectedSortParameterIndex, currentPage]);
 
-    // --------overlay--------
-    const [overlayOpened, setOverlayOpened] = React.useState(false);
-    const [selectedPizza, setSelectedPizza] = React.useState(null);
-
-    const onClickPizzaImage = (pizzaObj) => {
-        setOverlayOpened(true);
-        document.body.style.overflow = 'hidden';
-        setSelectedPizza(pizzaObj);
-    };
-    // --------overlay--------
-
     const renderContentItems = () => {
         const skeletons = [...new Array(4)].map((_, index) => (
             <Skeleton key={index} />
@@ -56,7 +49,7 @@ export const Home = () => {
         const filteredPizzas = homePizzas.filter((item) => (
             item.name.toLowerCase().includes(searchValue.toLowerCase())
         )).map((pizza) => (
-            <Pizza key={pizza.id} onClickImage={onClickPizzaImage} {...pizza} />
+            <Pizza key={pizza.id} {...pizza} />
         ));
 
         return status === "pending" ? skeletons : filteredPizzas;
@@ -65,11 +58,7 @@ export const Home = () => {
     return (
         <>
             {
-                overlayOpened && (
-                    <Overlay
-                        pizza={selectedPizza}
-                        onCloseOverlay={() => { setOverlayOpened(false); document.body.style.overflow = 'visible'; }} />
-                )
+                opened && <Overlay />
             }
             <div className="content__top">
                 <Categories />

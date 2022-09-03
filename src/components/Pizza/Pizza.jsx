@@ -2,8 +2,9 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { addPizza } from '../../redux/slices/cartSlice';
+import { setOpened, setPizza } from '../../redux/slices/overlaySlice';
 
-export const Pizza = ({ onClickImage, id, types, sizes, name, cost, imageURL, weight, diameter, description }) => {
+export const Pizza = ({ id, types, sizes, name, cost, imageURL, weight, diameter, description }) => {
     const dispatch = useDispatch();
 
     const [selectedType, setSelectedType] = React.useState(0);
@@ -26,9 +27,15 @@ export const Pizza = ({ onClickImage, id, types, sizes, name, cost, imageURL, we
         }));
     };
 
+    const onClickImage = () => {
+        dispatch(setOpened(true));
+        dispatch(setPizza(pizzaObj));
+        document.body.style.overflow = 'hidden';
+    };
+
     return (
         <div className="pizza-component">
-            <img onClick={() => onClickImage(pizzaObj)} className="pizza-component__image" alt="pizza-img" src={imageURL} />
+            <img onClick={onClickImage} className="pizza-component__image" alt="pizza-img" src={imageURL} />
             <h4 className="pizza-component__name">{name}</h4>
             <div className="pizza-component__selector">
                 <ul>
