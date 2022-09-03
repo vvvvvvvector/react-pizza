@@ -16,7 +16,7 @@ export const CartItem = ({ type, diameter, name, cost, amount, imageURL, onRemov
 
     return (
         <div className="cart-item">
-            <img alt="pizza-image" src={imageURL} />
+            <img src={imageURL} alt="pizza" />
             <div className="info">
                 <h3>
                     {name}

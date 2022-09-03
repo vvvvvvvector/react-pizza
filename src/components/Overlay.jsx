@@ -41,6 +41,8 @@ export const Overlay = () => {
         document.body.addEventListener("click", clickOutsideWrapper); // add event listener on first render
 
         return () => document.body.removeEventListener("click", clickOutsideWrapper); // delete event listener(unmount)
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const onClickAdd = () => {
@@ -77,21 +79,27 @@ export const Overlay = () => {
                         <ul>
                             {
                                 pizza.types.map((type, index) => (
-                                    <li key={index} onClick={() => setSelectedType(index)} className={selectedType === index ? "active" : ""}>{type}</li>
+                                    <li key={index} onClick={() => setSelectedType(index)} className={selectedType === index ? "active" : ""}>
+                                        {type}
+                                    </li>
                                 ))
                             }
                         </ul>
                         <ul>
                             {
                                 pizza.sizes.map((size, index) => (
-                                    <li key={index} onClick={() => setSelectedSize(index)} className={selectedSize === index ? "active" : ""}>{size}</li>
+                                    <li key={index} onClick={() => setSelectedSize(index)} className={selectedSize === index ? "active" : ""}>
+                                        {size}
+                                    </li>
                                 ))
                             }
                         </ul>
                     </div>
                     <div className="bottom">
                         <div onClick={onClickAdd} className="button button-make-order">
-                            <span>Add to cart for {pizza.cost} $ {amount ? `Already in cart: ${amount}` : ""}</span>
+                            <span>
+                                Add to cart for {pizza.cost} $ {amount ? `Already in cart: ${amount}` : ""}
+                            </span>
                         </div>
                     </div>
                 </div>

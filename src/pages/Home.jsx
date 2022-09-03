@@ -39,6 +39,8 @@ export const Home = () => {
             sortParameterName: sortParameters[selectedSortParameterIndex],
             sortParameterIndex: selectedSortParameterIndex
         }));
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedCategoryIndex, selectedSortParameterIndex, currentPage]);
 
     const renderContentItems = () => {

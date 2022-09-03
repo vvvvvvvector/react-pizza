@@ -18,13 +18,31 @@ export const Pagination = ({ selectedPageIndex, onChangePage }) => {
     return (
         <div className="pagination">
             <ul>
-                <li><a onClick={onClickPrevious}>←</a></li>
+                <li>
+                    <button onClick={onClickPrevious}>
+                        <span>
+                            ←
+                        </span>
+                    </button>
+                </li>
                 {
                     pages.map((_, index) => (
-                        <li key={index}><a onClick={() => onChangePage(index + 1)} className={index === selectedPageIndex - 1 ? "active" : ""}>{index + 1}</a></li>
+                        <li key={index}>
+                            <button onClick={() => onChangePage(index + 1)} className={index === selectedPageIndex - 1 ? "active" : ""}>
+                                <span>
+                                    {index + 1}
+                                </span>
+                            </button>
+                        </li>
                     ))
                 }
-                <li><a onClick={onClickNext}>→</a></li>
+                <li>
+                    <button onClick={onClickNext}>
+                        <span>
+                            →
+                        </span>
+                    </button>
+                </li>
             </ul>
         </div>
     );
