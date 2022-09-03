@@ -2,29 +2,33 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { removePizza, clearCart } from '../redux/slices/cartSlice';
+import { RootState } from '../redux/store';
+import { clearCart } from '../redux/slices/cartSlice';
 
 import { EmptyCart, CartItem } from '../components';
 
 import cartSVG from '../assets/images/order-pizza-cart-top.svg';
 
-export const Cart = () => {
+type CartItemPropsTypes = {
+    name: string,
+    type: string,
+    diameter: number,
+    cost: number,
+    amount: number,
+    imageURL: string
+};
+
+export const Cart: React.FC = () => {
     const dispatch = useDispatch();
 
     const {
         pizzas,
         orderTotal,
         amountTotal
-    } = useSelector((state) => state.cart);
+    } = useSelector((state: RootState) => state.cart);
 
     if (pizzas.length === 0) {
         return <EmptyCart />;
-    }
-
-    const onRemoveCartItem = (pizza) => {
-        if (window.confirm("Do you really want to remove this pizza from the cart?")) {
-            dispatch(removePizza(pizza));
-        }
     }
 
     const onClearCart = () => {
@@ -52,8 +56,8 @@ export const Cart = () => {
             </div>
             <div className="cart__items">
                 {
-                    pizzas.map((pizza, index) => (
-                        <CartItem key={index} onRemove={() => onRemoveCartItem(pizza)} {...pizza} />
+                    pizzas.map((pizza: CartItemPropsTypes, index) => (
+                        <CartItem key={index} {...pizza} />
                     ))
                 }
             </div>

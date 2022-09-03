@@ -12,12 +12,14 @@ export const homeSlice = createSlice({
     reducers: {
         setCategoryIndex(state, action) {
             state.selectedCategoryIndex = action.payload;
-        },
-        setCategoryName(state, action) {
-            state.selectedCategoryName = action.payload;
+            state.currentPage = 1;
         },
         setSortParameter(state, action) {
             state.selectedSortParameterIndex = action.payload;
+            state.currentPage = 1;
+        },
+        setCategoryName(state, action) {
+            state.selectedCategoryName = action.payload;
         },
         setCurrentPage(state, action) {
             state.currentPage = action.payload;

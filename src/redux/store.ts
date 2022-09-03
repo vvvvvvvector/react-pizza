@@ -13,3 +13,5 @@ export const store = configureStore({
         overlay
     }
 });
+
+export type RootState = ReturnType<typeof store.getState>;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import emptyCartSVG from '../assets/images/empty-cart-no-items.svg';
 
-export const EmptyCart = () => {
+export const EmptyCart: React.FC = () => {
     return (
         <div className="emptyCart">
             <h2>Cart is empty <span>😕</span></h2>

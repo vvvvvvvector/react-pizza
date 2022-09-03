@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentPage } from '../redux/slices/homeSlice';
 import { fetchHomePizzas } from '../redux/slices/fetchSlice';
 
-import { Overlay, Categories, Sort, Pizza, Skeleton, Pagination } from '../components/';
+import { Overlay, Categories, Sort, Pizza, Skeleton, Pagination } from '../components';
 
 const sortParameters = ["popularity", "popularity", "cost", "cost", "name", "name"];
 
@@ -59,9 +59,7 @@ export const Home = () => {
 
     return (
         <>
-            {
-                opened && <Overlay />
-            }
+            {opened && <Overlay />}
             <div className="content__top">
                 <Categories />
                 <Sort />
@@ -70,13 +68,9 @@ export const Home = () => {
                 {searchValue ? `Search for: ${searchValue}` : `${selectedCategoryName} pizzas`}
             </h2>
             <div className="content__items">
-                {
-                    renderContentItems()
-                }
+                {renderContentItems()}
             </div>
-            <Pagination
-                selectedPageIndex={currentPage}
-                onChangePage={onChangePage} />
+            <Pagination selectedPageIndex={currentPage} onChangePage={onChangePage} />
         </>
     );
 }
