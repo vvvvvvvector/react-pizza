@@ -1,16 +1,27 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addPizza } from '../redux/slices/cartSlice';
+import { addPizza, selectCartItem } from '../redux/slices/cartSlice';
 import { setOpened } from '../redux/slices/overlaySlice';
+import { RootState } from '../redux/store';
 
 const pizzaImageSizes = [300, 370, 410];
 
-export const Overlay = () => {
+type CartItemType = {
+    id: string,
+    name: string,
+    cost: number,
+    imageURL: string,
+    type: string,
+    diameter: number,
+    amount: number
+};
+
+export const Overlay: React.FC = () => {
     const dispatch = useDispatch();
 
-    const [selectedType, setSelectedType] = React.useState(0);
-    const [selectedSize, setSelectedSize] = React.useState(0);
+    const [selectedType, setSelectedType] = React.useState<number>(0);
+    const [selectedSize, setSelectedSize] = React.useState<number>(0);
 
     const onClose = () => {
         dispatch(setOpened(false));
@@ -19,19 +30,19 @@ export const Overlay = () => {
 
     const {
         pizza
-    } = useSelector((state) => state.overlay);
+    } = useSelector((state: RootState) => state.overlay);
 
-    const currentPizza = useSelector((state) => state.cart.pizzas.find((obj) => obj.name === pizza.name && obj.type === pizza.types[selectedType] && obj.diameter === pizza.diameter[selectedSize]));
+    const currentPizza = useSelector(selectCartItem(pizza, selectedType, selectedSize));
     const amount = currentPizza ? currentPizza.amount : 0;
 
-    const wrapperRef = React.useRef(null);
+    const wrapperReference = React.useRef(null);
     const isFirstRender = React.useRef(false); // because overlay immediately closed when i clicked on the pizza
 
     // clickOutsideWrapper is working only when overlay component is on page(mounted?)
     React.useEffect(() => {
-        const clickOutsideWrapper = (event) => {
+        const clickOutsideWrapper = (event: MouseEvent) => {
             if (isFirstRender.current) {
-                if (!event.composedPath().includes(wrapperRef.current)) {
+                if (wrapperReference.current && !event.composedPath().includes(wrapperReference.current)) {
                     onClose();
                 }
             }
@@ -46,20 +57,22 @@ export const Overlay = () => {
     }, []);
 
     const onClickAdd = () => {
-        dispatch(addPizza({
+        const cartItem: CartItemType = {
             id: pizza.id,
+            name: pizza.name,
+            cost: pizza.cost,
+            imageURL: pizza.imageURL,
             type: pizza.types[selectedType],
             diameter: pizza.diameter[selectedSize],
-            name: pizza.name,
-            amount: 1,
-            cost: pizza.cost,
-            imageURL: pizza.imageURL
-        }));
+            amount: 1
+        };
+
+        dispatch(addPizza(cartItem));
     };
 
     return (
         <div className="overlay">
-            <div ref={wrapperRef} className="pizza-details-wrapper">
+            <div ref={wrapperReference} className="pizza-details-wrapper">
                 <div className="pizza-details-wrapper__leftpart">
                     <img width={pizzaImageSizes[selectedSize]} height={pizzaImageSizes[selectedSize]} alt="pizza" src={pizza.imageURL} />
                 </div>
@@ -110,3 +123,4 @@ export const Overlay = () => {
         </div>
     );
 }
+

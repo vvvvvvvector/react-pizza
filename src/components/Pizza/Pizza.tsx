@@ -3,13 +3,26 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { addPizza } from '../../redux/slices/cartSlice';
 import { selectCartItem } from '../../redux/slices/cartSlice';
-import { setPizza } from '../../redux/slices/overlaySlice';
+import { setOpened, setPizza } from '../../redux/slices/overlaySlice';
+
+type CartItemType = {
+    id: string,
+    name: string,
+    cost: number,
+    imageURL: string,
+    type: string,
+    diameter: number,
+    amount: number
+};
+
 
 type PizzaType = {
     id: string,
     types: string[],
-    diameter: string[],
+    diameter: number[],
+    description: string,
     name: string,
+    weight: number[],
     cost: number,
     imageURL: string,
     sizes: string[]
@@ -25,19 +38,22 @@ export const Pizza: React.FC<PizzaType> = (pizza) => {
     const amount = currentPizza ? currentPizza.amount : 0;
 
     const onClickAdd = () => {
-        dispatch(addPizza({
+        const cartItem: CartItemType = {
             id: pizza.id,
+            name: pizza.name,
+            cost: pizza.cost,
+            imageURL: pizza.imageURL,
             type: pizza.types[selectedType],
             diameter: pizza.diameter[selectedSize],
-            name: pizza.name,
             amount: 1,
-            cost: pizza.cost,
-            imageURL: pizza.imageURL
-        }));
+        }
+
+        dispatch(addPizza(cartItem));
     };
 
     const onClickImage = () => {
         dispatch(setPizza(pizza));
+        dispatch(setOpened(true));
         document.body.style.overflow = 'hidden';
     };
 

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { incrementAmount, decrementAmount, removePizza } from "../redux/slices/cartSlice";
 
-type CartItemPropsTypes = {
+type CartItemType = {
     name: string,
     type: string,
     diameter: number,
@@ -12,7 +12,7 @@ type CartItemPropsTypes = {
     imageURL: string
 }
 
-export const CartItem: React.FC<CartItemPropsTypes> = ({ name, type, diameter, cost, amount, imageURL }) => {
+export const CartItem: React.FC<CartItemType> = ({ name, type, diameter, cost, amount, imageURL }) => {
     const dispatch = useDispatch();
 
     const onClickPlus = () => {

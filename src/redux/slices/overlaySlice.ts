@@ -1,35 +1,46 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type PizzaType = {
     id: string,
     types: string[],
-    diameter: string[],
+    diameter: number[],
+    description: string,
     name: string,
+    weight: number[],
     cost: number,
     imageURL: string,
     sizes: string[]
-}
-
-interface OverlaySliceState {
-    opened: boolean;
-    pizza: PizzaType | null;
-}
-
-const initialState: OverlaySliceState = {
-    opened: false,
-    pizza: null
 };
+
+interface OverlayState {
+    opened: boolean;
+    pizza: PizzaType;
+};
+
+const initialState = {
+    opened: false,
+    pizza: {
+        id: "unknown",
+        types: [],
+        diameter: [],
+        weight: [],
+        description: "unknown",
+        name: "unknown",
+        cost: 0,
+        imageURL: "unknown",
+        sizes: []
+    }
+} as OverlayState;
 
 export const overlaySlice = createSlice({
     name: "overlay",
     initialState,
     reducers: {
-        setOpened(state, action) {
+        setOpened(state, action: PayloadAction<boolean>) {
             state.opened = action.payload;
         },
-        setPizza(state, action) {
+        setPizza(state, action: PayloadAction<PizzaType>) {
             state.pizza = action.payload;
-            state.opened = true;
         }
     }
 });

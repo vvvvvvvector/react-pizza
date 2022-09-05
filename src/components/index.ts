@@ -1,4 +1,4 @@
-export * from './Overlay.jsx';
+export * from './Overlay';
 export * from './Header';
 export * from './Categories';
 export * from './Sort';

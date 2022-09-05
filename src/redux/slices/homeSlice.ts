@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface HomeSliceState {
+interface HomeState {
     selectedCategoryIndex: number;
     selectedCategoryName: string;
     selectedSortParameterIndex: number;
@@ -8,33 +8,33 @@ interface HomeSliceState {
     searchValue: string;
 };
 
-const initialState: HomeSliceState = {
+const initialState= {
     selectedCategoryIndex: 0,
     selectedCategoryName: "All",
     selectedSortParameterIndex: 0,
     currentPage: 1,
     searchValue: ""
-};
+} as HomeState;
 
 export const homeSlice = createSlice({
     name: "home",
     initialState,
     reducers: {
-        setCategoryIndex(state, action) {
+        setCategoryIndex(state, action: PayloadAction<number>) {
             state.selectedCategoryIndex = action.payload;
             state.currentPage = 1;
         },
-        setSortParameter(state, action) {
+        setSortParameter(state, action: PayloadAction<number>) {
             state.selectedSortParameterIndex = action.payload;
             state.currentPage = 1;
         },
-        setCategoryName(state, action) {
+        setCategoryName(state, action: PayloadAction<string>) {
             state.selectedCategoryName = action.payload;
         },
-        setCurrentPage(state, action) {
+        setCurrentPage(state, action: PayloadAction<number>) {
             state.currentPage = action.payload;
         },
-        setSearchValue(state, action) {
+        setSearchValue(state, action: PayloadAction<string>) {
             state.searchValue = action.payload;
         }
     }
