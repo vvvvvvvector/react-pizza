@@ -17,4 +17,8 @@ export const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>;
 
-export const useAppDispatch = () => useDispatch<typeof store.dispatch>();
+// -----for async actions(in home page fetchHomePizzas)-----
+export type AppDispatch = typeof store.dispatch;
+
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+// -----for async actions(in home page fetchHomePizzas)-----

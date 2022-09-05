@@ -51,4 +51,4 @@ export const Pagination: React.FC<PaginationPropsTypes> = ({ pageIndex, onChange
             </ul>
         </div>
     );
-}
+};

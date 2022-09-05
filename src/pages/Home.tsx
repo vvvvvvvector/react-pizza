@@ -7,7 +7,7 @@ import { fetchHomePizzas } from '../redux/slices/fetchSlice';
 
 import { Overlay, Categories, Sort, Pizza, Skeleton, Pagination } from '../components';
 
-const sortParameters = ["popularity", "popularity", "cost", "cost", "name", "name"];
+const sortParameters: string[] = ["popularity", "popularity", "cost", "cost", "name", "name"];
 
 type RequestParametersTypes = {
     currentPage: number,
@@ -82,4 +82,4 @@ export const Home: React.FC = () => {
             <Pagination pageIndex={currentPage} onChangePage={onChangePage} />
         </>
     );
-}
+};

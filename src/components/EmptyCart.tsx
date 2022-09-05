@@ -22,4 +22,4 @@ export const EmptyCart: React.FC = () => {
             </Link>
         </div>
     );
-}
+};

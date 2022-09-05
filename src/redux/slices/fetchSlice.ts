@@ -36,13 +36,19 @@ type PizzaType = {
     imageURL: string
 };
 
+enum Status {
+    PENDING = "pending",
+    SUCCEEDED = "succeeded",
+    FAILED = "failed"
+};
+
 interface FetchState {
-    status: string;
+    status: Status;
     homePizzas: PizzaType[];
 };
 
 const initialState = {
-    status: "pending",
+    status: Status.PENDING,
     homePizzas: []
 } as FetchState;
 
@@ -54,15 +60,15 @@ export const fetchSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(fetchHomePizzas.pending, (state) => {
-            state.status = "pending";
+            state.status = Status.PENDING;
             state.homePizzas = [];
         });
         builder.addCase(fetchHomePizzas.fulfilled, (state, action) => {
-            state.status = "succeeded";
+            state.status = Status.SUCCEEDED;
             state.homePizzas = action.payload;
         });
         builder.addCase(fetchHomePizzas.rejected, (state) => {
-            state.status = "failed";
+            state.status = Status.FAILED;
             state.homePizzas = [];
         });
     }

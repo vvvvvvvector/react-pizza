@@ -17,5 +17,5 @@ export const Skeleton = () => {
             <rect x="167" y="437" rx="25" ry="25" width="93" height="44" />
         </ContentLoader>
     );
-}
+};
 

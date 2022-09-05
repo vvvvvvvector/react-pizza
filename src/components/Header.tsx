@@ -74,4 +74,4 @@ export const Header: React.FC = () => {
             </div>
         </div>
     );
-}
+};

@@ -5,7 +5,7 @@ import { addPizza, selectCartItem } from '../redux/slices/cartSlice';
 import { setOpened } from '../redux/slices/overlaySlice';
 import { RootState } from '../redux/store';
 
-const pizzaImageSizes = [300, 370, 410];
+const pizzaImageSizes: number[] = [300, 370, 410];
 
 type CartItemType = {
     id: string,
@@ -140,5 +140,5 @@ export const Overlay: React.FC = () => {
             </div>
         </div>
     );
-}
+};
 

@@ -103,4 +103,4 @@ export const Pizza: React.FC<PizzaType> = (pizza) => {
             </div>
         </div>
     );
-}
+};

@@ -56,4 +56,4 @@ export const Sort: React.FC = () => {
                 )}
         </div>
     );
-}
+};

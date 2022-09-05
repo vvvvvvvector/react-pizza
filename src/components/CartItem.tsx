@@ -71,4 +71,4 @@ export const CartItem: React.FC<CartItemType> = ({ name, type, diameter, cost, a
             </div>
         </div>
     );
-}
+};
