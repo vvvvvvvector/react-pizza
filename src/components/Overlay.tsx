@@ -63,7 +63,7 @@ export const Overlay: React.FC = () => {
             cost: pizza.cost,
             imageURL: pizza.imageURL,
             type: pizza.types[selectedType],
-            diameter: pizza.diameter[selectedSize],
+            diameter: pizza.diameters[selectedSize],
             amount: 1
         };
 
@@ -80,7 +80,7 @@ export const Overlay: React.FC = () => {
                     <h2>{pizza.name}</h2>
                     <span className="characteristics">
                         {
-                            `${pizza.diameter[selectedSize]} cm, ${pizza.types[selectedType].toLowerCase()} dough, ${pizza.weight[selectedSize]} g`
+                            `${pizza.diameters[selectedSize]} cm, ${pizza.types[selectedType].toLowerCase()} dough, ${pizza.weights[selectedSize]} g`
                         }
                     </span>
                     <div className="description">

@@ -10,22 +10,30 @@ type CartItemType = {
     cost: number,
     amount: number,
     imageURL: string
-}
+};
+
+type UniqiePizzaType = {
+    name: string,
+    type: string,
+    diameter: number
+};
 
 export const CartItem: React.FC<CartItemType> = ({ name, type, diameter, cost, amount, imageURL }) => {
     const dispatch = useDispatch();
 
+    const thisPizza: UniqiePizzaType = { name, type, diameter };
+
     const onClickPlus = () => {
-        dispatch(incrementAmount({ name, type, diameter }));
+        dispatch(incrementAmount(thisPizza));
     };
 
     const onClickMinus = () => {
-        dispatch(decrementAmount({ name, type, diameter }));
+        dispatch(decrementAmount(thisPizza));
     };
 
     const onRemovePizza = () => {
         if (window.confirm("Do you really want to remove this pizza from the cart?")) {
-            dispatch(removePizza({ name, type, diameter }));
+            dispatch(removePizza(thisPizza));
         }
     };
 

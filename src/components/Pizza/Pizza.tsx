@@ -6,26 +6,24 @@ import { selectCartItem } from '../../redux/slices/cartSlice';
 import { setOpened, setPizza } from '../../redux/slices/overlaySlice';
 
 type CartItemType = {
-    id: string,
     name: string,
-    cost: number,
-    imageURL: string,
     type: string,
     diameter: number,
-    amount: number
+    cost: number,
+    amount: number,
+    imageURL: string
 };
-
 
 type PizzaType = {
     id: string,
-    types: string[],
-    diameter: number[],
     description: string,
-    name: string,
-    weight: number[],
-    cost: number,
-    imageURL: string,
+    types: string[],
     sizes: string[]
+    diameters: number[],
+    weights: number[],
+    cost: number,
+    name: string,
+    imageURL: string
 };
 
 export const Pizza: React.FC<PizzaType> = (pizza) => {
@@ -39,13 +37,12 @@ export const Pizza: React.FC<PizzaType> = (pizza) => {
 
     const onClickAdd = () => {
         const cartItem: CartItemType = {
-            id: pizza.id,
             name: pizza.name,
-            cost: pizza.cost,
-            imageURL: pizza.imageURL,
             type: pizza.types[selectedType],
-            diameter: pizza.diameter[selectedSize],
+            diameter: pizza.diameters[selectedSize],
+            cost: pizza.cost,
             amount: 1,
+            imageURL: pizza.imageURL
         }
 
         dispatch(addPizza(cartItem));

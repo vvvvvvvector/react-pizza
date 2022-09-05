@@ -3,20 +3,20 @@ import React from "react";
 const pages = [...new Array(2)];
 
 type PaginationPropsTypes = {
-    selectedPageIndex: number,
+    pageIndex: number,
     onChangePage: (pageIndex: number) => void
-}
+};
 
-export const Pagination: React.FC<PaginationPropsTypes> = ({ selectedPageIndex, onChangePage }) => {
+export const Pagination: React.FC<PaginationPropsTypes> = ({ pageIndex, onChangePage }) => {
     const onClickPrevious = () => {
-        if (selectedPageIndex > 1) {
-            onChangePage(selectedPageIndex - 1);
+        if (pageIndex > 1) {
+            onChangePage(pageIndex - 1);
         }
     };
 
     const onClickNext = () => {
-        if (selectedPageIndex <= pages.length - 1) {
-            onChangePage(selectedPageIndex + 1);
+        if (pageIndex <= pages.length - 1) {
+            onChangePage(pageIndex + 1);
         }
     };
 
@@ -33,7 +33,7 @@ export const Pagination: React.FC<PaginationPropsTypes> = ({ selectedPageIndex, 
                 {
                     pages.map((_, index) => (
                         <li key={index}>
-                            <button onClick={() => onChangePage(index + 1)} className={index === selectedPageIndex - 1 ? "active" : ""}>
+                            <button onClick={() => onChangePage(index + 1)} className={index === pageIndex - 1 ? "active" : ""}>
                                 <span>
                                     {index + 1}
                                 </span>

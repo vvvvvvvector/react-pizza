@@ -2,14 +2,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type PizzaType = {
     id: string,
-    types: string[],
-    diameter: number[],
     description: string,
-    name: string,
-    weight: number[],
-    cost: number,
-    imageURL: string,
+    types: string[],
     sizes: string[]
+    diameters: number[],
+    weights: number[],
+    cost: number,
+    name: string,
+    imageURL: string
 };
 
 interface OverlayState {
@@ -21,14 +21,14 @@ const initialState = {
     opened: false,
     pizza: {
         id: "unknown",
-        types: [],
-        diameter: [],
-        weight: [],
         description: "unknown",
-        name: "unknown",
+        types: [],
+        sizes: [],
+        diameters: [],
+        weights: [],
         cost: 0,
-        imageURL: "unknown",
-        sizes: []
+        name: "unknown",
+        imageURL: "unknown"
     }
 } as OverlayState;
 

@@ -16,7 +16,7 @@ export const Sort: React.FC = () => {
     const popupReference = React.useRef<HTMLDivElement>(null);
 
     const {
-        selectedSortParameterIndex
+        sortParameterIndex
     } = useSelector((state: RootState) => state.home);
 
     // clickOutsideSort is working only when sort component is on page(mounted?)
@@ -39,20 +39,21 @@ export const Sort: React.FC = () => {
                 <img className={showPopup ? "active" : ""} alt="arrow" src={arrowSVG} />
                 <b>Sort by: </b>
                 <span onClick={() => setShowPopup(!showPopup)}>
-                    {sortParameters[selectedSortParameterIndex]}
+                    {sortParameters[sortParameterIndex]}
                 </span>
             </div>
-            {showPopup && (
-                <div className="sort__popup">
-                    <ul>
-                        {
-                            sortParameters.map((parameter, index) => (
-                                <li onClick={() => { dispatch(setSortParameter(index)); setShowPopup(false); }} key={index} className={index === selectedSortParameterIndex ? "active" : ""}>{parameter}</li>
-                            ))
-                        }
-                    </ul>
-                </div>
-            )}
+            {
+                showPopup && (
+                    <div className="sort__popup">
+                        <ul>
+                            {
+                                sortParameters.map((parameter, index) => (
+                                    <li onClick={() => { dispatch(setSortParameter(index)); setShowPopup(false); }} key={index} className={index === sortParameterIndex ? "active" : ""}>{parameter}</li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                )}
         </div>
     );
 }

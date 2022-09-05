@@ -9,16 +9,6 @@ import { EmptyCart, CartItem } from '../components';
 
 import cartSVG from '../assets/images/order-pizza-cart-top.svg';
 
-type CartItemType = {
-    id: string,
-    name: string,
-    type: string,
-    diameter: number,
-    cost: number,
-    amount: number,
-    imageURL: string
-};
-
 export const Cart: React.FC = () => {
     const dispatch = useDispatch();
 
@@ -57,8 +47,15 @@ export const Cart: React.FC = () => {
             </div>
             <div className="cart__items">
                 {
-                    pizzas.map((pizza: CartItemType, index: number) => (
-                        <CartItem key={index} {...pizza} />
+                    pizzas.map((pizza, index) => (
+                        <CartItem
+                            key={index}
+                            name={pizza.name}
+                            type={pizza.type}
+                            diameter={pizza.diameter}
+                            cost={pizza.cost}
+                            amount={pizza.amount}
+                            imageURL={pizza.imageURL} />
                     ))
                 }
             </div>

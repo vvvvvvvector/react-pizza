@@ -1,34 +1,20 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
+import { RootState, useAppDispatch } from '../redux/store';
 import { setCurrentPage } from '../redux/slices/homeSlice';
 import { fetchHomePizzas } from '../redux/slices/fetchSlice';
 
 import { Overlay, Categories, Sort, Pizza, Skeleton, Pagination } from '../components';
-import { RootState } from '../redux/store';
-
-import { useAppDispatch } from '../redux/store';
 
 const sortParameters = ["popularity", "popularity", "cost", "cost", "name", "name"];
 
-type PizzaType = {
-    id: string,
-    types: string[],
-    diameter: number[],
-    description: string,
-    name: string,
-    weight: number[],
-    cost: number,
-    imageURL: string,
-    sizes: string[]
-};
-
-type FetchType = {
+type RequestParametersTypes = {
     currentPage: number,
     categoryIndex: number,
     sortParameterName: string,
     sortParameterIndex: number
-}
+};
 
 export const Home: React.FC = () => {
     const dispatch = useAppDispatch();
@@ -43,41 +29,41 @@ export const Home: React.FC = () => {
     } = useSelector((state: RootState) => state.fetch);
 
     const {
-        selectedCategoryIndex,
-        selectedCategoryName,
-        selectedSortParameterIndex,
+        categoryIndex,
+        sortParameterIndex,
+        categoryName,
         currentPage,
         searchValue
     } = useSelector((state: RootState) => state.home);
 
-    const onChangePage = (page: number) => {
-        dispatch(setCurrentPage(page));
-    }
-
     React.useEffect(() => {
-        const request: FetchType = {
+        const request: RequestParametersTypes = {
             currentPage: currentPage,
-            categoryIndex: selectedCategoryIndex,
-            sortParameterName: sortParameters[selectedSortParameterIndex],
-            sortParameterIndex: selectedSortParameterIndex
+            categoryIndex: categoryIndex,
+            sortParameterName: sortParameters[sortParameterIndex],
+            sortParameterIndex: sortParameterIndex
         };
 
         dispatch(fetchHomePizzas(request));
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedCategoryIndex, selectedSortParameterIndex, currentPage]);
+    }, [categoryIndex, sortParameterIndex, currentPage]);
 
     const renderContentItems = () => {
         const skeletons = [...new Array(4)].map((_, index) => (
             <Skeleton key={index} />
         ));
 
-        const filteredPizzas = homePizzas.filter((item: PizzaType) => (
+        const filteredPizzas = homePizzas.filter((item) => (
             item.name.toLowerCase().includes(searchValue.toLowerCase())
-        )).map((pizza: PizzaType) => (
+        )).map((pizza) => (
             <Pizza key={pizza.id} {...pizza} />
         ));
 
         return status === "pending" ? skeletons : filteredPizzas;
+    };
+
+    const onChangePage = (page: number) => {
+        dispatch(setCurrentPage(page));
     };
 
     return (
@@ -88,12 +74,12 @@ export const Home: React.FC = () => {
                 <Sort />
             </div>
             <h2 className="content__title">
-                {searchValue ? `Search for: ${searchValue}` : `${selectedCategoryName} pizzas`}
+                {searchValue ? `Search for: ${searchValue}` : `${categoryName} pizzas`}
             </h2>
             <div className="content__items">
                 {renderContentItems()}
             </div>
-            <Pagination selectedPageIndex={currentPage} onChangePage={onChangePage} />
+            <Pagination pageIndex={currentPage} onChangePage={onChangePage} />
         </>
     );
 }

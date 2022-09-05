@@ -9,7 +9,7 @@ export const Categories: React.FC = () => {
     const dispatch = useDispatch();
 
     const {
-        selectedCategoryIndex
+        categoryIndex
     } = useSelector((state: RootState) => state.home);
 
     return (
@@ -17,7 +17,7 @@ export const Categories: React.FC = () => {
             <ul>
                 {
                     categories.map((_, index) => (
-                        <li key={index} onClick={() => { dispatch(setCategoryIndex(index)); dispatch(setCategoryName(categories[index])) }} className={index === selectedCategoryIndex ? "active" : ""}>
+                        <li key={index} onClick={() => { dispatch(setCategoryIndex(index)); dispatch(setCategoryName(categories[index])) }} className={index === categoryIndex ? "active" : ""}>
                             {categories[index]}
                         </li>
                     ))

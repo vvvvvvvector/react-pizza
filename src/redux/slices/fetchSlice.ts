@@ -1,15 +1,15 @@
-import axios from "axios";
-
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-type FetchType = {
+import axios from "axios";
+
+type RequestParametersTypes = {
     currentPage: number,
     categoryIndex: number,
     sortParameterName: string,
     sortParameterIndex: number
 };
 
-export const fetchHomePizzas = createAsyncThunk<PizzaType[], FetchType>("fetch/homePizzas", async (parameters) => {
+export const fetchHomePizzas = createAsyncThunk<PizzaType[], RequestParametersTypes>("fetch/homePizzas", async (parameters) => {
     const {
         currentPage,
         categoryIndex,
@@ -26,14 +26,14 @@ export const fetchHomePizzas = createAsyncThunk<PizzaType[], FetchType>("fetch/h
 
 type PizzaType = {
     id: string,
-    types: string[],
-    diameter: number[],
     description: string,
-    name: string,
-    weight: number[],
-    cost: number,
-    imageURL: string,
+    types: string[],
     sizes: string[]
+    diameters: number[],
+    weights: number[],
+    cost: number,
+    name: string,
+    imageURL: string
 };
 
 interface FetchState {
