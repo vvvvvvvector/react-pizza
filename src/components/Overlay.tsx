@@ -60,7 +60,7 @@ export const Overlay: React.FC = () => {
         const cartItem: CartItemType = {
             id: pizza.id,
             name: pizza.name,
-            cost: pizza.cost,
+            cost: calculateCost(),
             imageURL: pizza.imageURL,
             type: pizza.types[selectedType],
             diameter: pizza.diameters[selectedSize],
@@ -68,6 +68,24 @@ export const Overlay: React.FC = () => {
         };
 
         dispatch(addPizza(cartItem));
+    };
+
+    const calculateCost = () => {
+        if (pizza.sizes.length === 2) {
+            if (selectedSize === 0) {
+                return pizza.cost;
+            } else if (selectedSize === 1) {
+                return pizza.cost * 1.5;
+            }
+        }
+
+        if (selectedSize === 0) {
+            return pizza.cost;
+        } else if (selectedSize === 1) {
+            return pizza.cost * 1.5;
+        }
+
+        return pizza.cost * 2;
     };
 
     return (
@@ -111,7 +129,7 @@ export const Overlay: React.FC = () => {
                     <div className="bottom">
                         <div onClick={onClickAdd} className="button button-make-order">
                             <span>
-                                Add to cart for {pizza.cost} $ {amount ? `Already in cart: ${amount}` : ""}
+                                Add to cart for {calculateCost()} $ {amount ? `Already in cart: ${amount}` : ""}
                             </span>
                         </div>
                     </div>
