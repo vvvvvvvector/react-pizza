@@ -55,6 +55,9 @@ export const cartSlice = createSlice({
     }
 });
 
+export const selectCartItem = (pizza, selectedType, selectedSize) => (state) =>
+    state.cart.pizzas.find((obj) => obj.name === pizza.name && obj.type === pizza.types[selectedType] && obj.diameter === pizza.diameter[selectedSize]);
+
 export const {
     removePizza,
     clearCart,

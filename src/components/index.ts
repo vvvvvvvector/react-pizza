@@ -2,7 +2,7 @@ export * from './Overlay.jsx';
 export * from './Header';
 export * from './Categories';
 export * from './Sort';
-export * from './Pizza/Pizza.jsx';
+export * from './Pizza/Pizza';
 export * from './Pizza/Skeleton';
 export * from './Pagination';
 export * from './EmptyCart';

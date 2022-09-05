@@ -13,7 +13,7 @@ export const Sort: React.FC = () => {
 
     const [showPopup, setShowPopup] = React.useState<boolean>(false);
 
-    const popupRef = React.useRef<HTMLDivElement>(null);
+    const popupReference = React.useRef<HTMLDivElement>(null);
 
     const {
         selectedSortParameterIndex
@@ -21,8 +21,8 @@ export const Sort: React.FC = () => {
 
     // clickOutsideSort is working only when sort component is on page(mounted?)
     React.useEffect(() => {
-        const clickOutsideSort = (event: any) => {
-            if (!event.composedPath().includes(popupRef.current)) {
+        const clickOutsideSort = (event: MouseEvent) => {
+            if (popupReference.current && !event.composedPath().includes(popupReference.current)) {
                 setShowPopup(false);
             }
         };
@@ -34,7 +34,7 @@ export const Sort: React.FC = () => {
     }, []);
 
     return (
-        <div ref={popupRef} className="sort">
+        <div ref={popupReference} className="sort">
             <div className="sort__label">
                 <img className={showPopup ? "active" : ""} alt="arrow" src={arrowSVG} />
                 <b>Sort by: </b>

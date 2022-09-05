@@ -17,12 +17,14 @@ export const fetchHomePizzas = createAsyncThunk("fetch/homePizzas", async (param
     return data;
 });
 
+const initialState = {
+    status: "pending",
+    homePizzas: []
+}
+
 export const fetchSlice = createSlice({
     name: "fetch",
-    initialState: {
-        status: "pending",
-        homePizzas: []
-    },
+    initialState,
     extraReducers: {
         [fetchHomePizzas.pending]: (state) => {
             state.status = "pending";

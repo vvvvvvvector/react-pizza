@@ -4,7 +4,7 @@ const pages = [...new Array(2)];
 
 type PaginationPropsTypes = {
     selectedPageIndex: number,
-    onChangePage: any
+    onChangePage: (pageIndex: number) => void
 }
 
 export const Pagination: React.FC<PaginationPropsTypes> = ({ selectedPageIndex, onChangePage }) => {
@@ -24,7 +24,7 @@ export const Pagination: React.FC<PaginationPropsTypes> = ({ selectedPageIndex, 
         <div className="pagination">
             <ul>
                 <li>
-                    <button onClick={onClickPrevious}>
+                    <button className={""} disabled={false} onClick={onClickPrevious}>
                         <span>
                             ←
                         </span>
@@ -42,7 +42,7 @@ export const Pagination: React.FC<PaginationPropsTypes> = ({ selectedPageIndex, 
                     ))
                 }
                 <li>
-                    <button onClick={onClickNext}>
+                    <button className={""} disabled={false} onClick={onClickNext}>
                         <span>
                             →
                         </span>

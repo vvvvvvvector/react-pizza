@@ -2,15 +2,26 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { addPizza } from '../../redux/slices/cartSlice';
-import { setOpened, setPizza } from '../../redux/slices/overlaySlice';
+import { selectCartItem } from '../../redux/slices/cartSlice';
+import { setPizza } from '../../redux/slices/overlaySlice';
 
-export const Pizza = (pizza) => {
+type PizzaType = {
+    id: string,
+    types: string[],
+    diameter: string[],
+    name: string,
+    cost: number,
+    imageURL: string,
+    sizes: string[]
+};
+
+export const Pizza: React.FC<PizzaType> = (pizza) => {
     const dispatch = useDispatch();
 
-    const [selectedType, setSelectedType] = React.useState(0);
-    const [selectedSize, setSelectedSize] = React.useState(0);
+    const [selectedType, setSelectedType] = React.useState<number>(0);
+    const [selectedSize, setSelectedSize] = React.useState<number>(0);
 
-    const currentPizza = useSelector((state) => state.cart.pizzas.find((obj) => obj.name === pizza.name && obj.type === pizza.types[selectedType] && obj.diameter === pizza.diameter[selectedSize]));
+    const currentPizza = useSelector(selectCartItem(pizza, selectedType, selectedSize));
     const amount = currentPizza ? currentPizza.amount : 0;
 
     const onClickAdd = () => {
@@ -26,7 +37,6 @@ export const Pizza = (pizza) => {
     };
 
     const onClickImage = () => {
-        dispatch(setOpened(true));
         dispatch(setPizza(pizza));
         document.body.style.overflow = 'hidden';
     };
@@ -39,14 +49,14 @@ export const Pizza = (pizza) => {
                 <ul>
                     {
                         pizza.types.map((type, index) => (
-                            <li key={index} onClick={() => setSelectedType(index)} className={index === selectedType ? "active" : null}>{type}</li>
+                            <li key={index} onClick={() => setSelectedType(index)} className={index === selectedType ? "active" : ""}>{type}</li>
                         ))
                     }
                 </ul>
                 <ul>
                     {
                         pizza.sizes.map((size, index) => (
-                            <li key={index} onClick={() => setSelectedSize(index)} className={index === selectedSize ? "active" : null}>{size}</li>
+                            <li key={index} onClick={() => setSelectedSize(index)} className={index === selectedSize ? "active" : ""}>{size}</li>
                         ))
                     }
                 </ul>

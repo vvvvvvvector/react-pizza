@@ -13,6 +13,8 @@ export const Header: React.FC = () => {
     const dispatch = useDispatch();
     const { pathname } = useLocation();
 
+    const searchReference = React.useRef<HTMLInputElement>(null);
+
     const {
         searchValue
     } = useSelector((state: RootState) => state.home);
@@ -22,12 +24,15 @@ export const Header: React.FC = () => {
         amountTotal
     } = useSelector((state: RootState) => state.cart);
 
-    const searchReference = React.useRef<HTMLInputElement>(null);
 
     const onClickSearchClear = () => {
         dispatch(setSearchValue(""));
         searchReference.current?.focus();
-    }
+    };
+
+    const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+        dispatch(setSearchValue(event.target.value));
+    };
 
     return (
         <div className="header">
@@ -43,7 +48,7 @@ export const Header: React.FC = () => {
                     pathname !== '/cart' &&
                     <div className="header__search">
                         <img alt="search-lens" src={lensSVG} />
-                        <input ref={searchReference} onChange={(event) => dispatch(setSearchValue(event.target.value))} value={searchValue} placeholder="Search pizza..." />
+                        <input ref={searchReference} onChange={onChangeInput} value={searchValue} placeholder="Search pizza..." />
                         {
                             searchValue &&
                             <svg onClick={onClickSearchClear} width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
