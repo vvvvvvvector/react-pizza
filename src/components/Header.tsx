@@ -55,7 +55,7 @@ export const Header: React.FC = () => {
                     </div>
                 </div>
                 {
-                    pathname !== '/cart' &&
+                    pathname === '/' &&
                     <div className="header__search">
                         <img alt="search-lens" src={lensSVG} />
                         <input ref={searchReference} onChange={onChangeInput} value={searchValue} placeholder="Search pizza..." />
@@ -69,7 +69,7 @@ export const Header: React.FC = () => {
                     </div>
                 }
                 {
-                    pathname !== '/cart' &&
+                    pathname === '/' &&
                     <Link to="/cart">
                         <div className="header__cart">
                             <div className="button button--cart">
