@@ -24,7 +24,7 @@ export const Pagination: React.FC<PaginationPropsTypes> = ({ pageIndex, onChange
         <div className="pagination">
             <ul>
                 <li>
-                    <button className={""} disabled={false} onClick={onClickPrevious}>
+                    <button disabled={pageIndex === 1} onClick={onClickPrevious}>
                         <span>
                             ←
                         </span>
@@ -42,7 +42,7 @@ export const Pagination: React.FC<PaginationPropsTypes> = ({ pageIndex, onChange
                     ))
                 }
                 <li>
-                    <button className={""} disabled={false} onClick={onClickNext}>
+                    <button disabled={pageIndex === pages.length} onClick={onClickNext}>
                         <span>
                             →
                         </span>

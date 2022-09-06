@@ -19,6 +19,21 @@
                 display: inline-block; // after that, the buttons became round if border radius = x px, if not buttons are square
                 transition: background-color $duration ease-in-out;
 
+                &:disabled {
+                    color: #D0D0D0;
+                    border-color: #D0D0D0;
+                    transform: none;
+
+                    &:hover {
+                        background-color: #ffffff;
+                        color: #D0D0D0;
+                    }
+
+                    &:active {
+                        background-color: #ffffff;
+                    }
+                }
+
                 span {
                     font-size: 15px;
                 }

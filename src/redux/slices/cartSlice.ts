@@ -35,10 +35,27 @@ interface CartState {
     pizzas: CartItemType[];
 };
 
+const getCartFromLS = () => {
+    const data = localStorage.getItem("cart");
+
+    if (data) {
+        const parsed: CartItemType[] = JSON.parse(data);
+
+        const orderTotal = parsed.reduce((sum, obj) => obj.cost * obj.amount + sum, 0);
+        const orderAmount = parsed.reduce((sum, obj) => obj.amount + sum, 0);
+
+        return { pizzas: parsed, orderTotal: orderTotal, orderAmount: orderAmount };
+    }
+
+    return { pizzas: [], orderTotal: 0, orderAmount: 0 };
+};
+
+const { orderTotal, orderAmount, pizzas } = getCartFromLS();
+
 const initialState = {
-    orderTotal: 0,
-    amountTotal: 0,
-    pizzas: []
+    orderTotal: orderTotal,
+    amountTotal: orderAmount,
+    pizzas: pizzas
 } as CartState;
 
 export const cartSlice = createSlice({

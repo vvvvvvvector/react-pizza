@@ -14,16 +14,17 @@ export const Header: React.FC = () => {
     const { pathname } = useLocation();
 
     const searchReference = React.useRef<HTMLInputElement>(null);
+    const isFirstRender = React.useRef<boolean>(true);
 
     const {
         searchValue
     } = useSelector((state: RootState) => state.home);
 
     const {
+        pizzas,
         orderTotal,
         amountTotal
     } = useSelector((state: RootState) => state.cart);
-
 
     const onClickSearchClear = () => {
         dispatch(setSearchValue(""));
@@ -33,6 +34,14 @@ export const Header: React.FC = () => {
     const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setSearchValue(event.target.value));
     };
+
+    React.useEffect(() => {
+        if (!isFirstRender.current) {
+            const json = JSON.stringify(pizzas);
+            localStorage.setItem("cart", json);
+        }
+        isFirstRender.current = false;
+    }, [pizzas]);
 
     return (
         <div className="header">

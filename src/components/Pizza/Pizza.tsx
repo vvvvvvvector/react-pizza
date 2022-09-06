@@ -1,8 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addPizza } from '../../redux/slices/cartSlice';
-import { selectCartItem } from '../../redux/slices/cartSlice';
+import { selectCartItem, addPizza } from '../../redux/slices/cartSlice';
 import { setOpened, setPizza } from '../../redux/slices/overlaySlice';
 
 type CartItemType = {
