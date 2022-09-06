@@ -1,21 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type PizzaType = {
-    id: string,
-    description: string,
-    types: string[],
-    sizes: string[]
-    diameters: number[],
-    weights: number[],
-    cost: number,
-    name: string,
-    imageURL: string
-};
-
-interface OverlayState {
-    opened: boolean;
-    pizza: PizzaType;
-};
+import { IOverlayState } from "./types";
+import { PizzaType } from "../fetch/types";
 
 const initialState = {
     opened: false,
@@ -30,7 +16,7 @@ const initialState = {
         name: "unknown",
         imageURL: "unknown"
     }
-} as OverlayState;
+} as IOverlayState;
 
 export const overlaySlice = createSlice({
     name: "overlay",

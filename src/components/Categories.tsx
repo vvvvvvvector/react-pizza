@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { RootState } from '../redux/store';
-import { setCategoryIndex, setCategoryName } from '../redux/slices/homeSlice';
+import { selectHome } from '../redux/home/selectors';
+import { setCategoryIndex, setCategoryName } from '../redux/home/slice';
 
 const categories: string[] = ["All", "Meat", "Vegetarian", "Spicy"];
 
@@ -11,7 +11,7 @@ export const Categories: React.FC = () => {
 
     const {
         categoryIndex
-    } = useSelector((state: RootState) => state.home);
+    } = useSelector(selectHome);
 
     return (
         <div className="categories">

@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { RootState } from '../redux/store';
-import { clearCart } from '../redux/slices/cartSlice';
+import { selectCart } from '../redux/cart/selectors';
+import { clearCart } from '../redux/cart/slice';
 
 import { EmptyCart, CartItem } from '../components';
 
@@ -16,7 +16,7 @@ export const Cart: React.FC = () => {
         pizzas,
         orderTotal,
         amountTotal
-    } = useSelector((state: RootState) => state.cart);
+    } = useSelector(selectCart);
 
     if (pizzas.length === 0) {
         return <EmptyCart />;

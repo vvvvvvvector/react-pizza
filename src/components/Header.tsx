@@ -2,8 +2,9 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { RootState } from '../redux/store';
-import { setSearchValue } from '../redux/slices/homeSlice';
+import { selectHome } from '../redux/home/selectors';
+import { selectCart } from '../redux/cart/selectors';
+import { setSearchValue } from '../redux/home/slice';
 
 import logoSVG from '../assets/images/store-logo.svg';
 import cartSVG from '../assets/images/shopping-cart.svg';
@@ -18,13 +19,13 @@ export const Header: React.FC = () => {
 
     const {
         searchValue
-    } = useSelector((state: RootState) => state.home);
+    } = useSelector(selectHome);
 
     const {
         pizzas,
         orderTotal,
         amountTotal
-    } = useSelector((state: RootState) => state.cart);
+    } = useSelector(selectCart);
 
     const onClickSearchClear = () => {
         dispatch(setSearchValue(""));

@@ -1,12 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface HomeState {
-    categoryIndex: number;
-    sortParameterIndex: number;
-    categoryName: string;
-    currentPage: number;
-    searchValue: string;
-};
+import { IHomeState } from "./types";
 
 const initialState = {
     categoryIndex: 0,
@@ -14,7 +8,7 @@ const initialState = {
     categoryName: "All",
     currentPage: 1,
     searchValue: ""
-} as HomeState;
+} as IHomeState;
 
 export const homeSlice = createSlice({
     name: "home",

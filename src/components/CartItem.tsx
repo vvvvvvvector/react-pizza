@@ -1,27 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-import { incrementAmount, decrementAmount, removePizza } from "../redux/slices/cartSlice";
-
-type CartItemType = {
-    name: string,
-    type: string,
-    diameter: number,
-    cost: number,
-    amount: number,
-    imageURL: string
-};
-
-type UniqiePizzaType = {
-    name: string,
-    type: string,
-    diameter: number
-};
+import { incrementAmount, decrementAmount, removePizza } from "../redux/cart/slice";
+import { CartItemType, UniquePizzaType } from "../redux/cart/types";
 
 export const CartItem: React.FC<CartItemType> = ({ name, type, diameter, cost, amount, imageURL }) => {
     const dispatch = useDispatch();
 
-    const thisPizza: UniqiePizzaType = { name, type, diameter };
+    const thisPizza: UniquePizzaType = { name, type, diameter };
 
     const onClickPlus = () => {
         dispatch(incrementAmount(thisPizza));

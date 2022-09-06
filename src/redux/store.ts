@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from 'react-redux';
 
-import home from "./slices/homeSlice";
-import cart from "./slices/cartSlice";
-import fetch from "./slices/fetchSlice";
-import overlay from "./slices/overlaySlice";
+import home from "./home/slice";
+import cart from "./cart/slice";
+import fetch from "./fetch/slice";
+import overlay from "./overlay/slice";
 
 export const store = configureStore({
     reducer: {

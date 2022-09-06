@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { RootState } from '../redux/store';
-import { setSortParameter } from '../redux/slices/homeSlice';
+import { selectHome } from '../redux/home/selectors';
+import { setSortParameter } from '../redux/home/slice';
 
 import arrowSVG from '../assets/images/categories-arrow.svg';
 
@@ -17,7 +17,7 @@ export const Sort: React.FC = () => {
 
     const {
         sortParameterIndex
-    } = useSelector((state: RootState) => state.home);
+    } = useSelector(selectHome);
 
     // clickOutsideSort is working only when sort component is on page(mounted?)
     React.useEffect(() => {

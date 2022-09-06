@@ -1,21 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addPizza, selectCartItem } from '../redux/slices/cartSlice';
-import { setOpened } from '../redux/slices/overlaySlice';
-import { RootState } from '../redux/store';
+import { selectPizza } from '../redux/overlay/selectors';
+import { selectCartItem } from '../redux/cart/selectors';
+import { addPizza } from '../redux/cart/slice';
+import { setOpened } from '../redux/overlay/slice';
+import { CartItemType } from '../redux/cart/types';
 
 const pizzaImageSizes: number[] = [300, 370, 410];
-
-type CartItemType = {
-    id: string,
-    name: string,
-    cost: number,
-    imageURL: string,
-    type: string,
-    diameter: number,
-    amount: number
-};
 
 export const Overlay: React.FC = () => {
     const dispatch = useDispatch();
@@ -28,9 +20,7 @@ export const Overlay: React.FC = () => {
         document.body.style.overflow = 'visible';
     };
 
-    const {
-        pizza
-    } = useSelector((state: RootState) => state.overlay);
+    const pizza = useSelector(selectPizza);
 
     const currentPizza = useSelector(selectCartItem(pizza, selectedType, selectedSize));
     const amount = currentPizza ? currentPizza.amount : 0;
@@ -58,14 +48,13 @@ export const Overlay: React.FC = () => {
 
     const onClickAdd = () => {
         const cartItem: CartItemType = {
-            id: pizza.id,
             name: pizza.name,
-            cost: calculateCost(),
-            imageURL: pizza.imageURL,
             type: pizza.types[selectedType],
             diameter: pizza.diameters[selectedSize],
-            amount: 1
-        };
+            cost: calculateCost(),
+            amount: 1,
+            imageURL: pizza.imageURL
+        }
 
         dispatch(addPizza(cartItem));
     };

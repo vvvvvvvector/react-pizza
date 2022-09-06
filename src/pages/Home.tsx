@@ -1,32 +1,28 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { RootState, useAppDispatch } from '../redux/store';
-import { setCurrentPage } from '../redux/slices/homeSlice';
-import { fetchHomePizzas } from '../redux/slices/fetchSlice';
+import { useAppDispatch } from '../redux/store';
+
+import { selectFetch } from '../redux/fetch/selectors';
+import { selectHome } from '../redux/home/selectors';
+import { selectOpened } from '../redux/overlay/selectors';
+import { setCurrentPage } from '../redux/home/slice';
+import { fetchHomePizzas } from '../redux/fetch/slice';
+import { RequestParametersTypes } from '../redux/fetch/types';
 
 import { Overlay, Categories, Sort, Pizza, Skeleton, Pagination } from '../components';
 
 const sortParameters: string[] = ["popularity", "popularity", "cost", "cost", "name", "name"];
 
-type RequestParametersTypes = {
-    currentPage: number,
-    categoryIndex: number,
-    sortParameterName: string,
-    sortParameterIndex: number
-};
-
 export const Home: React.FC = () => {
     const dispatch = useAppDispatch();
 
-    const {
-        opened
-    } = useSelector((state: RootState) => state.overlay);
+    const opened = useSelector(selectOpened);
 
     const {
         status,
         homePizzas
-    } = useSelector((state: RootState) => state.fetch);
+    } = useSelector(selectFetch);
 
     const {
         categoryIndex,
@@ -34,7 +30,7 @@ export const Home: React.FC = () => {
         categoryName,
         currentPage,
         searchValue
-    } = useSelector((state: RootState) => state.home);
+    } = useSelector(selectHome);
 
     React.useEffect(() => {
         const request: RequestParametersTypes = {
