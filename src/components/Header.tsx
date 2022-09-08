@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
+import debounce from 'lodash.debounce';
+
 import { selectHome } from '../redux/home/selectors';
 import { selectCart } from '../redux/cart/selectors';
 import { setSearchValue } from '../redux/home/slice';
@@ -14,8 +16,10 @@ export const Header: React.FC = () => {
     const dispatch = useDispatch();
     const { pathname } = useLocation();
 
-    const searchReference = React.useRef<HTMLInputElement>(null);
+    const [inputValue, setInputValue] = React.useState("");
+
     const isFirstRender = React.useRef<boolean>(true);
+    const searchReference = React.useRef<HTMLInputElement>(null);
 
     const {
         searchValue
@@ -28,12 +32,22 @@ export const Header: React.FC = () => {
     } = useSelector(selectCart);
 
     const onClickSearchClear = () => {
+        setInputValue("");
         dispatch(setSearchValue(""));
         searchReference.current?.focus();
     };
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const waitUntilIStop = React.useCallback(
+        debounce((value: string) => {
+            dispatch(setSearchValue(value));
+        }, 350),
+        []
+    );
+
     const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch(setSearchValue(event.target.value));
+        setInputValue(event.target.value);
+        waitUntilIStop(event.target.value);
     };
 
     React.useEffect(() => {
@@ -58,7 +72,7 @@ export const Header: React.FC = () => {
                     pathname === '/' &&
                     <div className="header__search">
                         <img alt="search-lens" src={lensSVG} />
-                        <input ref={searchReference} onChange={onChangeInput} value={searchValue} placeholder="Search pizza..." />
+                        <input ref={searchReference} onChange={onChangeInput} value={inputValue} placeholder="Search pizza..." />
                         {
                             searchValue &&
                             <svg onClick={onClickSearchClear} width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

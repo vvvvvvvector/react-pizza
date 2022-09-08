@@ -70,7 +70,7 @@ export const Home: React.FC = () => {
                 <Sort />
             </div>
             <h2 className="content__title">
-                {searchValue ? `Search for: ${searchValue}` : `${categoryName} pizzas`}
+                {searchValue ? `All search results for "${searchValue}"` : `${categoryName} pizzas`}
             </h2>
             <div className="content__items">
                 {renderContentItems()}

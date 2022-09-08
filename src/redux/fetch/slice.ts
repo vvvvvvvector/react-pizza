@@ -13,7 +13,7 @@ export const fetchHomePizzas = createAsyncThunk<PizzaType[], RequestParametersTy
     } = parameters;
 
     const { data } = await axios.get<PizzaType[]>(
-        `https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas?page=${currentPage}&limit=4&categories=${categoryIndex}&sortBy=${sortParameterName}&order=${sortParameterIndex % 2 === 0 ? "asc" : "desc"}`
+        `https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas?p=${currentPage}&l=4&categories=${categoryIndex}&sortBy=${sortParameterName}&order=${sortParameterIndex % 2 === 0 ? "asc" : "desc"}`
     );
 
     return data;
