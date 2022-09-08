@@ -11,7 +11,7 @@
         width: $content-width;
         align-items: center;
 
-        @media (max-width: 1035px) {
+        @media (max-width: 945px) {
             flex-direction: column;
 
             .header__left {

@@ -1,5 +1,5 @@
 .emptyCart {
-    width: 400px;
+    max-width: 400px;
     text-align: center;
     margin: 60px auto;
 
@@ -22,6 +22,16 @@
         span {
             font-size: 15px;
             font-weight: bold;
+        }
+    }
+
+    @media (max-width: 440px) {
+        h2 {
+            font-size: 33px;
+        }
+
+        p {
+            font-size: 17px;
         }
     }
 }
