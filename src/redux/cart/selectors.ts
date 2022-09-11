@@ -1,6 +1,6 @@
-import { RootState } from "../store";
+import { RootState } from '../store';
 
-import { PizzaType } from "../fetch/types";
+import { PizzaType } from '../fetch/types';
 
 export const selectCart = (state: RootState) => state.cart;
 

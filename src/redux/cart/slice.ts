@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { CartItemType, UniquePizzaType, ICartState } from "./types";
+import { CartItemType, UniquePizzaType, ICartState } from './types';
 
 const getCartFromLS = () => {
     const data = localStorage.getItem("cart");

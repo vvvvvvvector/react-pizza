@@ -4,13 +4,13 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import debounce from 'lodash.debounce';
 
-import { selectHome } from '../redux/home/selectors';
-import { selectCart } from '../redux/cart/selectors';
-import { setSearchValue } from '../redux/home/slice';
+import { selectHome } from '../../redux/home/selectors';
+import { selectCart } from '../../redux/cart/selectors';
+import { setSearchValue } from '../../redux/home/slice';
 
-import logoSVG from '../assets/images/store-logo.svg';
-import cartSVG from '../assets/images/shopping-cart.svg';
-import lensSVG from '../assets/images/search-lens.svg';
+import logoSVG from '../../assets/images/store-logo.svg';
+import cartSVG from '../../assets/images/shopping-cart.svg';
+import lensSVG from '../../assets/images/search-lens.svg';
 
 export const Header: React.FC = () => {
     const dispatch = useDispatch();

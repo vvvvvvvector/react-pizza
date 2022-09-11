@@ -1,7 +1,7 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { IOverlayState } from "./types";
-import { PizzaType } from "../fetch/types";
+import { IOverlayState } from './types';
+import { PizzaType } from '../fetch/types';
 
 const initialState = {
     opened: false,

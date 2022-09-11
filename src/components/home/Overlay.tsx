@@ -1,11 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectPizza } from '../redux/overlay/selectors';
-import { selectCartItem } from '../redux/cart/selectors';
-import { addPizza } from '../redux/cart/slice';
-import { setOpened } from '../redux/overlay/slice';
-import { CartItemType } from '../redux/cart/types';
+import { selectPizza } from '../../redux/overlay/selectors';
+import { selectCartItem } from '../../redux/cart/selectors';
+import { addPizza } from '../../redux/cart/slice';
+import { setOpened } from '../../redux/overlay/slice';
+import { CartItemType } from '../../redux/cart/types';
 
 const pizzaImageSizes: number[] = [300, 370, 410];
 

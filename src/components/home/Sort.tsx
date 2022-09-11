@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { selectHome } from '../redux/home/selectors';
-import { setSortParameter } from '../redux/home/slice';
+import { selectHome } from '../../redux/home/selectors';
+import { setSortParameter } from '../../redux/home/slice';
 
-import arrowSVG from '../assets/images/categories-arrow.svg';
+import arrowSVG from '../../assets/images/categories-arrow.svg';
 
 const sortParameters: string[] = ["popularity ↑", "popularity ↓", "cost ↑", "cost ↓", "alphabet ↑", "alphabet ↓"];
 

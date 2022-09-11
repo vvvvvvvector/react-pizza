@@ -50,18 +50,18 @@
 
     &__items {
         display: grid;
-        grid-template-columns: repeat(4, 1fr); // 4 columns
+        grid-template-columns: repeat(4, 1fr); 
 
         @media (max-width: 1345px) {
-            grid-template-columns: repeat(3, 1fr); // 4 columns
+            grid-template-columns: repeat(3, 1fr); 
         }
 
         @media (max-width: 1035px) {
-            grid-template-columns: repeat(2, 1fr); // 4 columns
+            grid-template-columns: repeat(2, 1fr); 
         }
 
         @media (max-width: 745px) {
-            grid-template-columns: repeat(1, 1fr); // 4 columns
+            grid-template-columns: repeat(1, 1fr); 
         }
     }
 }

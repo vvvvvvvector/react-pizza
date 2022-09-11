@@ -1,8 +1,8 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import axios from "axios";
+import axios from 'axios';
 
-import { PizzaType, RequestParametersTypes, Status, IFetchState } from "./types";
+import { PizzaType, RequestParametersTypes, Status, IFetchState } from './types';
 
 export const fetchHomePizzas = createAsyncThunk<PizzaType[], RequestParametersTypes>("fetch/homePizzas", async (parameters) => {
     const {

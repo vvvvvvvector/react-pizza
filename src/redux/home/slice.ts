@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { IHomeState } from "./types";
+import { IHomeState } from './types';
 
 const initialState = {
     categoryIndex: 0,

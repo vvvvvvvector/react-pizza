@@ -2,9 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import { Header } from './components';
 
-import { Home } from './pages/Home';
-import { Cart } from './pages/Cart';
-import { NotFound } from './pages/NotFound';
+import { Cart, Home, NotFound } from './pages';
 
 import './scss/components/_all_components.scss';
 import './scss/pages/_all_pages.scss';
