@@ -1,11 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectCartItem } from '../../../redux/cart/selectors';
-import { addPizza } from '../../../redux/cart/slice';
-import { setOpened, setPizza } from '../../../redux/overlay/slice';
-import { PizzaType } from '../../../redux/fetch/types';
-import { CartItemType } from '../../../redux/cart/types';
+import { selectCartItem } from '../../redux/cart/selectors';
+import { addPizza } from '../../redux/cart/slice';
+import { setOpened, setPizza } from '../../redux/overlay/slice';
+import { PizzaType } from '../../redux/fetch/types';
+import { CartItemType } from '../../redux/cart/types';
 
 export const Pizza: React.FC<PizzaType> = (pizza) => {
     const dispatch = useDispatch();
