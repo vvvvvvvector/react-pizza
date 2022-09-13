@@ -1,4 +1,4 @@
-.notFound {
+.loading-wrapper {
     max-width: 400px;
     text-align: center;
     margin: 60px auto;
@@ -6,12 +6,5 @@
     h2 {
         font-size: 36px;
         margin-bottom: 15px;
-    }
-
-    button {
-        span {
-            font-size: 15px;
-            font-weight: bold;
-        }
     }
 }

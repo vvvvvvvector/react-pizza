@@ -9,7 +9,7 @@ import { EmptyCart, CartItem } from '../components';
 
 import cartSVG from '../assets/images/order-pizza-cart-top.svg';
 
-export const Cart: React.FC = () => {
+const Cart: React.FC = () => {
     const dispatch = useDispatch();
 
     const {
@@ -87,3 +87,5 @@ export const Cart: React.FC = () => {
         </div>
     );
 };
+
+export default Cart;
