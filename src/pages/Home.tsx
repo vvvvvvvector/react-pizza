@@ -60,6 +60,12 @@ export const Home: React.FC = () => {
 
     const onChangePage = (page: number) => {
         dispatch(setCurrentPage(page));
+        
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
     };
 
     return (

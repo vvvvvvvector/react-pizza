@@ -11,12 +11,24 @@ export const Pagination: React.FC<PaginationPropsTypes> = ({ pageIndex, onChange
     const onClickPrevious = () => {
         if (pageIndex > 1) {
             onChangePage(pageIndex - 1);
+
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
         }
     };
 
     const onClickNext = () => {
         if (pageIndex <= pages.length - 1) {
             onChangePage(pageIndex + 1);
+
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
         }
     };
 
