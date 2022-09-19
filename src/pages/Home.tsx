@@ -41,6 +41,13 @@ export const Home: React.FC = () => {
         };
 
         dispatch(fetchHomePizzas(request));
+
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [categoryIndex, sortParameterIndex, currentPage]);
 
@@ -60,12 +67,6 @@ export const Home: React.FC = () => {
 
     const onChangePage = (page: number) => {
         dispatch(setCurrentPage(page));
-
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: 'smooth'
-        });
     };
 
     return (

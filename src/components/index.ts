@@ -8,3 +8,4 @@ export * from './home/Pagination';
 export * from './cart/EmptyCart';
 export * from './cart/CartItem';
 export * from './common/Loading';
+export * from './common/Counter';

@@ -7,6 +7,8 @@ import { addPizza } from '../../redux/cart/slice';
 import { setOpened } from '../../redux/overlay/slice';
 import { CartItemType } from '../../redux/cart/types';
 
+import { Counter } from '../index';
+
 const pizzaImageSizes: number[] = [300, 370, 410];
 
 export const Overlay: React.FC = () => {
@@ -118,7 +120,7 @@ export const Overlay: React.FC = () => {
                     <div className="bottom">
                         <div onClick={onClickAdd} className="button button-make-order">
                             <span>
-                                Add to cart for {calculateCost()} $ {amount ? `Already in cart: ${amount}` : ""}
+                                Add to cart for {calculateCost()} $ {amount ? <Counter amount={amount} /> : ""}
                             </span>
                         </div>
                     </div>
