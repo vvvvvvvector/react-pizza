@@ -9,7 +9,7 @@ import { CartItemType } from '../../redux/cart/types';
 
 import { Counter } from '../index';
 
-const pizzaImageSizes: number[] = [300, 370, 410];
+const pizzaImageSizes: number[] = [320, 370, 425];
 
 export const Overlay: React.FC = () => {
     const dispatch = useDispatch();
@@ -118,11 +118,12 @@ export const Overlay: React.FC = () => {
                         </ul>
                     </div>
                     <div className="bottom">
-                        <div onClick={onClickAdd} className="button button-make-order">
+                        <button disabled={amount >= 99} onClick={onClickAdd} className="button button-order-overlay">
                             <span>
-                                Add to cart for {calculateCost()} $ {amount ? <Counter amount={amount} /> : ""}
+                                Add to cart for {calculateCost()} $
                             </span>
-                        </div>
+                            {amount > 0 && <Counter counterStyle={"counter__overlay"} amount={amount} />}
+                        </button>
                     </div>
                 </div>
                 <svg onClick={onClose} width="35" height="35" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">

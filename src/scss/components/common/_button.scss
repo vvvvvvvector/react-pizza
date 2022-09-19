@@ -53,8 +53,29 @@
 
     // pizza-component add button
     &--default {
+        display: flex;
+        align-items: center;
         background-color: #ffffff;
         border-color: $orange;
+        max-height: 44px;
+
+        .counter__pizza {
+            margin-left: 7px;
+
+            b {
+                display: inline-block;
+                border-radius: 30px;
+                font-style: normal;
+                font-size: 15px;
+                line-height: 26px;
+                text-align: center;
+                width: 26px;
+                height: 26px;
+                color: #ffffff;
+                background-color: $orange;
+                border: 1px solid $orange;
+            }
+        }
 
         span {
             font-size: 16px;
@@ -82,10 +103,41 @@
                     fill: #ffffff;
                 }
             }
+
+            .counter__pizza {
+                b {
+                    color: $orange;
+                    background-color: #ffffff;
+                }
+            }
         }
 
         &:active {
             background-color: darken($orange, 10%);
+        }
+
+        &:disabled {
+            cursor: auto;
+            border-color: #D0D0D0;
+            background-color: #ffffff;
+
+            svg {
+                path {
+                    fill: #D0D0D0;
+                }
+            }
+
+            span {
+                color: #D0D0D0;
+            }
+
+            .counter__pizza {
+                b {
+                    color: #ffffff;
+                    background-color: #D0D0D0;
+                    border-color: #D0D0D0;
+                }
+            }
         }
     }
 
@@ -147,6 +199,49 @@
             color: #FFFFFF;
             font-weight: 600;
             font-size: 16px;
+        }
+    }
+
+    &-order-overlay {
+        max-height: 44px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 330px;
+
+        &:disabled {
+            cursor: auto;
+            background-color: #D0D0D0;
+
+            .counter__overlay {
+                b {
+                    color: #D0D0D0;
+                }
+            }
+        }
+
+        span {
+            color: #FFFFFF;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .counter__overlay {
+            margin-left: 8px;
+
+            b {
+                display: inline-block;
+                border-radius: 30px;
+                font-style: normal;
+                font-size: 15px;
+                line-height: 26px;
+                text-align: center;
+                width: 26px;
+                height: 26px;
+                color: $orange;
+                background-color: #ffffff;
+                border: 1px solid #ffffff;
+            }
         }
     }
 }
