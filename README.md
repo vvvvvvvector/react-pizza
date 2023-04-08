@@ -1,4 +1,9 @@
-# react pizza 🤓
+# react pizza
+
+![pizza_1](./src/assets/screenshots/pizza_1.png)
+![pizza_2](./src/assets/screenshots/pizza_2.png)
+![pizza_3](./src/assets/screenshots/pizza_3.png)
+![pizza_4](./src/assets/screenshots/pizza_4.png)
 
 - Reactjs 18 🙂😯😲
 - React Hooks 🪝
@@ -7,14 +12,12 @@
 - Redux Toolkit 🧠
 - React Skeleton/React Content Loader 🩻
 - React Router v6 📍🗺
-- ***lodash.debounce*** in search optimization 👀
+- **_lodash.debounce_** in search optimization 👀
 - Pagination 📄
-- fetch ->->-> ***axios***; mockAPI = "backend" 
+- fetch ->->-> **_axios_**; mockAPI = "backend"
 - fetching pizzas by **category[all, meat, vegetarian, spicy]** and **sort parameter[popularity↑↓, cost↑↓, alphabet↑↓]** and **page number[hardcoded 2, but it's because of mockAPI 😢]**
-- antd (i guess i should make my own loading spin instead of downloading an entire library) 💅
-- SCSS 💅🫦💄
-- React.lazy(() => import(*page*)) / pages lazy loading 🥱
-- google chrome and safari devtools 💻🧑‍💻 
-- react chrome devtools; redux chrome devtools 💻🧑‍💻 
-- LocalStorage 📦
+- SCSS
+- React.lazy(() => import(_page_)) / pages lazy loading 🥱
+- google chrome and safari devtools 💻🧑‍💻
+- react chrome devtools; redux chrome devtools 💻🧑‍💻
 - Code splitting 🖖
