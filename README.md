@@ -1,4 +1,4 @@
-# react pizza
+# Pizza 🍕
 
 ![pizza_1](./src/assets/screenshots/pizza_1.png)
 ![pizza_2](./src/assets/screenshots/pizza_2.png)
