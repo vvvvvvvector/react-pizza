@@ -39,9 +39,9 @@ export const CartItem: React.FC<CartItemType> = ({
   return (
     <div className='cart-item hide-scrollbars'>
       <img src={imageURL} alt='pizza' />
-      <div className='info'>
-        <h3>{name}</h3>
-        <p>
+      <div className='info hide-scrollbars'>
+        <h3 className='hide-scrollbars'>{name}</h3>
+        <p className='hide-scrollbars'>
           {type} dough, {diameter} cm
         </p>
       </div>
