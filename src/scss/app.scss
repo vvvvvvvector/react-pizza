@@ -2,16 +2,26 @@
 @import './variables';
 
 body {
-    background-color: $background;
+  background-color: $background;
 }
 
 .wrapper {
-    // ----------in general centering wrapper; margins-------------- 
-    width: calc(100vw - 55px);
-    height: 100%;
-    margin: 30px auto; // bottom and top margins 50px
-    // ----------in general centering wrapper; margins--------------
-    background: #FFFFFF;
-    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.03);
-    border-radius: 10px;
+  // ----------in general centering wrapper; margins--------------
+  width: calc(100vw - 55px);
+  height: 100%;
+  margin: 30px auto; // bottom and top margins 50px
+  // ----------in general centering wrapper; margins--------------
+  background: #ffffff;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
+}
+
+.hide-scrollbars::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbars {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
