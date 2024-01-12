@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { selectHome } from '../../redux/home/selectors';
@@ -6,7 +5,7 @@ import { setCategoryIndex, setCategoryName } from '../../redux/home/slice';
 
 const categories: string[] = ['All', 'Meat', 'Vegetarian', 'Spicy'];
 
-export const Categories: React.FC = () => {
+export const Categories = () => {
   const dispatch = useDispatch();
 
   const { categoryIndex } = useSelector(selectHome);

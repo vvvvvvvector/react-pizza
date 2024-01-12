@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import {
@@ -8,14 +7,14 @@ import {
 } from '../../redux/cart/slice';
 import { CartItemType, UniquePizzaType } from '../../redux/cart/types';
 
-export const CartItem: React.FC<CartItemType> = ({
+export const CartItem = ({
   name,
   type,
   diameter,
   cost,
   amount,
   imageURL
-}) => {
+}: CartItemType) => {
   const dispatch = useDispatch();
 
   const thisPizza: UniquePizzaType = { name, type, diameter };

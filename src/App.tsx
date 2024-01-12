@@ -16,7 +16,7 @@ const NotFound = React.lazy(
   () => import(/* webpackChunkName: "NotFound" */ './pages/NotFound')
 );
 
-function App() {
+export const App = () => {
   return (
     <>
       <div className='wrapper'>
@@ -47,6 +47,4 @@ function App() {
       </div>
     </>
   );
-}
-
-export default App;
+};

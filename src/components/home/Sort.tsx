@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { selectHome } from '../../redux/home/selectors';
@@ -15,17 +15,17 @@ const sortParameters: string[] = [
   'alphabet ↓'
 ];
 
-export const Sort: React.FC = () => {
+export const Sort = () => {
   const dispatch = useDispatch();
 
-  const [showPopup, setShowPopup] = React.useState<boolean>(false);
+  const [showPopup, setShowPopup] = useState<boolean>(false);
 
-  const popupReference = React.useRef<HTMLDivElement>(null);
+  const popupReference = useRef<HTMLDivElement>(null);
 
   const { sortParameterIndex } = useSelector(selectHome);
 
   // clickOutsideSort is working only when sort component is on page(mounted?)
-  React.useEffect(() => {
+  useEffect(() => {
     const clickOutsideSort = (event: MouseEvent) => {
       if (
         popupReference.current &&

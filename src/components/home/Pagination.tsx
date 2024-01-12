@@ -1,5 +1,3 @@
-import React from 'react';
-
 const pages = [...new Array(2)];
 
 type PaginationPropsTypes = {
@@ -7,10 +5,10 @@ type PaginationPropsTypes = {
   onChangePage: (pageIndex: number) => void;
 };
 
-export const Pagination: React.FC<PaginationPropsTypes> = ({
+export const Pagination = ({
   pageIndex,
   onChangePage
-}) => {
+}: PaginationPropsTypes) => {
   const onClickPrevious = () => {
     if (pageIndex > 1) {
       onChangePage(pageIndex - 1);

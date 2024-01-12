@@ -1,8 +1,9 @@
-import React from 'react';
-
-export const Counter: React.FC<{ amount: number; counterStyle: string }> = ({
+export const Counter = ({
   amount,
   counterStyle
+}: {
+  amount: number;
+  counterStyle: string;
 }) => {
   return (
     <div className={counterStyle}>

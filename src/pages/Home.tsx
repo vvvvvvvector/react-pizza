@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '../redux/store';
@@ -28,7 +28,7 @@ const sortParameters: string[] = [
   'name'
 ];
 
-export const Home: React.FC = () => {
+export const Home = () => {
   const dispatch = useAppDispatch();
 
   const opened = useSelector(selectOpened);
@@ -43,7 +43,7 @@ export const Home: React.FC = () => {
     searchValue
   } = useSelector(selectHome);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const request: RequestParametersTypes = {
       currentPage: currentPage,
       categoryIndex: categoryIndex,

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectCartItem } from '../../redux/cart/selectors';
@@ -9,11 +9,11 @@ import { CartItemType } from '../../redux/cart/types';
 
 import { Counter } from '../index';
 
-export const Pizza: React.FC<PizzaType> = (pizza) => {
+export const Pizza = (pizza: PizzaType) => {
   const dispatch = useDispatch();
 
-  const [selectedType, setSelectedType] = React.useState<number>(0);
-  const [selectedSize, setSelectedSize] = React.useState<number>(0);
+  const [selectedType, setSelectedType] = useState<number>(0);
+  const [selectedSize, setSelectedSize] = useState<number>(0);
 
   const currentPizza = useSelector(
     selectCartItem(pizza, selectedType, selectedSize)

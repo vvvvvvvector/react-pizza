@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -12,14 +12,14 @@ import logoSVG from '../../assets/images/store-logo.svg';
 import cartSVG from '../../assets/images/shopping-cart.svg';
 import lensSVG from '../../assets/images/search-lens.svg';
 
-export const Header: React.FC = () => {
+export const Header = () => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
 
-  const [inputValue, setInputValue] = React.useState('');
+  const [inputValue, setInputValue] = useState('');
 
-  const isFirstRender = React.useRef<boolean>(true);
-  const searchReference = React.useRef<HTMLInputElement>(null);
+  const isFirstRender = useRef<boolean>(true);
+  const searchReference = useRef<HTMLInputElement>(null);
 
   const { searchValue } = useSelector(selectHome);
 
@@ -32,7 +32,7 @@ export const Header: React.FC = () => {
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const waitUntilIStop = React.useCallback(
+  const waitUntilIStop = useCallback(
     debounce((value: string) => {
       dispatch(setSearchValue(value));
     }, 350),
@@ -44,7 +44,7 @@ export const Header: React.FC = () => {
     waitUntilIStop(event.target.value);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isFirstRender.current) {
       const json = JSON.stringify(pizzas);
       localStorage.setItem('cart', json);

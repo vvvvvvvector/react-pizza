@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectPizza } from '../../redux/overlay/selectors';
@@ -11,11 +11,11 @@ import { Counter } from '../index';
 
 const pizzaImageSizes: number[] = [320, 370, 425];
 
-export const Overlay: React.FC = () => {
+export const Overlay = () => {
   const dispatch = useDispatch();
 
-  const [selectedType, setSelectedType] = React.useState<number>(0);
-  const [selectedSize, setSelectedSize] = React.useState<number>(0);
+  const [selectedType, setSelectedType] = useState<number>(0);
+  const [selectedSize, setSelectedSize] = useState<number>(0);
 
   const onClose = () => {
     dispatch(setOpened(false));
@@ -29,11 +29,11 @@ export const Overlay: React.FC = () => {
   );
   const amount = currentPizza ? currentPizza.amount : 0;
 
-  const wrapperReference = React.useRef(null);
-  const isFirstRender = React.useRef(false); // because overlay immediately closed when i clicked on the pizza
+  const wrapperReference = useRef(null);
+  const isFirstRender = useRef(false); // because overlay immediately closed when i clicked on the pizza
 
   // clickOutsideWrapper is working only when overlay component is on page(mounted?)
-  React.useEffect(() => {
+  useEffect(() => {
     const clickOutsideWrapper = (event: MouseEvent) => {
       if (isFirstRender.current) {
         if (

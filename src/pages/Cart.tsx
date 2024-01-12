@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -9,7 +8,7 @@ import { EmptyCart, CartItem } from '../components';
 
 import cartSVG from '../assets/images/order-pizza-cart-top.svg';
 
-const Cart: React.FC = () => {
+const Cart = () => {
   const dispatch = useDispatch();
 
   const { pizzas, orderTotal, amountTotal } = useSelector(selectCart);
