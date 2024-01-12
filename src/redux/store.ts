@@ -7,12 +7,12 @@ import fetch from './fetch/slice';
 import overlay from './overlay/slice';
 
 export const store = configureStore({
-    reducer: {
-        home,
-        cart,
-        fetch,
-        overlay
-    }
+  reducer: {
+    home,
+    cart,
+    fetch,
+    overlay
+  }
 });
 
 export type RootState = ReturnType<typeof store.getState>;

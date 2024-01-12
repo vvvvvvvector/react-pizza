@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -9,20 +8,12 @@ import { EmptyCart, CartItem } from '../components';
 
 import cartSVG from '../assets/images/order-pizza-cart-top.svg';
 
-const Cart: React.FC = () => {
+const Cart = () => {
   const dispatch = useDispatch();
 
   const { pizzas, orderTotal, amountTotal } = useSelector(selectCart);
 
-  if (pizzas.length === 0) {
-    return <EmptyCart />;
-  }
-
-  const onClearCart = () => {
-    if (window.confirm('Do you really want to clear the cart?')) {
-      dispatch(clearCart());
-    }
-  };
+  if (!pizzas.length) return <EmptyCart />;
 
   return (
     <div className='cart'>
@@ -68,20 +59,20 @@ const Cart: React.FC = () => {
               strokeLinejoin='round'
             />
           </svg>
-          <span onClick={onClearCart}>Clear cart</span>
+          <span
+            onClick={() => {
+              if (window.confirm('Do you really want to clear the cart?')) {
+                dispatch(clearCart());
+              }
+            }}
+          >
+            Clear cart
+          </span>
         </div>
       </div>
       <div className='cart__items hide-scrollbars'>
         {pizzas.map((pizza, index) => (
-          <CartItem
-            key={index}
-            name={pizza.name}
-            type={pizza.type}
-            diameter={pizza.diameter}
-            cost={pizza.cost}
-            amount={pizza.amount}
-            imageURL={pizza.imageURL}
-          />
+          <CartItem key={index} {...pizza} />
         ))}
       </div>
       <div className='cart__bottom'>

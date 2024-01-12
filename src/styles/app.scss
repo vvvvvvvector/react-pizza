@@ -1,19 +1,23 @@
-@import './libs/normalize';
+@import './normalize';
 @import './variables';
 
 body {
   background-color: $background;
 }
 
+#root {
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
 .wrapper {
-  // ----------in general centering wrapper; margins--------------
-  width: calc(100vw - 55px);
+  width: 100%;
+  max-width: 1375px;
   height: 100%;
-  margin: 30px auto; // bottom and top margins 50px
-  // ----------in general centering wrapper; margins--------------
   background: #ffffff;
   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.03);
-  border-radius: 10px;
+  border-radius: 15px;
 }
 
 .hide-scrollbars::-webkit-scrollbar {

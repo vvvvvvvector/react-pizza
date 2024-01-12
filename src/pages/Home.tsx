@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '../redux/store';
@@ -8,7 +8,6 @@ import { selectHome } from '../redux/home/selectors';
 import { selectOpened } from '../redux/overlay/selectors';
 import { setCurrentPage } from '../redux/home/slice';
 import { fetchHomePizzas } from '../redux/fetch/slice';
-import { RequestParametersTypes } from '../redux/fetch/types';
 
 import {
   Overlay,
@@ -16,19 +15,19 @@ import {
   Sort,
   Pizza,
   Skeleton,
-  Pagination,
+  Pagination
 } from '../components';
 
-const sortParameters: string[] = [
+const sortParameters = [
   'popularity',
   'popularity',
   'cost',
   'cost',
   'name',
-  'name',
-];
+  'name'
+] as const;
 
-export const Home: React.FC = () => {
+export const Home = () => {
   const dispatch = useAppDispatch();
 
   const opened = useSelector(selectOpened);
@@ -40,23 +39,23 @@ export const Home: React.FC = () => {
     sortParameterIndex,
     categoryName,
     currentPage,
-    searchValue,
+    searchValue
   } = useSelector(selectHome);
 
-  React.useEffect(() => {
-    const request: RequestParametersTypes = {
-      currentPage: currentPage,
-      categoryIndex: categoryIndex,
-      sortParameterName: sortParameters[sortParameterIndex],
-      sortParameterIndex: sortParameterIndex,
-    };
-
-    dispatch(fetchHomePizzas(request));
+  useEffect(() => {
+    dispatch(
+      fetchHomePizzas({
+        currentPage: currentPage,
+        categoryIndex: categoryIndex,
+        sortParameterName: sortParameters[sortParameterIndex],
+        sortParameterIndex: sortParameterIndex
+      })
+    );
 
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'smooth',
+      behavior: 'smooth'
     });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -76,10 +75,6 @@ export const Home: React.FC = () => {
     return status === 'pending' ? skeletons : filteredPizzas;
   };
 
-  const onChangePage = (page: number) => {
-    dispatch(setCurrentPage(page));
-  };
-
   return (
     <>
       {opened && <Overlay />}
@@ -93,7 +88,12 @@ export const Home: React.FC = () => {
           : `${categoryName} pizzas`}
       </h2>
       <div className='content__items'>{renderContentItems()}</div>
-      <Pagination pageIndex={currentPage} onChangePage={onChangePage} />
+      <Pagination
+        pageIndex={currentPage}
+        onChangePage={(page: number) => {
+          dispatch(setCurrentPage(page));
+        }}
+      />
     </>
   );
 };

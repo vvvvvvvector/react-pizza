@@ -1,40 +1,23 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import {
   incrementAmount,
   decrementAmount,
-  removePizza,
+  removePizza
 } from '../../redux/cart/slice';
-import { CartItemType, UniquePizzaType } from '../../redux/cart/types';
+import { CartItem as CI, UniquePizza } from '../../redux/cart/types';
 
-export const CartItem: React.FC<CartItemType> = ({
+export const CartItem = ({
   name,
   type,
   diameter,
   cost,
   amount,
-  imageURL,
-}) => {
+  imageURL
+}: CI) => {
   const dispatch = useDispatch();
 
-  const thisPizza: UniquePizzaType = { name, type, diameter };
-
-  const onClickPlus = () => {
-    dispatch(incrementAmount(thisPizza));
-  };
-
-  const onClickMinus = () => {
-    dispatch(decrementAmount(thisPizza));
-  };
-
-  const onRemovePizza = () => {
-    if (
-      window.confirm('Do you really want to remove this pizza from the cart?')
-    ) {
-      dispatch(removePizza(thisPizza));
-    }
-  };
+  const thisPizza: UniquePizza = { name, type, diameter };
 
   return (
     <div className='cart-item hide-scrollbars'>
@@ -49,7 +32,9 @@ export const CartItem: React.FC<CartItemType> = ({
         <button
           disabled={amount === 1}
           className={amount > 1 ? 'active' : ''}
-          onClick={onClickMinus}
+          onClick={() => {
+            dispatch(decrementAmount(thisPizza));
+          }}
         >
           <svg
             width='11'
@@ -68,7 +53,9 @@ export const CartItem: React.FC<CartItemType> = ({
         <button
           disabled={amount >= 99}
           className={amount >= 99 ? '' : 'active'}
-          onClick={onClickPlus}
+          onClick={() => {
+            dispatch(incrementAmount(thisPizza));
+          }}
         >
           <svg
             width='11'
@@ -88,7 +75,17 @@ export const CartItem: React.FC<CartItemType> = ({
         <b>{cost * amount} $</b>
       </div>
       <div className='remove'>
-        <button onClick={onRemovePizza}>
+        <button
+          onClick={() => {
+            if (
+              window.confirm(
+                'Do you really want to remove this pizza from the cart?'
+              )
+            ) {
+              dispatch(removePizza(thisPizza));
+            }
+          }}
+        >
           <svg
             width='10'
             height='10'

@@ -1,0 +1,89 @@
+@import '../variables';
+
+.cart {
+  max-width: 850px;
+  margin: 60px auto;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      display: flex;
+      align-items: center;
+
+      img {
+        margin-right: 10px;
+      }
+
+      h2 {
+        font-size: 32px;
+      }
+    }
+
+    .clear {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+
+      span,
+      svg,
+      path {
+        transition: all $duration ease-in-out;
+      }
+
+      span {
+        color: #b6b6b6;
+        margin-left: 7px;
+        font-size: 18px;
+      }
+
+      &:hover {
+        span {
+          color: darken(#b6b6b6, 50%);
+        }
+
+        svg {
+          path {
+            stroke: darken(#b6b6b6, 50%);
+          }
+        }
+      }
+    }
+  }
+
+  &__items {
+    max-height: 330px;
+    overflow: scroll;
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+
+  &__bottom {
+    .summary {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 25px;
+
+      span {
+        font-size: 22px;
+
+        b {
+          margin-left: 5px;
+        }
+
+        &:last-of-type {
+          b {
+            color: $orange;
+          }
+        }
+      }
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

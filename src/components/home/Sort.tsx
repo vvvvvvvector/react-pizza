@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { selectHome } from '../../redux/home/selectors';
@@ -6,54 +6,68 @@ import { setSortParameter } from '../../redux/home/slice';
 
 import arrowSVG from '../../assets/images/categories-arrow.svg';
 
-const sortParameters: string[] = ["popularity ↑", "popularity ↓", "cost ↑", "cost ↓", "alphabet ↑", "alphabet ↓"];
+const sortParameters = [
+  'popularity ↑',
+  'popularity ↓',
+  'cost ↑',
+  'cost ↓',
+  'alphabet ↑',
+  'alphabet ↓'
+] as const;
 
-export const Sort: React.FC = () => {
-    const dispatch = useDispatch();
+export const Sort = () => {
+  const dispatch = useDispatch();
 
-    const [showPopup, setShowPopup] = React.useState<boolean>(false);
+  const [showPopup, setShowPopup] = useState<boolean>(false);
 
-    const popupReference = React.useRef<HTMLDivElement>(null);
+  const { sortParameterIndex } = useSelector(selectHome);
 
-    const {
-        sortParameterIndex
-    } = useSelector(selectHome);
+  const popupReference = useRef<HTMLDivElement>(null);
 
-    // clickOutsideSort is working only when sort component is on page(mounted?)
-    React.useEffect(() => {
-        const clickOutsideSort = (event: MouseEvent) => {
-            if (popupReference.current && !event.composedPath().includes(popupReference.current)) {
-                setShowPopup(false);
-            }
-        };
+  // clickOutsideSort is working only when sort component is on page(mounted?)
+  useEffect(() => {
+    const clickOutsideSort = (event: MouseEvent) => {
+      if (
+        popupReference.current &&
+        !event.composedPath().includes(popupReference.current)
+      ) {
+        setShowPopup(false);
+      }
+    };
 
-        document.body.addEventListener("click", clickOutsideSort); // add event listener on first render
+    document.body.addEventListener('click', clickOutsideSort); // add event listener on first render
 
-        // unmount
-        return () => document.body.removeEventListener("click", clickOutsideSort);  // delete event listener(unmount)
-    }, []);
+    // unmount
+    return () => document.body.removeEventListener('click', clickOutsideSort); // delete event listener(unmount)
+  }, []);
 
-    return (
-        <div ref={popupReference} className="sort">
-            <div className="sort__label">
-                <img className={showPopup ? "active" : ""} alt="arrow" src={arrowSVG} />
-                <b>Sort by: </b>
-                <span onClick={() => setShowPopup(!showPopup)}>
-                    {sortParameters[sortParameterIndex]}
-                </span>
-            </div>
-            {
-                showPopup && (
-                    <div className="sort__popup">
-                        <ul>
-                            {
-                                sortParameters.map((parameter, index) => (
-                                    <li onClick={() => { dispatch(setSortParameter(index)); setShowPopup(false); }} key={index} className={index === sortParameterIndex ? "active" : ""}>{parameter}</li>
-                                ))
-                            }
-                        </ul>
-                    </div>
-                )}
+  return (
+    <div ref={popupReference} className='sort'>
+      <div className='sort__label'>
+        <img className={showPopup ? 'active' : ''} alt='arrow' src={arrowSVG} />
+        <b>Sort by: </b>
+        <span onClick={() => setShowPopup(!showPopup)}>
+          {sortParameters[sortParameterIndex]}
+        </span>
+      </div>
+      {showPopup && (
+        <div className='sort__popup'>
+          <ul>
+            {sortParameters.map((parameter, index) => (
+              <li
+                onClick={() => {
+                  dispatch(setSortParameter(index));
+                  setShowPopup(false);
+                }}
+                key={index}
+                className={index === sortParameterIndex ? 'active' : ''}
+              >
+                {parameter}
+              </li>
+            ))}
+          </ul>
         </div>
-    );
+      )}
+    </div>
+  );
 };
