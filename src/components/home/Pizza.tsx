@@ -4,12 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectCartItem } from '../../redux/cart/selectors';
 import { addPizza } from '../../redux/cart/slice';
 import { setOpened, setPizza } from '../../redux/overlay/slice';
-import { PizzaType } from '../../redux/fetch/types';
-import { CartItemType } from '../../redux/cart/types';
+import { Pizza as P } from '../../redux/fetch/types';
 
 import { Counter } from '../index';
 
-export const Pizza = (pizza: PizzaType) => {
+export const Pizza = (pizza: P) => {
   const dispatch = useDispatch();
 
   const [selectedType, setSelectedType] = useState<number>(0);
@@ -19,19 +18,6 @@ export const Pizza = (pizza: PizzaType) => {
     selectCartItem(pizza, selectedType, selectedSize)
   );
   const amount = currentPizza ? currentPizza.amount : 0;
-
-  const onClickAdd = () => {
-    const cartItem: CartItemType = {
-      name: pizza.name,
-      type: pizza.types[selectedType],
-      diameter: pizza.diameters[selectedSize],
-      cost: calculateCost(),
-      amount: 1,
-      imageURL: pizza.imageURL
-    };
-
-    dispatch(addPizza(cartItem));
-  };
 
   const onClickImage = () => {
     dispatch(setPizza(pizza));
@@ -95,7 +81,18 @@ export const Pizza = (pizza: PizzaType) => {
           <h4 className='pizza-component__price'>for {calculateCost()} $</h4>
           <button
             disabled={amount >= 99}
-            onClick={onClickAdd}
+            onClick={() => {
+              dispatch(
+                addPizza({
+                  name: pizza.name,
+                  type: pizza.types[selectedType],
+                  diameter: pizza.diameters[selectedSize],
+                  cost: calculateCost(),
+                  amount: 1,
+                  imageURL: pizza.imageURL
+                })
+              );
+            }}
             className='button button--default'
           >
             <svg

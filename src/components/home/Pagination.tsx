@@ -9,23 +9,18 @@ export const Pagination = ({
   pageIndex,
   onChangePage
 }: PaginationPropsTypes) => {
-  const onClickPrevious = () => {
-    if (pageIndex > 1) {
-      onChangePage(pageIndex - 1);
-    }
-  };
-
-  const onClickNext = () => {
-    if (pageIndex <= pages.length - 1) {
-      onChangePage(pageIndex + 1);
-    }
-  };
-
   return (
     <div className='pagination'>
       <ul>
         <li>
-          <button disabled={pageIndex === 1} onClick={onClickPrevious}>
+          <button
+            disabled={pageIndex === 1}
+            onClick={() => {
+              if (pageIndex > 1) {
+                onChangePage(pageIndex - 1);
+              }
+            }}
+          >
             <span>←</span>
           </button>
         </li>
@@ -40,7 +35,14 @@ export const Pagination = ({
           </li>
         ))}
         <li>
-          <button disabled={pageIndex === pages.length} onClick={onClickNext}>
+          <button
+            disabled={pageIndex === pages.length}
+            onClick={() => {
+              if (pageIndex <= pages.length - 1) {
+                onChangePage(pageIndex + 1);
+              }
+            }}
+          >
             <span>→</span>
           </button>
         </li>

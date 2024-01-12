@@ -1,249 +1,106 @@
 [
-    {
-        "id": 1,
-        "description": "Italian herbs, tomato sauce, tomatoes, mozzarella",
-        "types": [
-            "Thin",
-            "Traditional"
-        ],
-        "sizes": [
-            "Small",
-            "Medium",
-            "Big"
-        ],
-        "diameters": [
-            25,
-            30,
-            35
-        ],
-        "weights": [
-            420,
-            640,
-            860
-        ],
-        "cost": 8,
-        "name": "Margherita 🌱",
-        "imageURL": "https://cdn.dodostatic.net/static/Img/Products/3c7cfd48e57a4bbe9e805f9ae0ab68d8_584x584.jpeg",
-        "popularity": 1,
-        "categories": [
-            0,
-            2
-        ]
-    },
-    {
-        "id": 2,
-        "description": "Mozzarella, cheddar cheese and parmesan, alfredo sauce",
-        "types": [
-            "Thin"
-        ],
-        "sizes": [
-            "Small",
-            "Medium",
-            "Big"
-        ],
-        "diameters": [
-            25,
-            30,
-            35
-        ],
-        "weights": [
-            330,
-            500,
-            670
-        ],
-        "cost": 6,
-        "name": "Cheese 🧀",
-        "imageURL": "https://cdn.dodostatic.net/static/Img/Products/2ea16022779e4e46acd70a19f397ba8f_584x584.jpeg",
-        "popularity": 2,
-        "categories": [
-            0,
-            2
-        ]
-    },
-    {
-        "id": 3,
-        "description": "Alfredo sauce, parmesan and cheddar cheese, blue cheese, mozzarella",
-        "types": [
-            "Thin",
-            "Traditional"
-        ],
-        "sizes": [
-            "Medium",
-            "Big"
-        ],
-        "diameters": [
-            30,
-            35
-        ],
-        "weights": [
-            570,
-            760
-        ],
-        "cost": 10,
-        "name": "Four-Cheese 🧀🧀🧀🧀",
-        "imageURL": "https://cdn.dodostatic.net/static/Img/Products/f74c9f27384542128f51587009ce5af2_584x584.jpeg",
-        "popularity": 7,
-        "categories": [
-            0,
-            2
-        ]
-    },
-    {
-        "id": 4,
-        "description": "Spicy chorizo sausages, jalapeno hot pepper, barbecue sauce, beef meatballs, tomatoes, sweet pepper, red onion, mozzarella, tomato sauce",
-        "types": [
-            "Thin",
-            "Traditional"
-        ],
-        "sizes": [
-            "Small",
-            "Medium",
-            "Big"
-        ],
-        "diameters": [
-            25,
-            30,
-            35
-        ],
-        "weights": [
-            490,
-            740,
-            1000
-        ],
-        "cost": 12,
-        "name": "Diablo 🌶🌶",
-        "imageURL": "https://cdn.dodostatic.net/static/Img/Products/4f9a1883ac3145c49d7c3bd5676f5e80_584x584.jpeg",
-        "popularity": 4,
-        "categories": [
-            0,
-            1,
-            3
-        ]
-    },
-    {
-        "id": 5,
-        "description": "Oven-baked potatoes, pickled cucumbers, chicken, ranch sauce, tomatoes, red onion, garlic, mozzarella, tomato sauce",
-        "types": [
-            "Thin",
-            "Traditional"
-        ],
-        "sizes": [
-            "Small",
-            "Medium",
-            "Big"
-        ],
-        "diameters": [
-            25,
-            30,
-            35
-        ],
-        "weights": [
-            535,
-            870,
-            1125
-        ],
-        "cost": 11,
-        "name": "Village 🧑‍🌾",
-        "imageURL": "https://cdn.dodostatic.net/static/Img/Products/9ab9494fb4c84dc2a545e82e719230a4_584x584.jpeg",
-        "popularity": 5,
-        "categories": [
-            0,
-            1
-        ]
-    },
-    {
-        "id": 6,
-        "description": "Tomato sauce, mozzarella, spicy chorizo sausages, sweet pepper",
-        "types": [
-            "Thin",
-            "Traditional"
-        ],
-        "sizes": [
-            "Small",
-            "Medium",
-            "Big"
-        ],
-        "diameters": [
-            25,
-            30,
-            35
-        ],
-        "weights": [
-            340,
-            500,
-            660
-        ],
-        "cost": 7,
-        "name": "Chorizo fresh 🌶",
-        "imageURL": "https://cdn.dodostatic.net/static/Img/Products/6c32cd1456f94897b1feb376c72b1dad_584x584.jpeg",
-        "popularity": 6,
-        "categories": [
-            0,
-            1,
-            3
-        ]
-    },
-    {
-        "id": 7,
-        "description": "Ham, pineapple, mozzarella, tomato sauce",
-        "types": [
-            "Thin",
-            "Traditional"
-        ],
-        "sizes": [
-            "Small",
-            "Medium",
-            "Big"
-        ],
-        "diameters": [
-            25,
-            30,
-            35
-        ],
-        "weights": [
-            430,
-            650,
-            870
-        ],
-        "cost": 8,
-        "name": "Hawaiian 🏄‍♂️",
-        "imageURL": "https://cdn.dodostatic.net/static/Img/Products/4aec6cc08719404e94262698eb014cba_584x584.jpeg",
-        "popularity": 3,
-        "categories": [
-            0,
-            1
-        ]
-    },
-    {
-        "id": 8,
-        "description": "Spicy chorizo, tomato sauce, chicken, spicy pepperoni, mozzarella, ham",
-        "types": [
-            "Thin",
-            "Traditional"
-        ],
-        "sizes": [
-            "Small",
-            "Medium",
-            "Big"
-        ],
-        "diameters": [
-            25,
-            30,
-            35
-        ],
-        "weights": [
-            410,
-            610,
-            830
-        ],
-        "cost": 8,
-        "name": "Meat 🍗",
-        "imageURL": "https://cdn.dodostatic.net/static/Img/Products/9112b1b2d5f44bfbbf367e2e11ba8924_584x584.jpeg",
-        "popularity": 8,
-        "categories": [
-            0,
-            1,
-            3
-        ]
-    }
+  {
+    "id": 1,
+    "description": "Italian herbs, tomato sauce, tomatoes, mozzarella",
+    "types": ["Thin", "Traditional"],
+    "sizes": ["Small", "Medium", "Big"],
+    "diameters": [25, 30, 35],
+    "weights": [420, 640, 860],
+    "cost": 8,
+    "name": "Margherita 🌱",
+    "imageURL": "https://cdn.dodostatic.net/static/Img/Products/3c7cfd48e57a4bbe9e805f9ae0ab68d8_584x584.jpeg",
+    "popularity": 1,
+    "categories": [0, 2]
+  },
+  {
+    "id": 2,
+    "description": "Mozzarella, cheddar cheese and parmesan, alfredo sauce",
+    "types": ["Thin"],
+    "sizes": ["Small", "Medium", "Big"],
+    "diameters": [25, 30, 35],
+    "weights": [330, 500, 670],
+    "cost": 6,
+    "name": "Cheese 🧀",
+    "imageURL": "https://cdn.dodostatic.net/static/Img/Products/2ea16022779e4e46acd70a19f397ba8f_584x584.jpeg",
+    "popularity": 2,
+    "categories": [0, 2]
+  },
+  {
+    "id": 3,
+    "description": "Alfredo sauce, parmesan and cheddar cheese, blue cheese, mozzarella",
+    "types": ["Thin", "Traditional"],
+    "sizes": ["Medium", "Big"],
+    "diameters": [30, 35],
+    "weights": [570, 760],
+    "cost": 10,
+    "name": "Four-Cheese 🧀🧀🧀🧀",
+    "imageURL": "https://cdn.dodostatic.net/static/Img/Products/f74c9f27384542128f51587009ce5af2_584x584.jpeg",
+    "popularity": 7,
+    "categories": [0, 2]
+  },
+  {
+    "id": 4,
+    "description": "Spicy chorizo sausages, jalapeno hot pepper, barbecue sauce, beef meatballs, tomatoes, sweet pepper, red onion, mozzarella, tomato sauce",
+    "types": ["Thin", "Traditional"],
+    "sizes": ["Small", "Medium", "Big"],
+    "diameters": [25, 30, 35],
+    "weights": [490, 740, 1000],
+    "cost": 12,
+    "name": "Diablo 🌶🌶",
+    "imageURL": "https://cdn.dodostatic.net/static/Img/Products/4f9a1883ac3145c49d7c3bd5676f5e80_584x584.jpeg",
+    "popularity": 4,
+    "categories": [0, 1, 3]
+  },
+  {
+    "id": 5,
+    "description": "Oven-baked potatoes, pickled cucumbers, chicken, ranch sauce, tomatoes, red onion, garlic, mozzarella, tomato sauce",
+    "types": ["Thin", "Traditional"],
+    "sizes": ["Small", "Medium", "Big"],
+    "diameters": [25, 30, 35],
+    "weights": [535, 870, 1125],
+    "cost": 11,
+    "name": "Village 🧑‍🌾",
+    "imageURL": "https://cdn.dodostatic.net/static/Img/Products/9ab9494fb4c84dc2a545e82e719230a4_584x584.jpeg",
+    "popularity": 5,
+    "categories": [0, 1]
+  },
+  {
+    "id": 6,
+    "description": "Tomato sauce, mozzarella, spicy chorizo sausages, sweet pepper",
+    "types": ["Thin", "Traditional"],
+    "sizes": ["Small", "Medium", "Big"],
+    "diameters": [25, 30, 35],
+    "weights": [340, 500, 660],
+    "cost": 7,
+    "name": "Chorizo fresh 🌶",
+    "imageURL": "https://cdn.dodostatic.net/static/Img/Products/6c32cd1456f94897b1feb376c72b1dad_584x584.jpeg",
+    "popularity": 6,
+    "categories": [0, 1, 3]
+  },
+  {
+    "id": 7,
+    "description": "Ham, pineapple, mozzarella, tomato sauce",
+    "types": ["Thin", "Traditional"],
+    "sizes": ["Small", "Medium", "Big"],
+    "diameters": [25, 30, 35],
+    "weights": [430, 650, 870],
+    "cost": 8,
+    "name": "Hawaiian 🏄‍♂️",
+    "imageURL": "https://cdn.dodostatic.net/static/Img/Products/4aec6cc08719404e94262698eb014cba_584x584.jpeg",
+    "popularity": 3,
+    "categories": [0, 1]
+  },
+  {
+    "id": 8,
+    "description": "Spicy chorizo, tomato sauce, chicken, spicy pepperoni, mozzarella, ham",
+    "types": ["Thin", "Traditional"],
+    "sizes": ["Small", "Medium", "Big"],
+    "diameters": [25, 30, 35],
+    "weights": [410, 610, 830],
+    "cost": 8,
+    "name": "Meat 🍗",
+    "imageURL": "https://cdn.dodostatic.net/static/Img/Products/9112b1b2d5f44bfbbf367e2e11ba8924_584x584.jpeg",
+    "popularity": 8,
+    "categories": [0, 1, 3]
+  }
 ]

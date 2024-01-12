@@ -13,15 +13,9 @@ const Cart = () => {
 
   const { pizzas, orderTotal, amountTotal } = useSelector(selectCart);
 
-  if (pizzas.length === 0) {
+  if (!pizzas.length) {
     return <EmptyCart />;
   }
-
-  const onClearCart = () => {
-    if (window.confirm('Do you really want to clear the cart?')) {
-      dispatch(clearCart());
-    }
-  };
 
   return (
     <div className='cart'>
@@ -67,20 +61,20 @@ const Cart = () => {
               strokeLinejoin='round'
             />
           </svg>
-          <span onClick={onClearCart}>Clear cart</span>
+          <span
+            onClick={() => {
+              if (window.confirm('Do you really want to clear the cart?')) {
+                dispatch(clearCart());
+              }
+            }}
+          >
+            Clear cart
+          </span>
         </div>
       </div>
       <div className='cart__items hide-scrollbars'>
         {pizzas.map((pizza, index) => (
-          <CartItem
-            key={index}
-            name={pizza.name}
-            type={pizza.type}
-            diameter={pizza.diameter}
-            cost={pizza.cost}
-            amount={pizza.amount}
-            imageURL={pizza.imageURL}
-          />
+          <CartItem key={index} {...pizza} />
         ))}
       </div>
       <div className='cart__bottom'>

@@ -1,22 +1,17 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
 import axios from 'axios';
 
-import {
-  PizzaType,
-  RequestParametersTypes,
-  Status,
-  IFetchState
-} from './types';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+import { Pizza, RequestParametersTypes, Status, IFetchState } from './types';
 
 export const fetchHomePizzas = createAsyncThunk<
-  PizzaType[],
+  Pizza[],
   RequestParametersTypes
 >('fetch/homePizzas', async (parameters) => {
   const { currentPage, categoryIndex, sortParameterName, sortParameterIndex } =
     parameters;
 
-  const { data } = await axios.get<PizzaType[]>(
+  const { data } = await axios.get<Pizza[]>(
     `https://62e2f40c3891dd9ba8f276a3.mockapi.io/pizzas?p=${currentPage}&l=4&categories=${categoryIndex}&sortBy=${sortParameterName}&order=${
       sortParameterIndex % 2 === 0 ? 'asc' : 'desc'
     }`
@@ -25,10 +20,10 @@ export const fetchHomePizzas = createAsyncThunk<
   return data;
 });
 
-const initialState = {
+const initialState: IFetchState = {
   status: Status.PENDING,
   homePizzas: []
-} as IFetchState;
+};
 
 export const fetchSlice = createSlice({
   name: 'fetch',

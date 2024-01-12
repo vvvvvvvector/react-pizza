@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { CartItemType, UniquePizzaType, ICartState } from './types';
+import { CartItem, UniquePizza, ICartState } from './types';
 
 const getCartFromLS = () => {
   const data = localStorage.getItem('cart');
 
   if (data) {
-    const parsed: CartItemType[] = JSON.parse(data);
+    const parsed: CartItem[] = JSON.parse(data);
 
     const orderTotal = parsed.reduce(
       (sum, obj) => obj.cost * obj.amount + sum,
@@ -32,7 +32,7 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addPizza(state, action: PayloadAction<CartItemType>) {
+    addPizza(state, action: PayloadAction<CartItem>) {
       const foundedPizza = state.pizzas.find((obj) =>
         trulySelectedPizza(obj, action)
       );
@@ -41,7 +41,7 @@ export const cartSlice = createSlice({
       calculateOrderTotal(state);
       calculateAmountTotal(state);
     },
-    removePizza(state, action: PayloadAction<UniquePizzaType>) {
+    removePizza(state, action: PayloadAction<UniquePizza>) {
       state.pizzas = state.pizzas.filter(
         (pizza) =>
           pizza.name !== action.payload.name ||
@@ -52,7 +52,7 @@ export const cartSlice = createSlice({
       calculateOrderTotal(state);
       calculateAmountTotal(state);
     },
-    incrementAmount(state, action: PayloadAction<UniquePizzaType>) {
+    incrementAmount(state, action: PayloadAction<UniquePizza>) {
       const pizza = state.pizzas.find((obj) => trulySelectedPizza(obj, action));
 
       if (pizza) {
@@ -61,7 +61,7 @@ export const cartSlice = createSlice({
         state.amountTotal++;
       }
     },
-    decrementAmount(state, action: PayloadAction<UniquePizzaType>) {
+    decrementAmount(state, action: PayloadAction<UniquePizza>) {
       const pizza = state.pizzas.find((obj) => trulySelectedPizza(obj, action));
 
       if (pizza) {
@@ -90,8 +90,8 @@ const calculateAmountTotal = (state: ICartState) => {
 };
 
 const trulySelectedPizza = (
-  pizza: CartItemType,
-  action: PayloadAction<UniquePizzaType>
+  pizza: CartItem,
+  action: PayloadAction<UniquePizza>
 ) => {
   return (
     pizza.name === action.payload.name &&

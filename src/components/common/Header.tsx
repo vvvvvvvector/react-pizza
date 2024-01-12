@@ -1,7 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-
 import debounce from 'lodash.debounce';
 
 import { selectHome } from '../../redux/home/selectors';
@@ -24,12 +23,6 @@ export const Header = () => {
   const { searchValue } = useSelector(selectHome);
 
   const { pizzas, orderTotal, amountTotal } = useSelector(selectCart);
-
-  const onClickSearchClear = () => {
-    setInputValue('');
-    dispatch(setSearchValue(''));
-    searchReference.current?.focus();
-  };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const waitUntilIStop = useCallback(
@@ -74,7 +67,11 @@ export const Header = () => {
               />
               {searchValue && (
                 <svg
-                  onClick={onClickSearchClear}
+                  onClick={() => {
+                    setInputValue('');
+                    dispatch(setSearchValue(''));
+                    searchReference.current?.focus();
+                  }}
                   width='32'
                   height='32'
                   viewBox='0 0 32 32'

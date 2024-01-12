@@ -8,7 +8,6 @@ import { selectHome } from '../redux/home/selectors';
 import { selectOpened } from '../redux/overlay/selectors';
 import { setCurrentPage } from '../redux/home/slice';
 import { fetchHomePizzas } from '../redux/fetch/slice';
-import { RequestParametersTypes } from '../redux/fetch/types';
 
 import {
   Overlay,
@@ -19,14 +18,14 @@ import {
   Pagination
 } from '../components';
 
-const sortParameters: string[] = [
+const sortParameters = [
   'popularity',
   'popularity',
   'cost',
   'cost',
   'name',
   'name'
-];
+] as const;
 
 export const Home = () => {
   const dispatch = useAppDispatch();
@@ -44,14 +43,14 @@ export const Home = () => {
   } = useSelector(selectHome);
 
   useEffect(() => {
-    const request: RequestParametersTypes = {
-      currentPage: currentPage,
-      categoryIndex: categoryIndex,
-      sortParameterName: sortParameters[sortParameterIndex],
-      sortParameterIndex: sortParameterIndex
-    };
-
-    dispatch(fetchHomePizzas(request));
+    dispatch(
+      fetchHomePizzas({
+        currentPage: currentPage,
+        categoryIndex: categoryIndex,
+        sortParameterName: sortParameters[sortParameterIndex],
+        sortParameterIndex: sortParameterIndex
+      })
+    );
 
     window.scrollTo({
       top: 0,
@@ -76,10 +75,6 @@ export const Home = () => {
     return status === 'pending' ? skeletons : filteredPizzas;
   };
 
-  const onChangePage = (page: number) => {
-    dispatch(setCurrentPage(page));
-  };
-
   return (
     <>
       {opened && <Overlay />}
@@ -93,7 +88,12 @@ export const Home = () => {
           : `${categoryName} pizzas`}
       </h2>
       <div className='content__items'>{renderContentItems()}</div>
-      <Pagination pageIndex={currentPage} onChangePage={onChangePage} />
+      <Pagination
+        pageIndex={currentPage}
+        onChangePage={(page: number) => {
+          dispatch(setCurrentPage(page));
+        }}
+      />
     </>
   );
 };

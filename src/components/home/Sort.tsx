@@ -6,23 +6,23 @@ import { setSortParameter } from '../../redux/home/slice';
 
 import arrowSVG from '../../assets/images/categories-arrow.svg';
 
-const sortParameters: string[] = [
+const sortParameters = [
   'popularity ↑',
   'popularity ↓',
   'cost ↑',
   'cost ↓',
   'alphabet ↑',
   'alphabet ↓'
-];
+] as const;
 
 export const Sort = () => {
   const dispatch = useDispatch();
 
   const [showPopup, setShowPopup] = useState<boolean>(false);
 
-  const popupReference = useRef<HTMLDivElement>(null);
-
   const { sortParameterIndex } = useSelector(selectHome);
+
+  const popupReference = useRef<HTMLDivElement>(null);
 
   // clickOutsideSort is working only when sort component is on page(mounted?)
   useEffect(() => {

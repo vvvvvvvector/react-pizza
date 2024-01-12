@@ -1,10 +1,10 @@
-export type UniquePizzaType = {
+export type UniquePizza = {
   name: string;
   type: string;
   diameter: number;
 };
 
-export type CartItemType = {
+export type CartItem = {
   name: string;
   cost: number;
   imageURL: string;
@@ -16,5 +16,5 @@ export type CartItemType = {
 export interface ICartState {
   orderTotal: number;
   amountTotal: number;
-  pizzas: CartItemType[];
+  pizzas: CartItem[];
 }

@@ -5,11 +5,10 @@ import { selectPizza } from '../../redux/overlay/selectors';
 import { selectCartItem } from '../../redux/cart/selectors';
 import { addPizza } from '../../redux/cart/slice';
 import { setOpened } from '../../redux/overlay/slice';
-import { CartItemType } from '../../redux/cart/types';
 
 import { Counter } from '../index';
 
-const pizzaImageSizes: number[] = [320, 370, 425];
+const pizzaImageSizes = [320, 370, 425] as const;
 
 export const Overlay = () => {
   const dispatch = useDispatch();
@@ -53,19 +52,6 @@ export const Overlay = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const onClickAdd = () => {
-    const cartItem: CartItemType = {
-      name: pizza.name,
-      type: pizza.types[selectedType],
-      diameter: pizza.diameters[selectedSize],
-      cost: calculateCost(),
-      amount: 1,
-      imageURL: pizza.imageURL
-    };
-
-    dispatch(addPizza(cartItem));
-  };
 
   const calculateCost = () => {
     if (pizza.sizes.length === 2) {
@@ -133,7 +119,18 @@ export const Overlay = () => {
           <div className='bottom'>
             <button
               disabled={amount >= 99}
-              onClick={onClickAdd}
+              onClick={() => {
+                dispatch(
+                  addPizza({
+                    name: pizza.name,
+                    type: pizza.types[selectedType],
+                    diameter: pizza.diameters[selectedSize],
+                    cost: calculateCost(),
+                    amount: 1,
+                    imageURL: pizza.imageURL
+                  })
+                );
+              }}
               className='button button-order-overlay'
             >
               <span>Add to cart for {calculateCost()} $</span>

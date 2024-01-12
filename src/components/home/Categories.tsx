@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectHome } from '../../redux/home/selectors';
 import { setCategoryIndex, setCategoryName } from '../../redux/home/slice';
 
-const categories: string[] = ['All', 'Meat', 'Vegetarian', 'Spicy'];
+const categories = ['All', 'Meat', 'Vegetarian', 'Spicy'] as const;
 
 export const Categories = () => {
   const dispatch = useDispatch();

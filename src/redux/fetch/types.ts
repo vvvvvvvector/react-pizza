@@ -1,4 +1,4 @@
-export type PizzaType = {
+export type Pizza = {
   id: string;
   description: string;
   types: string[];
@@ -25,5 +25,5 @@ export enum Status {
 
 export interface IFetchState {
   status: Status;
-  homePizzas: PizzaType[];
+  homePizzas: Pizza[];
 }

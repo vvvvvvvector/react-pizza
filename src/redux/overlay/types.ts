@@ -1,6 +1,6 @@
-import { PizzaType } from '../fetch/types';
+import { Pizza } from '../fetch/types';
 
 export interface IOverlayState {
   opened: boolean;
-  pizza: PizzaType;
+  pizza: Pizza;
 }

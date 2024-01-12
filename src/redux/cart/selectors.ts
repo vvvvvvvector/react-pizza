@@ -1,11 +1,11 @@
 import { RootState } from '../store';
 
-import { PizzaType } from '../fetch/types';
+import { Pizza } from '../fetch/types';
 
 export const selectCart = (state: RootState) => state.cart;
 
 export const selectCartItem =
-  (pizza: PizzaType, selectedType: number, selectedSize: number) =>
+  (pizza: Pizza, selectedType: number, selectedSize: number) =>
   (state: RootState) =>
     state.cart.pizzas.find(
       (obj) =>

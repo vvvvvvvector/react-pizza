@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { IOverlayState } from './types';
-import { PizzaType } from '../fetch/types';
+import { Pizza } from '../fetch/types';
 
 const initialState = {
   opened: false,
@@ -25,7 +25,7 @@ export const overlaySlice = createSlice({
     setOpened(state, action: PayloadAction<boolean>) {
       state.opened = action.payload;
     },
-    setPizza(state, action: PayloadAction<PizzaType>) {
+    setPizza(state, action: PayloadAction<Pizza>) {
       state.pizza = action.payload;
     }
   }
