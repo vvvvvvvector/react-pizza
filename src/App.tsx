@@ -11,6 +11,7 @@ import './scss/pages/_all_pages.scss';
 const Cart = React.lazy(
   () => import(/* webpackChunkName: "Cart" */ './pages/Cart')
 );
+
 const NotFound = React.lazy(
   () => import(/* webpackChunkName: "NotFound" */ './pages/NotFound')
 );
