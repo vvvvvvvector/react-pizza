@@ -13,9 +13,7 @@ const Cart = () => {
 
   const { pizzas, orderTotal, amountTotal } = useSelector(selectCart);
 
-  if (!pizzas.length) {
-    return <EmptyCart />;
-  }
+  if (!pizzas.length) return <EmptyCart />;
 
   return (
     <div className='cart'>
