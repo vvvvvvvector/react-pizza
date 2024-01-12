@@ -1,13 +1,14 @@
 @import '../variables';
 
 .header {
+  display: grid;
+  place-items: center;
   padding: 40px 0;
   border-bottom: 1px solid $gray-line;
 
   .container {
     display: flex;
     justify-content: space-between;
-    margin: 0 auto; // vertical horizontal
     width: $content-width;
     align-items: center;
 

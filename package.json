@@ -1,14 +1,13 @@
 {
-  "name": "react-pizza",
-  "private": true,
+  "name": "pizza",
+  "description": "Website for a profitable (I guess) pizzeria.",
   "version": "0.1.0",
-  "homepage": "https://vvvvvvvector.github.io/react-pizza",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vvvvvvvector/pizza.git"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^29.0.0",
     "@types/node": "^18.7.14",
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
@@ -21,8 +20,7 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
-    "typescript": "^4.8.2",
-    "web-vitals": "^2.1.4"
+    "typescript": "^4.8.2"
   },
   "scripts": {
     "dev": "vite",
@@ -32,7 +30,6 @@
   "devDependencies": {
     "@types/lodash.debounce": "^4.0.7",
     "@vitejs/plugin-react": "^3.1.0",
-    "gh-pages": "^4.0.0",
     "sass": "^1.62.0",
     "vite": "^4.2.3"
   }

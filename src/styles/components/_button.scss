@@ -30,7 +30,7 @@
 
     // cost and amount
     span {
-      color: white;
+      color: hsl(0, 0%, 100%);
       font-weight: 600;
       font-size: 16px;
     }
@@ -55,7 +55,7 @@
   &--default {
     display: flex;
     align-items: center;
-    background-color: #ffffff;
+    background-color: hsl(0, 0%, 100%);
     border-color: $orange;
     max-height: 44px;
 
@@ -71,7 +71,7 @@
         text-align: center;
         width: 26px;
         height: 26px;
-        color: #ffffff;
+        color: hsl(0, 0%, 100%);
         background-color: $orange;
         border: 1px solid $orange;
       }
@@ -95,19 +95,19 @@
       background-color: $orange;
 
       span {
-        color: #ffffff;
+        color: hsl(0, 0%, 100%);
       }
 
       svg {
         path {
-          fill: #ffffff;
+          fill: hsl(0, 0%, 100%);
         }
       }
 
       .counter__pizza {
         b {
           color: $orange;
-          background-color: #ffffff;
+          background-color: hsl(0, 0%, 100%);
         }
       }
     }
@@ -118,17 +118,17 @@
 
     &:disabled {
       cursor: auto;
-      border-color: #d0d0d0;
-      background-color: #ffffff;
+      border-color: hsl(0, 0%, 82%);
+      background-color: hsl(0, 0%, 100%);
 
       svg {
         path {
-          fill: #d0d0d0;
+          fill: hsl(0, 0%, 82%);
         }
       }
 
       span {
-        color: #d0d0d0;
+        color: hsl(0, 0%, 82%);
       }
 
       .counter__pizza {
