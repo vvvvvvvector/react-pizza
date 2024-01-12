@@ -1,58 +1,58 @@
 @import '../../variables';
 
 .pagination {
-    ul {
-        li {
-            margin-right: 10px;
-            display: inline-block; // list items in one line
+  ul {
+    li {
+      margin-right: 10px;
+      display: inline-block; // list items in one line
 
-            button {
-                background-color: #ffffff;
-                width: 45px;
-                height: 45px;
-                cursor: pointer;
-                text-align: center; // that aligned text in oX
-                line-height: 44px; // that aligned/shifted text in oY
-                border: 1px solid $orange;
-                color: $orange;
-                border-radius: 30px;
-                display: inline-block; // after that, the buttons became round if border radius = x px, if not buttons are square
-                transition: background-color $duration ease-in-out;
+      button {
+        background-color: #ffffff;
+        width: 45px;
+        height: 45px;
+        cursor: pointer;
+        text-align: center; // that aligned text in oX
+        line-height: 44px; // that aligned/shifted text in oY
+        border: 1px solid $orange;
+        color: $orange;
+        border-radius: 30px;
+        display: inline-block; // after that, the buttons became round if border radius = x px, if not buttons are square
+        transition: background-color $duration ease-in-out;
 
-                &:disabled {
-                    color: #D0D0D0;
-                    border-color: #D0D0D0;
-                    transform: none;
+        &:disabled {
+          color: #d0d0d0;
+          border-color: #d0d0d0;
+          transform: none;
 
-                    &:hover {
-                        background-color: #ffffff;
-                        color: #D0D0D0;
-                    }
+          &:hover {
+            background-color: #ffffff;
+            color: #d0d0d0;
+          }
 
-                    &:active {
-                        background-color: #ffffff;
-                    }
-                }
-
-                span {
-                    font-size: 15px;
-                }
-
-                &:hover {
-                    background-color: $orange;
-                    color: #ffffff;
-                }
-
-                &:active {
-                    background-color: darken($orange, 12%);
-                }
-
-                &.active {
-                    background-color: $orange;
-                    color: #ffffff;
-                    cursor: auto;
-                }
-            }
+          &:active {
+            background-color: #ffffff;
+          }
         }
+
+        span {
+          font-size: 15px;
+        }
+
+        &:hover {
+          background-color: $orange;
+          color: #ffffff;
+        }
+
+        &:active {
+          background-color: darken($orange, 12%);
+        }
+
+        &.active {
+          background-color: $orange;
+          color: #ffffff;
+          cursor: auto;
+        }
+      }
     }
+  }
 }

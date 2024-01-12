@@ -3,89 +3,109 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CartItemType, UniquePizzaType, ICartState } from './types';
 
 const getCartFromLS = () => {
-    const data = localStorage.getItem("cart");
+  const data = localStorage.getItem('cart');
 
-    if (data) {
-        const parsed: CartItemType[] = JSON.parse(data);
+  if (data) {
+    const parsed: CartItemType[] = JSON.parse(data);
 
-        const orderTotal = parsed.reduce((sum, obj) => obj.cost * obj.amount + sum, 0);
-        const orderAmount = parsed.reduce((sum, obj) => obj.amount + sum, 0);
+    const orderTotal = parsed.reduce(
+      (sum, obj) => obj.cost * obj.amount + sum,
+      0
+    );
+    const orderAmount = parsed.reduce((sum, obj) => obj.amount + sum, 0);
 
-        return { pizzas: parsed, orderTotal: orderTotal, orderAmount: orderAmount };
-    }
+    return { pizzas: parsed, orderTotal: orderTotal, orderAmount: orderAmount };
+  }
 
-    return { pizzas: [], orderTotal: 0, orderAmount: 0 };
+  return { pizzas: [], orderTotal: 0, orderAmount: 0 };
 };
 
 const { orderTotal, orderAmount, pizzas } = getCartFromLS();
 
 const initialState = {
-    orderTotal: orderTotal,
-    amountTotal: orderAmount,
-    pizzas: pizzas
+  orderTotal: orderTotal,
+  amountTotal: orderAmount,
+  pizzas: pizzas
 } as ICartState;
 
 export const cartSlice = createSlice({
-    name: "cart",
-    initialState,
-    reducers: {
-        addPizza(state, action: PayloadAction<CartItemType>) {
-            const foundedPizza = state.pizzas.find((obj) => trulySelectedPizza(obj, action));
-            foundedPizza ? foundedPizza.amount++ : state.pizzas.push(action.payload);
+  name: 'cart',
+  initialState,
+  reducers: {
+    addPizza(state, action: PayloadAction<CartItemType>) {
+      const foundedPizza = state.pizzas.find((obj) =>
+        trulySelectedPizza(obj, action)
+      );
+      foundedPizza ? foundedPizza.amount++ : state.pizzas.push(action.payload);
 
-            calculateOrderTotal(state);
-            calculateAmountTotal(state);
-        },
-        removePizza(state, action: PayloadAction<UniquePizzaType>) {
-            state.pizzas = state.pizzas.filter((pizza) => pizza.name !== action.payload.name || pizza.type !== action.payload.type || pizza.diameter !== action.payload.diameter);
+      calculateOrderTotal(state);
+      calculateAmountTotal(state);
+    },
+    removePizza(state, action: PayloadAction<UniquePizzaType>) {
+      state.pizzas = state.pizzas.filter(
+        (pizza) =>
+          pizza.name !== action.payload.name ||
+          pizza.type !== action.payload.type ||
+          pizza.diameter !== action.payload.diameter
+      );
 
-            calculateOrderTotal(state);
-            calculateAmountTotal(state);
-        },
-        incrementAmount(state, action: PayloadAction<UniquePizzaType>) {
-            const pizza = state.pizzas.find((obj) => trulySelectedPizza(obj, action));
+      calculateOrderTotal(state);
+      calculateAmountTotal(state);
+    },
+    incrementAmount(state, action: PayloadAction<UniquePizzaType>) {
+      const pizza = state.pizzas.find((obj) => trulySelectedPizza(obj, action));
 
-            if (pizza) {
-                pizza.amount++;
-                calculateOrderTotal(state);
-                state.amountTotal++;
-            }
-        },
-        decrementAmount(state, action: PayloadAction<UniquePizzaType>) {
-            const pizza = state.pizzas.find((obj) => trulySelectedPizza(obj, action));
+      if (pizza) {
+        pizza.amount++;
+        calculateOrderTotal(state);
+        state.amountTotal++;
+      }
+    },
+    decrementAmount(state, action: PayloadAction<UniquePizzaType>) {
+      const pizza = state.pizzas.find((obj) => trulySelectedPizza(obj, action));
 
-            if (pizza) {
-                pizza.amount--;
-                calculateOrderTotal(state);
-                state.amountTotal--;
-            }
-        },
-        clearCart(state) {
-            state.pizzas = [];
-            state.orderTotal = 0;
-            state.amountTotal = 0;
-        },
+      if (pizza) {
+        pizza.amount--;
+        calculateOrderTotal(state);
+        state.amountTotal--;
+      }
+    },
+    clearCart(state) {
+      state.pizzas = [];
+      state.orderTotal = 0;
+      state.amountTotal = 0;
     }
+  }
 });
 
 const calculateOrderTotal = (state: ICartState) => {
-    state.orderTotal = state.pizzas.reduce((sum, obj) => obj.cost * obj.amount + sum, 0);
+  state.orderTotal = state.pizzas.reduce(
+    (sum, obj) => obj.cost * obj.amount + sum,
+    0
+  );
 };
 
 const calculateAmountTotal = (state: ICartState) => {
-    state.amountTotal = state.pizzas.reduce((sum, obj) => obj.amount + sum, 0);
+  state.amountTotal = state.pizzas.reduce((sum, obj) => obj.amount + sum, 0);
 };
 
-const trulySelectedPizza = (pizza: CartItemType, action: PayloadAction<UniquePizzaType>) => {
-    return pizza.name === action.payload.name && pizza.type === action.payload.type && pizza.diameter === action.payload.diameter;
+const trulySelectedPizza = (
+  pizza: CartItemType,
+  action: PayloadAction<UniquePizzaType>
+) => {
+  return (
+    pizza.name === action.payload.name &&
+    pizza.type === action.payload.type &&
+    pizza.diameter === action.payload.diameter
+  );
 };
 
 export const {
-    removePizza,
-    clearCart,
-    addPizza,
-    incrementAmount,
-    decrementAmount
+  removePizza,
+  clearCart,
+  addPizza,
+  incrementAmount,
+  decrementAmount
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

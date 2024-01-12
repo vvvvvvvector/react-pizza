@@ -1,247 +1,247 @@
 @import '../../variables';
 
 .button {
-    // ------all buttons behaviour, style------
+  // ------all buttons behaviour, style------
 
-    cursor: pointer;
-    background-color: $orange;
-    border-radius: 30px;
-    transition: background-color $duration ease-in-out;
-    padding: 10px 20px;
-    text-align: center;
-    border: 1px solid transparent;
+  cursor: pointer;
+  background-color: $orange;
+  border-radius: 30px;
+  transition: background-color $duration ease-in-out;
+  padding: 10px 20px;
+  text-align: center;
+  border: 1px solid transparent;
+
+  &:hover {
+    background-color: darken($orange, 8%);
+  }
+
+  &:active {
+    background-color: darken($orange, 12%);
+  }
+
+  // ------all buttons behaviour, style------
+
+  // header cart button
+  &--cart {
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    padding: 12px 25px;
+
+    // cost and amount
+    span {
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    // div == delimiter
+    div {
+      width: 1px;
+      height: 25px;
+      background-color: rgba(255, 255, 255, 0.25);
+      margin-left: 14px;
+      margin-right: 14px;
+    }
+
+    // shopping-cart
+    img {
+      margin-right: 5px;
+      margin-bottom: 3px;
+    }
+  }
+
+  // pizza-component add button
+  &--default {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-color: $orange;
+    max-height: 44px;
+
+    .counter__pizza {
+      margin-left: 7px;
+
+      b {
+        display: inline-block;
+        border-radius: 30px;
+        font-style: normal;
+        font-size: 15px;
+        line-height: 26px;
+        text-align: center;
+        width: 26px;
+        height: 26px;
+        color: #ffffff;
+        background-color: $orange;
+        border: 1px solid $orange;
+      }
+    }
+
+    span {
+      font-size: 16px;
+      font-weight: 600;
+      color: $orange;
+    }
+
+    svg {
+      margin-right: 8px;
+
+      path {
+        fill: $orange;
+      }
+    }
 
     &:hover {
-        background-color: darken($orange, 8%);
+      background-color: $orange;
+
+      span {
+        color: #ffffff;
+      }
+
+      svg {
+        path {
+          fill: #ffffff;
+        }
+      }
+
+      .counter__pizza {
+        b {
+          color: $orange;
+          background-color: #ffffff;
+        }
+      }
     }
 
     &:active {
-        background-color: darken($orange, 12%);
+      background-color: darken($orange, 10%);
     }
 
-    // ------all buttons behaviour, style------
+    &:disabled {
+      cursor: auto;
+      border-color: #d0d0d0;
+      background-color: #ffffff;
 
-    // header cart button
-    &--cart {
-        line-height: 23px;
-        display: flex;
-        align-items: center;
-        padding: 12px 25px;
-
-        // cost and amount 
-        span {
-            color: white;
-            font-weight: 600;
-            font-size: 16px;
+      svg {
+        path {
+          fill: #d0d0d0;
         }
+      }
 
-        // div == delimiter
-        div {
-            width: 1px;
-            height: 25px;
-            background-color: rgba(255, 255, 255, 0.25);
-            margin-left: 14px;
-            margin-right: 14px;
-        }
+      span {
+        color: #d0d0d0;
+      }
 
-        // shopping-cart
-        img {
-            margin-right: 5px;
-            margin-bottom: 3px;
+      .counter__pizza {
+        b {
+          color: #ffffff;
+          background-color: #d0d0d0;
+          border-color: #d0d0d0;
         }
+      }
+    }
+  }
+
+  // go home button in emptyCart component
+  &--emptyCart {
+    width: 200px;
+    color: #ffffff;
+    background-color: #282828;
+
+    &:hover {
+      background-color: lighten(#282828, 7%);
     }
 
-    // pizza-component add button
-    &--default {
-        display: flex;
-        align-items: center;
-        background-color: #ffffff;
-        border-color: $orange;
-        max-height: 44px;
+    &:active {
+      background-color: lighten(#282828, 12%);
+    }
+  }
 
-        .counter__pizza {
-            margin-left: 7px;
+  // go back cart if cart is not empty
+  &-go-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border: 1px solid #cacaca;
 
-            b {
-                display: inline-block;
-                border-radius: 30px;
-                font-style: normal;
-                font-size: 15px;
-                line-height: 26px;
-                text-align: center;
-                width: 26px;
-                height: 26px;
-                color: #ffffff;
-                background-color: $orange;
-                border: 1px solid $orange;
-            }
-        }
-
-        span {
-            font-size: 16px;
-            font-weight: 600;
-            color: $orange;
-        }
-
-        svg {
-            margin-right: 8px;
-
-            path {
-                fill: $orange;
-            }
-        }
-
-        &:hover {
-            background-color: $orange;
-
-            span {
-                color: #ffffff;
-            }
-
-            svg {
-                path {
-                    fill: #ffffff;
-                }
-            }
-
-            .counter__pizza {
-                b {
-                    color: $orange;
-                    background-color: #ffffff;
-                }
-            }
-        }
-
-        &:active {
-            background-color: darken($orange, 10%);
-        }
-
-        &:disabled {
-            cursor: auto;
-            border-color: #D0D0D0;
-            background-color: #ffffff;
-
-            svg {
-                path {
-                    fill: #D0D0D0;
-                }
-            }
-
-            span {
-                color: #D0D0D0;
-            }
-
-            .counter__pizza {
-                b {
-                    color: #ffffff;
-                    background-color: #D0D0D0;
-                    border-color: #D0D0D0;
-                }
-            }
-        }
+    span {
+      color: #cacaca;
+      font-weight: 600;
+      font-size: 16px;
     }
 
-    // go home button in emptyCart component
-    &--emptyCart {
-        width: 200px;
+    svg {
+      margin-right: 10px;
+    }
+
+    &:hover {
+      background-color: #282828;
+      border-color: #282828;
+
+      span {
         color: #ffffff;
-        background-color: #282828;
+      }
 
-        &:hover {
-            background-color: lighten(#282828, 7%);
+      svg {
+        path {
+          stroke: #ffffff;
         }
-
-        &:active {
-            background-color: lighten(#282828, 12%);
-        }
+      }
     }
 
-    // go back cart if cart is not empty
-    &-go-back {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #FFFFFF;
-        border: 1px solid #CACACA;
+    &:active {
+      background-color: lighten(#282828, 10%);
+    }
+  }
 
-        span {
-            color: #CACACA;
-            font-weight: 600;
-            font-size: 16px;
+  &-make-order {
+    span {
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 16px;
+    }
+  }
+
+  &-order-overlay {
+    max-height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 330px;
+
+    &:disabled {
+      cursor: auto;
+      background-color: #d0d0d0;
+
+      .counter__overlay {
+        b {
+          color: #d0d0d0;
         }
-
-        svg {
-            margin-right: 10px;
-        }
-
-        &:hover {
-            background-color: #282828;
-            border-color: #282828;
-
-            span {
-                color: #FFFFFF;
-            }
-
-            svg {
-                path {
-                    stroke: #FFFFFF;
-                }
-            }
-        }
-
-        &:active {
-            background-color: lighten(#282828, 10%);
-        }
+      }
     }
 
-    &-make-order {
-        span {
-            color: #FFFFFF;
-            font-weight: 600;
-            font-size: 16px;
-        }
+    span {
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 16px;
     }
 
-    &-order-overlay {
-        max-height: 44px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-width: 330px;
+    .counter__overlay {
+      margin-left: 8px;
 
-        &:disabled {
-            cursor: auto;
-            background-color: #D0D0D0;
-
-            .counter__overlay {
-                b {
-                    color: #D0D0D0;
-                }
-            }
-        }
-
-        span {
-            color: #FFFFFF;
-            font-weight: 600;
-            font-size: 16px;
-        }
-
-        .counter__overlay {
-            margin-left: 8px;
-
-            b {
-                display: inline-block;
-                border-radius: 30px;
-                font-style: normal;
-                font-size: 15px;
-                line-height: 26px;
-                text-align: center;
-                width: 26px;
-                height: 26px;
-                color: $orange;
-                background-color: #ffffff;
-                border: 1px solid #ffffff;
-            }
-        }
+      b {
+        display: inline-block;
+        border-radius: 30px;
+        font-style: normal;
+        font-size: 15px;
+        line-height: 26px;
+        text-align: center;
+        width: 26px;
+        height: 26px;
+        color: $orange;
+        background-color: #ffffff;
+        border: 1px solid #ffffff;
+      }
     }
+  }
 }

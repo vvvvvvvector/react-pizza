@@ -16,7 +16,7 @@ import {
   Sort,
   Pizza,
   Skeleton,
-  Pagination,
+  Pagination
 } from '../components';
 
 const sortParameters: string[] = [
@@ -25,7 +25,7 @@ const sortParameters: string[] = [
   'cost',
   'cost',
   'name',
-  'name',
+  'name'
 ];
 
 export const Home: React.FC = () => {
@@ -40,7 +40,7 @@ export const Home: React.FC = () => {
     sortParameterIndex,
     categoryName,
     currentPage,
-    searchValue,
+    searchValue
   } = useSelector(selectHome);
 
   React.useEffect(() => {
@@ -48,7 +48,7 @@ export const Home: React.FC = () => {
       currentPage: currentPage,
       categoryIndex: categoryIndex,
       sortParameterName: sortParameters[sortParameterIndex],
-      sortParameterIndex: sortParameterIndex,
+      sortParameterIndex: sortParameterIndex
     };
 
     dispatch(fetchHomePizzas(request));
@@ -56,7 +56,7 @@ export const Home: React.FC = () => {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'smooth',
+      behavior: 'smooth'
     });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
