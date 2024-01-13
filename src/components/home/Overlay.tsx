@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectPizza } from '../../redux/overlay/selectors';
+import { selectPizza, selectOpened } from '../../redux/overlay/selectors';
 import { selectCartItem } from '../../redux/cart/selectors';
 import { addPizza } from '../../redux/cart/slice';
 import { setOpened } from '../../redux/overlay/slice';
@@ -11,49 +11,51 @@ import { Counter } from '../index';
 const pizzaImageSizes = [320, 370, 425] as const;
 
 export const Overlay = () => {
+  const [selectedType, setSelectedType] = useState(0);
+  const [selectedSize, setSelectedSize] = useState(0);
+
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  // const isFirstRender = useRef(false); // because overlay immediately closed when i clicked on the pizza
+
   const dispatch = useDispatch();
 
-  const [selectedType, setSelectedType] = useState<number>(0);
-  const [selectedSize, setSelectedSize] = useState<number>(0);
-
-  const onClose = () => {
-    dispatch(setOpened(false));
-    document.body.style.overflow = 'visible';
-  };
+  const opened = useSelector(selectOpened);
 
   const pizza = useSelector(selectPizza);
-
   const currentPizza = useSelector(
     selectCartItem(pizza, selectedType, selectedSize)
   );
+
   const amount = currentPizza ? currentPizza.amount : 0;
 
-  const wrapperReference = useRef(null);
-  const isFirstRender = useRef(false); // because overlay immediately closed when i clicked on the pizza
-
   // clickOutsideWrapper is working only when overlay component is on page(mounted?)
-  useEffect(() => {
-    const clickOutsideWrapper = (event: MouseEvent) => {
-      if (isFirstRender.current) {
-        if (
-          wrapperReference.current &&
-          !event.composedPath().includes(wrapperReference.current)
-        ) {
-          onClose();
-        }
-      }
-      isFirstRender.current = true;
-    };
+  // useEffect(() => {
+  //   const clickOutsideWrapper = (event: MouseEvent) => {
+  //     if (isFirstRender.current) {
+  //       if (
+  //         wrapperRef.current &&
+  //         !event.composedPath().includes(wrapperRef.current)
+  //       ) {
+  //         onClose();
+  //       }
+  //     }
+  //     isFirstRender.current = true;
+  //   };
 
-    document.body.addEventListener('click', clickOutsideWrapper); // add event listener on first render
+  //   document.body.addEventListener('click', clickOutsideWrapper); // add event listener on first render
 
-    return () =>
-      document.body.removeEventListener('click', clickOutsideWrapper); // delete event listener(unmount)
+  //   return () => {
+  //     document.body.removeEventListener('click', clickOutsideWrapper); // delete event listener(unmount)
+  //   };
+  // }, []);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  function onClose() {
+    dispatch(setOpened(false));
 
-  const calculateCost = () => {
+    document.body.style.overflow = 'visible';
+  }
+
+  function calculateCost() {
     if (pizza.sizes.length === 2) {
       if (selectedSize === 0) {
         return pizza.cost;
@@ -69,11 +71,11 @@ export const Overlay = () => {
     }
 
     return pizza.cost * 2;
-  };
+  }
 
   return (
-    <div className='overlay'>
-      <div ref={wrapperReference} className='pizza-details-wrapper'>
+    <div className={`overlay ${opened ? 'opened' : 'closed'}`}>
+      <div ref={wrapperRef} className='pizza-details-wrapper'>
         <div className='pizza-details-wrapper__leftpart'>
           <img
             width={pizzaImageSizes[selectedSize]}
@@ -87,7 +89,7 @@ export const Overlay = () => {
           <span className='characteristics'>
             {`${pizza.diameters[selectedSize]} cm, ${pizza.types[
               selectedType
-            ].toLowerCase()} dough, ${pizza.weights[selectedSize]} g`}
+            ]?.toLowerCase()} dough, ${pizza.weights[selectedSize]} g`}
           </span>
           <div className='description'>
             <span>{pizza.description}</span>

@@ -12,13 +12,13 @@ import cartSVG from '../../assets/images/shopping-cart.svg';
 import lensSVG from '../../assets/images/search-lens.svg';
 
 export const Header = () => {
-  const dispatch = useDispatch();
-  const { pathname } = useLocation();
-
   const [inputValue, setInputValue] = useState('');
 
   const isFirstRender = useRef<boolean>(true);
   const searchReference = useRef<HTMLInputElement>(null);
+
+  const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
   const { searchValue } = useSelector(selectHome);
 

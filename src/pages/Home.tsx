@@ -5,7 +5,6 @@ import { useAppDispatch } from '../redux/store';
 
 import { selectFetch } from '../redux/fetch/selectors';
 import { selectHome } from '../redux/home/selectors';
-import { selectOpened } from '../redux/overlay/selectors';
 import { setCurrentPage } from '../redux/home/slice';
 import { fetchHomePizzas } from '../redux/fetch/slice';
 
@@ -29,8 +28,6 @@ const sortParameters = [
 
 export const Home = () => {
   const dispatch = useAppDispatch();
-
-  const opened = useSelector(selectOpened);
 
   const { status, homePizzas } = useSelector(selectFetch);
 
@@ -77,7 +74,6 @@ export const Home = () => {
 
   return (
     <>
-      {opened && <Overlay />}
       <div className='content__top'>
         <Categories />
         <Sort />
@@ -94,6 +90,7 @@ export const Home = () => {
           dispatch(setCurrentPage(page));
         }}
       />
+      <Overlay />
     </>
   );
 };

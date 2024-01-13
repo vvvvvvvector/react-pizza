@@ -16,13 +16,13 @@ const sortParameters = [
 ] as const;
 
 export const Sort = () => {
-  const dispatch = useDispatch();
+  const [showPopup, setShowPopup] = useState(false);
 
-  const [showPopup, setShowPopup] = useState<boolean>(false);
+  const popupReference = useRef<HTMLDivElement>(null);
 
   const { sortParameterIndex } = useSelector(selectHome);
 
-  const popupReference = useRef<HTMLDivElement>(null);
+  const dispatch = useDispatch();
 
   // clickOutsideSort is working only when sort component is on page(mounted?)
   useEffect(() => {
