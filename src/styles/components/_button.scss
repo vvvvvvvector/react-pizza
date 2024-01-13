@@ -207,7 +207,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 330px;
+    width: 100%;
+    max-width: 330px;
 
     &:disabled {
       cursor: auto;

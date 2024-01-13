@@ -8,7 +8,7 @@ import { setOpened } from '../../redux/overlay/slice';
 
 import { Counter } from '../index';
 
-const pizzaImageSizes = [320, 370, 425] as const;
+const pizzaImageSizes = [270, 320, 370] as const;
 
 export const Overlay = () => {
   const [selectedType, setSelectedType] = useState(0);

@@ -8,11 +8,12 @@
     align-items: center;
 
     img {
+      transform: rotate(180deg);
       margin-right: 7px;
       transition: transform 0.25s ease-in-out;
 
       &.active {
-        transform: rotate(180deg);
+        transform: rotate(0deg);
       }
     }
 
