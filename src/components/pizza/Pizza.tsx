@@ -6,7 +6,7 @@ import { addPizza } from '~/redux/cart/slice';
 import { setOpened, setPizza } from '~/redux/overlay/slice';
 import { Pizza as P } from '~/redux/fetch/types';
 
-import { Counter } from '~/components/index';
+import { Counter } from '~/components/counter';
 
 export const Pizza = (pizza: P) => {
   const [selectedType, setSelectedType] = useState(0);

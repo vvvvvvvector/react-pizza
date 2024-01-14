@@ -1,7 +1,8 @@
 import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import { Header, Loading } from '~/components/index';
+import { Header } from '~/components/header/header';
+import { Loading } from '~/components/loading/loading';
 
 import { Home } from '~/pages/home/home';
 

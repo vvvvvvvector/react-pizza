@@ -8,14 +8,12 @@ import { selectHome } from '~/redux/home/selectors';
 import { setCurrentPage } from '~/redux/home/slice';
 import { fetchHomePizzas } from '~/redux/fetch/slice';
 
-import {
-  Overlay,
-  Categories,
-  Sort,
-  Pizza,
-  Skeleton,
-  Pagination
-} from '~/components/index';
+import { Overlay } from '~/components/overlay/overlay';
+import { Categories } from '~/components/categories/categories';
+import { Sort } from '~/components/sort/sort';
+import { Pizza } from '~/components/pizza/pizza';
+import { Skeleton } from '~/components/skeleton';
+import { Pagination } from '~/components/pagination/pagination';
 
 const sortParameters = [
   'popularity',

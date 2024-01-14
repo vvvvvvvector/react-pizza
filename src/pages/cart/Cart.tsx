@@ -4,7 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectCart } from '~/redux/cart/selectors';
 import { clearCart } from '~/redux/cart/slice';
 
-import { EmptyCart, CartItem } from '~/components/index';
+import { EmptyCart } from '~/components/empty-cart/empty-cart';
+import { CartItem } from '~/components/cart-item/cart-item';
 
 import cartSVG from '~/assets/images/order-pizza-cart-top.svg';
 

@@ -7,7 +7,7 @@ import { addPizza } from '~/redux/cart/slice';
 import { setOpened } from '~/redux/overlay/slice';
 import { type Pizza } from '~/redux/fetch/types';
 
-import { Counter } from '~/components/index';
+import { Counter } from '~/components/counter';
 
 const pizzaImageSizes = [250, 300, 350] as const;
 
