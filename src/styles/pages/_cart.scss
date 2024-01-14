@@ -1,6 +1,7 @@
 @import '../variables';
 
 .cart {
+  width: 100%;
   max-width: 850px;
   margin: 60px auto;
 
@@ -51,13 +52,6 @@
         }
       }
     }
-  }
-
-  &__items {
-    max-height: 330px;
-    overflow: scroll;
-    margin-top: 30px;
-    margin-bottom: 40px;
   }
 
   &__bottom {

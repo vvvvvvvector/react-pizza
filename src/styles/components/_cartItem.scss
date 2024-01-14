@@ -44,17 +44,18 @@
 
     button {
       cursor: pointer;
+      position: relative;
       width: 30px;
-      background-color: #ffffff;
       height: 30px;
-      text-align: center;
-      line-height: 31px;
+      background-color: #ffffff;
       border: 2px solid #d0d0d0;
       border-radius: 30px;
       display: inline-block;
       transition: all $duration ease-in-out;
 
       svg {
+        position: absolute;
+
         path {
           fill: #d0d0d0;
         }
@@ -62,6 +63,18 @@
 
       &:first-of-type {
         margin-right: 10px;
+
+        svg {
+          top: 9px;
+          right: 7px;
+        }
+      }
+
+      &:nth-of-type(2) {
+        svg {
+          top: 8px;
+          right: 7px;
+        }
       }
 
       &.active {
@@ -103,20 +116,24 @@
   }
 
   .remove {
-    display: flex;
+    display: grid;
     align-items: center;
 
     button {
       cursor: pointer;
+      position: relative;
       width: 30px;
-      background-color: #ffffff;
       height: 30px;
-      text-align: center;
-      line-height: 31px;
+      background-color: #ffffff;
       border: 2px solid #d0d0d0;
       border-radius: 30px;
-      display: inline-block;
       transition: all $duration ease-in-out;
+
+      svg {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+      }
 
       &:hover {
         background-color: #2a2a2a;
