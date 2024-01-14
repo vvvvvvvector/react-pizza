@@ -1,13 +1,15 @@
-import { LoadingOutlined } from '@ant-design/icons';
-import { Spin } from 'antd';
+import { Loader } from 'lucide-react';
 
-const antIcon = <LoadingOutlined style={{ color: 'orange', fontSize: 55 }} />;
-
-export const Loading = ({ info }: { info: string }) => {
+export const Loading = ({ text }: { text: string }) => {
   return (
     <div className='loading-wrapper'>
-      <h2>{info}</h2>
-      <Spin indicator={antIcon} size='large' />
+      <h2>{text}</h2>
+      <Loader
+        className='animate-spin'
+        size={50}
+        color='#bfbfbf'
+        strokeWidth={1.5}
+      />
     </div>
   );
 };

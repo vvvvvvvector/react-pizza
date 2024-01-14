@@ -26,6 +26,7 @@
     line-height: 23px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 12px 25px;
 
     // cost and amount
@@ -45,7 +46,7 @@
     }
 
     // shopping-cart
-    img {
+    svg {
       margin-right: 5px;
       margin-bottom: 3px;
     }
