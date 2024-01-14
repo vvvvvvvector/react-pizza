@@ -6,7 +6,7 @@ import { clearCart } from '../../redux/cart/slice';
 
 import { EmptyCart, CartItem } from '../../components';
 
-import cartSVG from '../assets/images/order-pizza-cart-top.svg';
+import cartSVG from '../../assets/images/order-pizza-cart-top.svg';
 
 const Cart = () => {
   const dispatch = useDispatch();
