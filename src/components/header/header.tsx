@@ -3,13 +3,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import debounce from 'lodash.debounce';
 
-import { selectHome } from '../../redux/home/selectors';
-import { selectCart } from '../../redux/cart/selectors';
-import { setSearchValue } from '../../redux/home/slice';
+import { selectHome } from '~/redux/home/selectors';
+import { selectCart } from '~/redux/cart/selectors';
+import { setSearchValue } from '~/redux/home/slice';
 
-import logoSVG from '../../assets/images/store-logo.svg';
-import cartSVG from '../../assets/images/shopping-cart.svg';
-import lensSVG from '../../assets/images/search-lens.svg';
+import logoSVG from '~/assets/images/store-logo.svg';
+import cartSVG from '~/assets/images/shopping-cart.svg';
+import lensSVG from '~/assets/images/search-lens.svg';
 
 export const Header = () => {
   const [inputValue, setInputValue] = useState('');
@@ -21,21 +21,14 @@ export const Header = () => {
   const { pathname } = useLocation();
 
   const { searchValue } = useSelector(selectHome);
-
   const { pizzas, orderTotal, amountTotal } = useSelector(selectCart);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const waitUntilIStop = useCallback(
     debounce((value: string) => {
       dispatch(setSearchValue(value));
     }, 350),
     []
   );
-
-  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-    waitUntilIStop(event.target.value);
-  };
 
   useEffect(() => {
     if (!isFirstRender.current) {
@@ -61,7 +54,10 @@ export const Header = () => {
               <img alt='search-lens' src={lensSVG} />
               <input
                 ref={searchReference}
-                onChange={onChangeInput}
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                  setInputValue(event.target.value);
+                  waitUntilIStop(event.target.value);
+                }}
                 value={inputValue}
                 placeholder='Search pizza...'
               />

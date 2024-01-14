@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 
-import { selectHome } from '../../redux/home/selectors';
-import { setCategoryIndex, setCategoryName } from '../../redux/home/slice';
+import { selectHome } from '~/redux/home/selectors';
+import { setCategoryIndex, setCategoryName } from '~/redux/home/slice';
 
 const categories = ['All', 'Meat', 'Vegetarian', 'Spicy'] as const;
 

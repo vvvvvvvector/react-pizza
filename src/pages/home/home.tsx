@@ -1,21 +1,19 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch } from '../redux/store';
+import { useAppDispatch } from '~/redux/store';
 
-import { selectFetch } from '../redux/fetch/selectors';
-import { selectHome } from '../redux/home/selectors';
-import { setCurrentPage } from '../redux/home/slice';
-import { fetchHomePizzas } from '../redux/fetch/slice';
+import { selectFetch } from '~/redux/fetch/selectors';
+import { selectHome } from '~/redux/home/selectors';
+import { setCurrentPage } from '~/redux/home/slice';
+import { fetchHomePizzas } from '~/redux/fetch/slice';
 
-import {
-  Overlay,
-  Categories,
-  Sort,
-  Pizza,
-  Skeleton,
-  Pagination
-} from '../components';
+import { Overlay } from '~/components/overlay/overlay';
+import { Categories } from '~/components/categories/categories';
+import { Sort } from '~/components/sort/sort';
+import { Pizza } from '~/components/pizza/pizza';
+import { Skeleton } from '~/components/skeleton';
+import { Pagination } from '~/components/pagination/pagination';
 
 const sortParameters = [
   'popularity',

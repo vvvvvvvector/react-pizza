@@ -1,13 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectPizza, selectOpened } from '../../redux/overlay/selectors';
-import { selectCartItem } from '../../redux/cart/selectors';
-import { addPizza } from '../../redux/cart/slice';
-import { setOpened } from '../../redux/overlay/slice';
-import { type Pizza } from '../../redux/fetch/types';
+import { selectPizza, selectOpened } from '~/redux/overlay/selectors';
+import { selectCartItem } from '~/redux/cart/selectors';
+import { addPizza } from '~/redux/cart/slice';
+import { setOpened } from '~/redux/overlay/slice';
+import { type Pizza } from '~/redux/fetch/types';
 
-import { Counter } from '../index';
+import { Counter } from '~/components/counter';
 
 const pizzaImageSizes = [250, 300, 350] as const;
 
