@@ -3,17 +3,14 @@ import { Routes, Route } from 'react-router-dom';
 
 import { Header, Loading } from '~/components/index';
 
-import { Home } from '~/pages/home/Home';
-
-import '~/styles/_all_components.scss';
-import '~/styles/_all_pages.scss';
+import { Home } from '~/pages/home/home';
 
 const Cart = React.lazy(
-  () => import(/* webpackChunkName: "Cart" */ '~/pages/cart/Cart')
+  () => import(/* webpackChunkName: "Cart" */ '~/pages/cart/cart')
 );
 
 const NotFound = React.lazy(
-  () => import(/* webpackChunkName: "NotFound" */ '~/pages/not-found/NotFound')
+  () => import(/* webpackChunkName: "NotFound" */ '~/pages/not-found/not-found')
 );
 
 export const App = () => {
