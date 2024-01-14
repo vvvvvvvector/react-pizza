@@ -41,10 +41,8 @@
 
     .logo {
       display: flex;
-
-      img {
-        margin-right: 17px;
-      }
+      align-items: center;
+      gap: 1rem;
 
       h1 {
         color: #181818;

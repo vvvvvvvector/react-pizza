@@ -2,13 +2,12 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import debounce from 'lodash.debounce';
+import { Pizza, ShoppingCart } from 'lucide-react';
 
 import { selectHome } from '~/redux/home/selectors';
 import { selectCart } from '~/redux/cart/selectors';
 import { setSearchValue } from '~/redux/home/slice';
 
-import logoSVG from '~/assets/images/store-logo.svg';
-import cartSVG from '~/assets/images/shopping-cart.svg';
 import lensSVG from '~/assets/images/search-lens.svg';
 
 export const Header = () => {
@@ -43,7 +42,7 @@ export const Header = () => {
       <div className='container'>
         <div className='header__left'>
           <div className='logo'>
-            <img width={39} alt='store-logo' src={logoSVG} />
+            <Pizza size={40} />
             <div>
               <h1>react pizza</h1>
               <p>The best pizza in the universe</p>
@@ -98,7 +97,7 @@ export const Header = () => {
               <div className='button button--cart'>
                 <span>{orderTotal} $</span>
                 <div></div>
-                <img alt='shopping-cart' src={cartSVG} />
+                <ShoppingCart size={20} color='#ffffff' />
                 <span>{amountTotal}</span>
               </div>
             </Link>
