@@ -72,7 +72,7 @@
         border-color: darken(#f3f3f3, 12%);
       }
 
-      img {
+      svg {
         margin-right: 10px;
       }
 
@@ -84,7 +84,7 @@
         outline: none;
       }
 
-      svg {
+      svg:nth-child(3) {
         cursor: pointer;
         position: absolute;
         right: 10px;

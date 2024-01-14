@@ -2,13 +2,11 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import debounce from 'lodash.debounce';
-import { Pizza, ShoppingCart } from 'lucide-react';
+import { Pizza, Search, ShoppingCart } from 'lucide-react';
 
 import { selectHome } from '~/redux/home/selectors';
 import { selectCart } from '~/redux/cart/selectors';
 import { setSearchValue } from '~/redux/home/slice';
-
-import lensSVG from '~/assets/images/search-lens.svg';
 
 export const Header = () => {
   const [inputValue, setInputValue] = useState('');
@@ -50,7 +48,7 @@ export const Header = () => {
           </div>
           {pathname === '/' && (
             <div className='search'>
-              <img alt='search-lens' src={lensSVG} />
+              <Search size={20} color='#bfbfbf' />
               <input
                 ref={searchReference}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
