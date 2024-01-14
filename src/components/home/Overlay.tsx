@@ -1,80 +1,70 @@
 import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectPizza } from '../../redux/overlay/selectors';
+import { selectPizza, selectOpened } from '../../redux/overlay/selectors';
 import { selectCartItem } from '../../redux/cart/selectors';
 import { addPizza } from '../../redux/cart/slice';
 import { setOpened } from '../../redux/overlay/slice';
+import { type Pizza } from '../../redux/fetch/types';
 
 import { Counter } from '../index';
 
-const pizzaImageSizes = [320, 370, 425] as const;
+const pizzaImageSizes = [250, 300, 350] as const;
 
 export const Overlay = () => {
+  const [selectedType, setSelectedType] = useState(0);
+  const [selectedSize, setSelectedSize] = useState(0);
+
   const dispatch = useDispatch();
 
-  const [selectedType, setSelectedType] = useState<number>(0);
-  const [selectedSize, setSelectedSize] = useState<number>(0);
-
-  const onClose = () => {
-    dispatch(setOpened(false));
-    document.body.style.overflow = 'visible';
-  };
+  const opened = useSelector(selectOpened);
 
   const pizza = useSelector(selectPizza);
 
-  const currentPizza = useSelector(
-    selectCartItem(pizza, selectedType, selectedSize)
+  function onClose() {
+    dispatch(setOpened(false));
+
+    document.body.style.overflow = 'visible';
+  }
+
+  const details = (
+    <PizzaDetails
+      pizza={pizza}
+      selectedType={selectedType}
+      setSelectedSize={setSelectedSize}
+      selectedSize={selectedSize}
+      setSelectedType={setSelectedType}
+    />
   );
-  const amount = currentPizza ? currentPizza.amount : 0;
-
-  const wrapperReference = useRef(null);
-  const isFirstRender = useRef(false); // because overlay immediately closed when i clicked on the pizza
-
-  // clickOutsideWrapper is working only when overlay component is on page(mounted?)
-  useEffect(() => {
-    const clickOutsideWrapper = (event: MouseEvent) => {
-      if (isFirstRender.current) {
-        if (
-          wrapperReference.current &&
-          !event.composedPath().includes(wrapperReference.current)
-        ) {
-          onClose();
-        }
-      }
-      isFirstRender.current = true;
-    };
-
-    document.body.addEventListener('click', clickOutsideWrapper); // add event listener on first render
-
-    return () =>
-      document.body.removeEventListener('click', clickOutsideWrapper); // delete event listener(unmount)
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const calculateCost = () => {
-    if (pizza.sizes.length === 2) {
-      if (selectedSize === 0) {
-        return pizza.cost;
-      } else if (selectedSize === 1) {
-        return pizza.cost * 1.5;
-      }
-    }
-
-    if (selectedSize === 0) {
-      return pizza.cost;
-    } else if (selectedSize === 1) {
-      return pizza.cost * 1.5;
-    }
-
-    return pizza.cost * 2;
-  };
 
   return (
-    <div className='overlay'>
-      <div ref={wrapperReference} className='pizza-details-wrapper'>
-        <div className='pizza-details-wrapper__leftpart'>
+    <div className={`overlay ${opened ? 'opened' : 'closed'}`}>
+      <div className='pizza-details-mobile-wrapper'>
+        <div className='pizza-details-mobile-wrapper__top'>
+          <img
+            width={pizzaImageSizes[0]}
+            height={pizzaImageSizes[0]}
+            src={pizza.imageURL}
+            alt='pizza'
+          />
+          <svg
+            onClick={onClose}
+            width='10'
+            height='10'
+            viewBox='0 0 10 10'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              d='M8.74791 6.95572L6.49931 4.70712L8.74791 2.45852C9.16184 2.04459 9.16184 1.37338 8.74791 0.959454C8.33398 0.545525 7.66277 0.545525 7.24884 0.959454L5.00024 3.20805L2.75164 0.959454C2.33771 0.545525 1.66651 0.545525 1.25258 0.959454C0.838648 1.37338 0.838648 2.04459 1.25258 2.45852L3.50118 4.70712L1.25258 6.95572C0.838649 7.36965 0.838649 8.04086 1.25258 8.45479C1.66651 8.86872 2.33772 8.86872 2.75164 8.45479L5.00024 6.20619L7.24884 8.45479C7.66277 8.86872 8.33398 8.86872 8.74791 8.45479C9.16184 8.04086 9.16184 7.36965 8.74791 6.95572Z'
+              fill='#D0D0D0'
+            />
+          </svg>
+        </div>
+        <div className='pizza-details-mobile-wrapper__bottom'>{details}</div>
+      </div>
+      <div className='pizza-details-desktop-wrapper'>
+        <div className='pizza-details-desktop-wrapper__leftpart'>
           <img
             width={pizzaImageSizes[selectedSize]}
             height={pizzaImageSizes[selectedSize]}
@@ -82,63 +72,8 @@ export const Overlay = () => {
             src={pizza.imageURL}
           />
         </div>
-        <div className='pizza-details-wrapper__rightpart'>
-          <h2>{pizza.name}</h2>
-          <span className='characteristics'>
-            {`${pizza.diameters[selectedSize]} cm, ${pizza.types[
-              selectedType
-            ].toLowerCase()} dough, ${pizza.weights[selectedSize]} g`}
-          </span>
-          <div className='description'>
-            <span>{pizza.description}</span>
-          </div>
-          <div className='selector'>
-            <ul>
-              {pizza.types.map((type, index) => (
-                <li
-                  key={index}
-                  onClick={() => setSelectedType(index)}
-                  className={selectedType === index ? 'active' : ''}
-                >
-                  {type}
-                </li>
-              ))}
-            </ul>
-            <ul>
-              {pizza.sizes.map((size, index) => (
-                <li
-                  key={index}
-                  onClick={() => setSelectedSize(index)}
-                  className={selectedSize === index ? 'active' : ''}
-                >
-                  {size}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className='bottom'>
-            <button
-              disabled={amount >= 99}
-              onClick={() => {
-                dispatch(
-                  addPizza({
-                    name: pizza.name,
-                    type: pizza.types[selectedType],
-                    diameter: pizza.diameters[selectedSize],
-                    cost: calculateCost(),
-                    amount: 1,
-                    imageURL: pizza.imageURL
-                  })
-                );
-              }}
-              className='button button-order-overlay'
-            >
-              <span>Add to cart for {calculateCost()} $</span>
-              {amount > 0 && (
-                <Counter counterStyle={'counter__overlay'} amount={amount} />
-              )}
-            </button>
-          </div>
+        <div className='pizza-details-desktop-wrapper__rightpart'>
+          {details}
         </div>
         <svg
           onClick={onClose}
@@ -155,5 +90,104 @@ export const Overlay = () => {
         </svg>
       </div>
     </div>
+  );
+};
+
+const PizzaDetails = ({
+  pizza,
+  selectedType,
+  setSelectedType,
+  selectedSize,
+  setSelectedSize
+}: {
+  pizza: Pizza;
+  selectedType: number;
+  setSelectedType: React.Dispatch<React.SetStateAction<number>>;
+  selectedSize: number;
+  setSelectedSize: React.Dispatch<React.SetStateAction<number>>;
+}) => {
+  const dispatch = useDispatch();
+
+  const currentPizza = useSelector(
+    selectCartItem(pizza, selectedType, selectedSize)
+  );
+
+  const amount = currentPizza ? currentPizza.amount : 0;
+
+  function calculateCost() {
+    if (pizza.sizes.length === 2) {
+      if (selectedSize === 0) {
+        return pizza.cost;
+      } else if (selectedSize === 1) {
+        return pizza.cost * 1.5;
+      }
+    }
+
+    if (selectedSize === 0) {
+      return pizza.cost;
+    } else if (selectedSize === 1) {
+      return pizza.cost * 1.5;
+    }
+
+    return pizza.cost * 2;
+  }
+
+  return (
+    <>
+      <h2>{pizza.name}</h2>
+      <span className='characteristics'>
+        {`${pizza.diameters[selectedSize]} cm, ${pizza.types[
+          selectedType
+        ]?.toLowerCase()} dough, ${pizza.weights[selectedSize]} g`}
+      </span>
+      <div className='description'>
+        <span>{pizza.description}</span>
+      </div>
+      <div className='selector'>
+        <ul>
+          {pizza.types.map((type, index) => (
+            <li
+              key={index}
+              onClick={() => setSelectedType(index)}
+              className={selectedType === index ? 'selected' : ''}
+            >
+              {type}
+            </li>
+          ))}
+        </ul>
+        <ul>
+          {pizza.sizes.map((size, index) => (
+            <li
+              key={index}
+              onClick={() => setSelectedSize(index)}
+              className={selectedSize === index ? 'selected' : ''}
+            >
+              {size}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <button
+        disabled={amount >= 99}
+        onClick={() => {
+          dispatch(
+            addPizza({
+              name: pizza.name,
+              type: pizza.types[selectedType],
+              diameter: pizza.diameters[selectedSize],
+              cost: calculateCost(),
+              amount: 1,
+              imageURL: pizza.imageURL
+            })
+          );
+        }}
+        className='button button-order-overlay push'
+      >
+        <span>Add to cart for {calculateCost()} $</span>
+        {amount > 0 && (
+          <Counter counterStyle={'counter__overlay'} amount={amount} />
+        )}
+      </button>
+    </>
   );
 };

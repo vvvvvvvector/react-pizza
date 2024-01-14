@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { IOverlayState } from './types';
-import { Pizza } from '../fetch/types';
+import { type IOverlayState } from './types';
+import { type Pizza } from '../fetch/types';
 
-const initialState = {
+const initialState: IOverlayState = {
   opened: false,
   pizza: {
     id: 'unknown',
@@ -16,7 +16,7 @@ const initialState = {
     name: 'unknown',
     imageURL: 'unknown'
   }
-} as IOverlayState;
+};
 
 export const overlaySlice = createSlice({
   name: 'overlay',

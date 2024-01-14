@@ -9,21 +9,16 @@ import { Pizza as P } from '../../redux/fetch/types';
 import { Counter } from '../index';
 
 export const Pizza = (pizza: P) => {
-  const dispatch = useDispatch();
+  const [selectedType, setSelectedType] = useState(0);
+  const [selectedSize, setSelectedSize] = useState(0);
 
-  const [selectedType, setSelectedType] = useState<number>(0);
-  const [selectedSize, setSelectedSize] = useState<number>(0);
+  const dispatch = useDispatch();
 
   const currentPizza = useSelector(
     selectCartItem(pizza, selectedType, selectedSize)
   );
-  const amount = currentPizza ? currentPizza.amount : 0;
 
-  const onClickImage = () => {
-    dispatch(setPizza(pizza));
-    dispatch(setOpened(true));
-    document.body.style.overflow = 'hidden';
-  };
+  const amount = currentPizza ? currentPizza.amount : 0;
 
   const calculateCost = () => {
     if (pizza.sizes.length === 2) {
@@ -47,7 +42,12 @@ export const Pizza = (pizza: P) => {
     <div className='pizza-component-parent'>
       <div className='pizza-component'>
         <img
-          onClick={onClickImage}
+          onClick={() => {
+            dispatch(setPizza(pizza));
+            dispatch(setOpened(true));
+
+            document.body.style.overflow = 'hidden';
+          }}
           className='pizza-component__image'
           alt='pizza-img'
           src={pizza.imageURL}
