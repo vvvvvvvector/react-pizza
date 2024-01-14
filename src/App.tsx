@@ -26,7 +26,7 @@ export const App = () => {
               <Route
                 path='/cart'
                 element={
-                  <Suspense fallback={<Loading info='Cart is loading...' />}>
+                  <Suspense fallback={<Loading text='Cart is loading...' />}>
                     <Cart />
                   </Suspense>
                 }
@@ -34,7 +34,7 @@ export const App = () => {
               <Route
                 path='*'
                 element={
-                  <Suspense fallback={<Loading info='Loading...' />}>
+                  <Suspense fallback={<Loading text='Loading...' />}>
                     <NotFound />
                   </Suspense>
                 }
