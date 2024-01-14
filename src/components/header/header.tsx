@@ -21,21 +21,14 @@ export const Header = () => {
   const { pathname } = useLocation();
 
   const { searchValue } = useSelector(selectHome);
-
   const { pizzas, orderTotal, amountTotal } = useSelector(selectCart);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const waitUntilIStop = useCallback(
     debounce((value: string) => {
       dispatch(setSearchValue(value));
     }, 350),
     []
   );
-
-  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-    waitUntilIStop(event.target.value);
-  };
 
   useEffect(() => {
     if (!isFirstRender.current) {
@@ -61,7 +54,10 @@ export const Header = () => {
               <img alt='search-lens' src={lensSVG} />
               <input
                 ref={searchReference}
-                onChange={onChangeInput}
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                  setInputValue(event.target.value);
+                  waitUntilIStop(event.target.value);
+                }}
                 value={inputValue}
                 placeholder='Search pizza...'
               />
