@@ -1,19 +1,19 @@
 import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import { Header, Loading } from './components';
+import { Header, Loading } from '~/components/index';
 
-import { Home } from './pages/home/Home';
+import { Home } from '~/pages/home/Home';
 
-import './styles/_all_components.scss';
-import './styles/_all_pages.scss';
+import '~/styles/_all_components.scss';
+import '~/styles/_all_pages.scss';
 
 const Cart = React.lazy(
-  () => import(/* webpackChunkName: "Cart" */ './pages/cart/Cart')
+  () => import(/* webpackChunkName: "Cart" */ '~/pages/cart/Cart')
 );
 
 const NotFound = React.lazy(
-  () => import(/* webpackChunkName: "NotFound" */ './pages/not-found/NotFound')
+  () => import(/* webpackChunkName: "NotFound" */ '~/pages/not-found/NotFound')
 );
 
 export const App = () => {

@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { selectCart } from '../../redux/cart/selectors';
-import { clearCart } from '../../redux/cart/slice';
+import { selectCart } from '~/redux/cart/selectors';
+import { clearCart } from '~/redux/cart/slice';
 
-import { EmptyCart, CartItem } from '../../components';
+import { EmptyCart, CartItem } from '~/components/index';
 
-import cartSVG from '../../assets/images/order-pizza-cart-top.svg';
+import cartSVG from '~/assets/images/order-pizza-cart-top.svg';
 
 const Cart = () => {
   const dispatch = useDispatch();

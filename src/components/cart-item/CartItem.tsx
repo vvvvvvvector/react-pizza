@@ -4,8 +4,8 @@ import {
   incrementAmount,
   decrementAmount,
   removePizza
-} from '../../redux/cart/slice';
-import { CartItem as CI, UniquePizza } from '../../redux/cart/types';
+} from '~/redux/cart/slice';
+import { CartItem as CI, UniquePizza } from '~/redux/cart/types';
 
 export const CartItem = ({
   name,

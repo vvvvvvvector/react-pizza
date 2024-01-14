@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectCartItem } from '../../redux/cart/selectors';
-import { addPizza } from '../../redux/cart/slice';
-import { setOpened, setPizza } from '../../redux/overlay/slice';
-import { Pizza as P } from '../../redux/fetch/types';
+import { selectCartItem } from '~/redux/cart/selectors';
+import { addPizza } from '~/redux/cart/slice';
+import { setOpened, setPizza } from '~/redux/overlay/slice';
+import { Pizza as P } from '~/redux/fetch/types';
 
-import { Counter } from '../index';
+import { Counter } from '~/components/index';
 
 export const Pizza = (pizza: P) => {
   const [selectedType, setSelectedType] = useState(0);
