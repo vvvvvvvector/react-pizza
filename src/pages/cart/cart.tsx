@@ -41,13 +41,23 @@ const Cart = () => {
         ))}
       </div>
       <div className='cart__bottom'>
-        <div className='summary'>
+        <div className='summary desktop'>
           <span>
             Pizzas amount:
             <b>{amountTotal}</b>
           </span>
           <span>
             Order total:
+            <b>{orderTotal} $</b>
+          </span>
+        </div>
+        <div className='summary mobile'>
+          <span>
+            Amount:
+            <b>{amountTotal}</b>
+          </span>
+          <span>
+            Total:
             <b>{orderTotal} $</b>
           </span>
         </div>

@@ -27,6 +27,10 @@
     }
   }
 
+  .push {
+    margin-top: auto;
+  }
+
   .selector {
     display: flex;
     flex-direction: column;
@@ -110,10 +114,6 @@
       gap: 0.4rem;
       background: #f9f9f9;
 
-      .push {
-        margin-top: auto;
-      }
-
       button {
         cursor: auto;
       }
@@ -172,10 +172,6 @@
       background: #f9f9f9;
       border-bottom-right-radius: 20px;
       border-top-right-radius: 20px;
-
-      .push {
-        margin-top: auto;
-      }
     }
   }
 }

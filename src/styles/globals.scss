@@ -2,7 +2,7 @@
 @import './all_pages';
 
 @import './animations';
-@import './normalize';
+@import './utils';
 @import './variables';
 
 body {
@@ -26,14 +26,4 @@ body {
   background: #ffffff;
   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.03);
   border-radius: 15px;
-}
-
-.hide-scrollbars::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.hide-scrollbars {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
 }
