@@ -32,9 +32,7 @@ export const CartItem = ({
         <button
           disabled={amount === 1}
           className={amount > 1 ? 'active' : ''}
-          onClick={() => {
-            dispatch(decrementAmount(thisPizza));
-          }}
+          onClick={() => dispatch(decrementAmount(thisPizza))}
         >
           <svg
             width='11'
@@ -53,9 +51,7 @@ export const CartItem = ({
         <button
           disabled={amount >= 99}
           className={amount >= 99 ? '' : 'active'}
-          onClick={() => {
-            dispatch(incrementAmount(thisPizza));
-          }}
+          onClick={() => dispatch(incrementAmount(thisPizza))}
         >
           <svg
             width='11'
