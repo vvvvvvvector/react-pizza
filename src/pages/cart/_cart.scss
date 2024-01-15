@@ -9,6 +9,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 25px;
 
     .title {
       display: flex;
@@ -58,7 +59,20 @@
     .summary {
       display: flex;
       justify-content: space-between;
+      margin-top: 25px;
       margin-bottom: 25px;
+
+      &.desktop {
+        @media (max-width: 650px) {
+          display: none;
+        }
+      }
+
+      &.mobile {
+        @media (min-width: 650px) {
+          display: none;
+        }
+      }
 
       span {
         font-size: 22px;
