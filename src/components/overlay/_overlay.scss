@@ -1,20 +1,18 @@
 .overlay {
-  padding: 20px;
-  z-index: 2;
+  z-index: 5;
   position: fixed;
-  top: 0px;
-  right: 0px;
-  left: 0px;
-  bottom: 0px;
-  background-color: rgba(0, 0, 0, 0.65);
+  inset: 0px;
+  display: grid;
+  place-items: center;
+
+  background-color: rgba(0, 0, 0, 0);
+  visibility: hidden;
+
+  transition: background-color 400ms, visibility 400ms;
 
   &.opened {
-    display: grid;
-    place-items: center;
-  }
-
-  &.closed {
-    display: none;
+    background-color: rgba(0, 0, 0, 0.65);
+    visibility: visible;
   }
 
   .characteristics {
@@ -65,26 +63,21 @@
   }
 
   .pizza-details-mobile-wrapper {
+    z-index: 10;
     display: flex;
     flex-direction: column;
     position: absolute;
+    bottom: -100%;
     width: 100%;
     min-height: 625px;
-    background: #ffffff;
+    background-color: #ffffff;
     border-top-right-radius: 1.75rem;
     border-top-left-radius: 1.75rem;
-    bottom: 0;
-    // animation: slide-up 0.8s cubic-bezier(0.32, 0.72, 0, 1);
-    animation: slide-up 0.45s ease-out;
 
-    @keyframes slide-up {
-      0% {
-        transform: translateY(100%);
-      }
+    transition: bottom 400ms; // apply to the initial state not to the .active state
 
-      100% {
-        transform: translateY(0);
-      }
+    &.slide-in {
+      bottom: 0;
     }
 
     @media (min-width: 805px) {
@@ -133,13 +126,26 @@
   }
 
   .pizza-details-desktop-wrapper {
+    z-index: 10;
+    position: relative;
     display: flex;
     width: 100%;
     max-width: 850px;
     min-height: 600px;
-    position: relative;
     background: #ffffff;
     border-radius: 20px;
+
+    transform: scale(0.85);
+    opacity: 0;
+    visibility: hidden;
+
+    transition: transform 400ms, opacity 400ms, visibility 400ms;
+
+    &.scale-in {
+      transform: scale(1);
+      opacity: 1;
+      visibility: visible;
+    }
 
     @media (max-width: 805px) {
       display: none;
