@@ -5,7 +5,7 @@ import {
   decrementAmount,
   removePizza
 } from '~/redux/cart/slice';
-import { CartItem as CI, UniquePizza } from '~/redux/cart/types';
+import type { CartItem as CI, UniquePizza } from '~/redux/cart/types';
 
 export const CartItem = ({
   name,
@@ -112,22 +112,22 @@ export const CartItem = ({
       <div className='cart-item mobile'>
         <div>
           <div>
-            {Image()}
-            {Info()}
+            <Image />
+            <Info />
           </div>
-          {RemoveFromCartButton()}
+          <RemoveFromCartButton />
         </div>
         <div>
-          {Cost()}
-          {ChangeAmount()}
+          <Cost />
+          <ChangeAmount />
         </div>
       </div>
       <div className='cart-item desktop hide-scrollbars'>
-        {Image()}
-        {Info()}
-        {ChangeAmount()}
-        {Cost()}
-        {RemoveFromCartButton()}
+        <Image />
+        <Info />
+        <ChangeAmount />
+        <Cost />
+        <RemoveFromCartButton />
       </div>
     </>
   );
