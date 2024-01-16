@@ -74,6 +74,18 @@
     border-top-right-radius: 1.75rem;
     border-top-left-radius: 1.75rem;
     bottom: 0;
+    // animation: slide-up 0.8s cubic-bezier(0.32, 0.72, 0, 1);
+    animation: slide-up 0.45s ease-out;
+
+    @keyframes slide-up {
+      0% {
+        transform: translateY(100%);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
 
     @media (min-width: 805px) {
       display: none;
