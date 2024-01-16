@@ -38,8 +38,10 @@ export const Overlay = () => {
   );
 
   return (
-    <div className={`overlay ${opened ? 'opened' : 'closed'}`}>
-      <div className='pizza-details-mobile-wrapper'>
+    <div className={`overlay ${opened ? 'opened' : ''}`}>
+      <div
+        className={`pizza-details-mobile-wrapper ${opened ? 'slide-in' : ''}`}
+      >
         <div className='pizza-details-mobile-wrapper__top'>
           <img
             width={pizzaImageSizes[0]}
@@ -63,7 +65,9 @@ export const Overlay = () => {
         </div>
         <div className='pizza-details-mobile-wrapper__bottom'>{details}</div>
       </div>
-      <div className='pizza-details-desktop-wrapper'>
+      <div
+        className={`pizza-details-desktop-wrapper ${opened ? 'scale-in' : ''}`}
+      >
         <div className='pizza-details-desktop-wrapper__leftpart'>
           <img
             width={pizzaImageSizes[selectedSize]}
