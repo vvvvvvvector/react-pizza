@@ -81,9 +81,9 @@
   .amount {
     width: 100%;
     display: flex;
-    gap: 0.8rem;
     justify-content: space-between;
     align-items: center;
+    gap: 0.8rem;
 
     b {
       font-size: 22px;
@@ -94,17 +94,16 @@
       position: relative;
       width: 30px;
       height: 30px;
-      background-color: #ffffff;
-      border: 2px solid #d0d0d0;
-      border-radius: 9999px;
+      background-color: white;
       display: inline-block;
-      transition: all $duration ease-in-out;
+      border-radius: 9999px;
+      border: 2px solid $orange;
 
       svg {
         position: absolute;
 
         path {
-          fill: #d0d0d0;
+          fill: $orange;
         }
       }
 
@@ -122,28 +121,37 @@
         }
       }
 
-      &.active {
-        border-color: $orange;
+      &:hover {
+        background-color: $orange;
 
         svg {
           path {
-            fill: $orange;
+            fill: white;
           }
         }
+      }
 
-        &:hover {
-          background-color: $orange;
+      &:active {
+        background-color: darken($orange, 5%);
+        border-color: darken($orange, 5%);
 
-          svg {
-            path {
-              fill: #ffffff;
-            }
+        svg {
+          path {
+            fill: white;
           }
         }
+      }
 
-        &:active {
-          background-color: darken($orange, 10%);
-          border-color: darken($orange, 10%);
+      &:disabled {
+        cursor: auto;
+
+        background-color: #ffffff;
+        border-color: #d0d0d0;
+
+        svg {
+          path {
+            fill: #d0d0d0;
+          }
         }
       }
     }
