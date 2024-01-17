@@ -15,10 +15,13 @@ export const Overlay = () => {
   const [selectedType, setSelectedType] = useState(0);
   const [selectedSize, setSelectedSize] = useState(0);
 
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const mobileWrapperRef = useRef<HTMLDivElement>(null);
+  const desktopWrapperRef = useRef<HTMLDivElement>(null);
+
   const dispatch = useDispatch();
 
   const opened = useSelector(selectOpened);
-
   const pizza = useSelector(selectPizza);
 
   function onClose() {
@@ -26,6 +29,26 @@ export const Overlay = () => {
 
     document.body.style.overflow = 'visible';
   }
+
+  useEffect(() => {
+    const onClickOutside = (e: MouseEvent) => {
+      if (
+        desktopWrapperRef.current &&
+        !e.composedPath().includes(desktopWrapperRef.current) &&
+        mobileWrapperRef.current &&
+        !e.composedPath().includes(mobileWrapperRef.current)
+      ) {
+        console.log(e.composedPath());
+
+        onClose();
+      }
+    };
+
+    overlayRef.current?.addEventListener('click', onClickOutside);
+
+    return () =>
+      overlayRef.current?.removeEventListener('click', onClickOutside);
+  }, []);
 
   const details = (
     <PizzaDetails
@@ -38,8 +61,9 @@ export const Overlay = () => {
   );
 
   return (
-    <div className={`overlay ${opened ? 'opened' : ''}`}>
+    <div ref={overlayRef} className={`overlay ${opened ? 'opened' : ''}`}>
       <div
+        ref={mobileWrapperRef}
         className={`pizza-details-mobile-wrapper ${opened ? 'slide-in' : ''}`}
       >
         <div className='pizza-details-mobile-wrapper__top'>
@@ -66,6 +90,7 @@ export const Overlay = () => {
         <div className='pizza-details-mobile-wrapper__bottom'>{details}</div>
       </div>
       <div
+        ref={desktopWrapperRef}
         className={`pizza-details-desktop-wrapper ${opened ? 'scale-in' : ''}`}
       >
         <div className='pizza-details-desktop-wrapper__leftpart'>
