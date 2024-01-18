@@ -187,7 +187,7 @@ const PizzaDetails = ({
             })
           );
         }}
-        className='button button-order-overlay push'
+        className='button push'
       >
         <span>Add to cart for {calculateCost()} $</span>
         {amount > 0 && <Counter amount={amount} />}
