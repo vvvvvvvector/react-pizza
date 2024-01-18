@@ -90,7 +90,6 @@
     }
 
     button {
-      cursor: pointer;
       position: relative;
       width: 30px;
       height: 30px;
@@ -121,30 +120,7 @@
         }
       }
 
-      &:hover {
-        background-color: $orange;
-
-        svg {
-          path {
-            fill: white;
-          }
-        }
-      }
-
-      &:active {
-        background-color: darken($orange, 5%);
-        border-color: darken($orange, 5%);
-
-        svg {
-          path {
-            fill: white;
-          }
-        }
-      }
-
       &:disabled {
-        cursor: auto;
-
         background-color: #ffffff;
         border-color: #d0d0d0;
 
@@ -172,6 +148,19 @@
 
   .amount {
     max-width: 120px;
+
+    button {
+      &:active:not([disabled]) {
+        background-color: darken($orange, 5%);
+        border-color: darken($orange, 5%);
+
+        svg {
+          path {
+            fill: white;
+          }
+        }
+      }
+    }
   }
 
   div:nth-child(1) {
@@ -201,6 +190,24 @@
 
   .amount {
     max-width: 130px;
+
+    button {
+      cursor: pointer;
+
+      &:disabled {
+        cursor: auto;
+      }
+
+      &:hover:not([disabled]) {
+        background-color: $orange;
+
+        svg {
+          path {
+            fill: white;
+          }
+        }
+      }
+    }
   }
 
   @media (min-width: 650px) {
