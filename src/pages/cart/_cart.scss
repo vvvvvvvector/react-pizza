@@ -1,4 +1,7 @@
-@import './../../styles/variables';
+$clear-button: 0 0% 71%;
+$clear-button-hover: 0 0% 31%;
+
+$go-back-button: 0 0% 79%;
 
 .cart {
   width: 100%;
@@ -14,13 +17,11 @@
     .title {
       display: flex;
       align-items: center;
+      gap: 0.6rem;
 
-      svg {
-        margin-right: 10px;
-      }
-
-      h2 {
-        font-size: 32px;
+      span {
+        font-weight: bold;
+        font-size: 2rem;
       }
     }
 
@@ -28,27 +29,27 @@
       cursor: pointer;
       display: flex;
       align-items: center;
-
-      span,
-      svg,
-      path {
-        transition: all $duration ease-in-out;
-      }
+      gap: 7px;
 
       span {
-        color: #b6b6b6;
-        margin-left: 7px;
+        color: hsl($clear-button);
         font-size: 18px;
+      }
+
+      svg {
+        path {
+          stroke: hsl($clear-button);
+        }
       }
 
       &:hover {
         span {
-          color: darken(#b6b6b6, 50%);
+          color: hsl($clear-button-hover);
         }
 
         svg {
           path {
-            stroke: darken(#b6b6b6, 50%);
+            stroke: hsl($clear-button-hover);
           }
         }
       }
@@ -83,7 +84,7 @@
 
         &:last-of-type {
           b {
-            color: $orange;
+            color: hsl(var(--orange));
           }
         }
       }
@@ -92,6 +93,53 @@
     .buttons {
       display: flex;
       justify-content: space-between;
+
+      a {
+        button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: hsl(var(--white));
+          border: 1px solid hsl($go-back-button);
+
+          span {
+            color: hsl($go-back-button);
+          }
+
+          svg {
+            margin-right: 10px;
+
+            path {
+              stroke: hsl($go-back-button);
+            }
+          }
+
+          &:hover {
+            background-color: hsl(var(--black));
+            border-color: hsl(var(--black));
+
+            span {
+              color: hsl(var(--white));
+            }
+
+            svg {
+              path {
+                stroke: hsl(var(--white));
+              }
+            }
+          }
+
+          &:active {
+            background-color: hsl(var(--darken-black-active));
+          }
+        }
+      }
+
+      button {
+        span {
+          color: hsl(var(--white));
+        }
+      }
     }
   }
 }

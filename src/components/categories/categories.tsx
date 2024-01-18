@@ -11,7 +11,7 @@ export const Categories = () => {
   const { categoryIndex } = useSelector(selectHome);
 
   return (
-    <div className='categories'>
+    <div className='categories hide-scrollbars'>
       <ul>
         {categories.map((_, index) => (
           <li

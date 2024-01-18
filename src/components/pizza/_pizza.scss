@@ -1,35 +1,32 @@
-.pizza-component {
-  &-parent {
-    display: flex;
-    justify-content: center;
-  }
-
-  width: 260px;
+.pizza {
+  width: 100%;
+  max-width: 260px;
   text-align: center;
   padding: 10px;
-  margin-bottom: 50px;
 
-  &__image {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  img {
     cursor: pointer;
     width: 260px;
     height: 260px;
     transition: transform 0.2s ease-in-out;
 
     &:hover {
-      transform: translateY(4px);
+      transform: translateY(8px);
     }
   }
 
-  &__name {
+  h4 {
     font-size: 20px;
     font-weight: 900;
-    margin-bottom: 20px;
   }
 
   &__selector {
-    background-color: #f3f3f3;
+    background-color: hsl(0, 0%, 95%);
     border-radius: 10px;
-    margin-bottom: 20px;
     padding: 6px;
 
     ul {
@@ -40,16 +37,16 @@
       }
 
       li {
-        flex: 1; // li takes all allowed width
         cursor: pointer;
+        flex: 1;
         font-weight: 600;
         font-size: 16px;
         padding: 8px;
 
         &.active {
-          background-color: #ffffff;
+          cursor: auto;
+          background-color: hsl(var(--white));
           border-radius: 7px;
-          cursor: auto; // if option already selected -> !cursor: pointer
           box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04); // x, y, blur radius, color
         }
       }
@@ -60,11 +57,90 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
 
-  &__price {
-    margin-left: 5px;
-    font-size: 22px;
-    font-weight: 700;
+    h4 {
+      margin-left: 5px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-height: 50px;
+      background-color: hsl(var(--white));
+      border-color: hsl(var(--orange));
+
+      span {
+        font-size: 1rem;
+        font-weight: 600;
+        color: hsl(var(--orange));
+      }
+
+      svg {
+        path {
+          stroke: hsl(var(--orange));
+        }
+      }
+
+      div {
+        b {
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 9999px;
+          font-size: 1rem;
+          width: 26px;
+          height: 26px;
+          color: hsl(var(--white));
+          background-color: hsl(var(--orange));
+        }
+      }
+
+      &:hover {
+        svg {
+          path {
+            stroke: hsl(var(--white));
+          }
+        }
+
+        span {
+          color: hsl(var(--white));
+        }
+
+        div {
+          b {
+            color: hsl(var(--orange));
+            background-color: hsl(var(--white));
+          }
+        }
+      }
+
+      &:disabled {
+        cursor: auto;
+
+        background-color: hsl(var(--white));
+        border-color: hsl(var(--disabled));
+
+        svg {
+          path {
+            stroke: hsl(var(--disabled));
+          }
+        }
+
+        span {
+          color: hsl(var(--disabled));
+        }
+
+        div {
+          b {
+            color: hsl(var(--white));
+            background-color: hsl(var(--disabled));
+            border-color: hsl(var(--disabled));
+          }
+        }
+      }
+    }
   }
 }

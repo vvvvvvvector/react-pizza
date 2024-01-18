@@ -1,248 +1,39 @@
-@import './variables';
-
 .button {
-  // ------all buttons behaviour, style------
-
   cursor: pointer;
-  background-color: $orange;
+  background-color: hsl(var(--orange));
+  border: 1px solid hsl(var(--orange));
   border-radius: 30px;
-  transition: background-color $duration ease-in-out;
   padding: 10px 20px;
-  text-align: center;
-  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: 1rem;
+
+  transition: background-color var(--colors-transition-duration) ease-in-out;
 
   &:hover {
-    background-color: darken($orange, 8%);
+    background-color: hsl(var(--darken-orange-hover));
+    border-color: hsl(var(--darken-orange-hover));
   }
 
   &:active {
-    background-color: darken($orange, 12%);
+    background-color: hsl(var(--darken-orange-active));
+    border-color: hsl(var(--darken-orange-active));
   }
 
-  // ------all buttons behaviour, style------
-
-  // header cart button
-  &--cart {
-    line-height: 23px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 25px;
-
-    // cost and amount
-    span {
-      color: hsl(0, 0%, 100%);
-      font-weight: 600;
-      font-size: 16px;
-    }
-
-    // div == delimiter
-    div {
-      width: 1px;
-      height: 25px;
-      background-color: rgba(255, 255, 255, 0.25);
-      margin-left: 14px;
-      margin-right: 14px;
-    }
-
-    // shopping-cart
-    svg {
-      margin-right: 5px;
-      margin-bottom: 3px;
-    }
-  }
-
-  // pizza-component add button
-  &--default {
-    display: flex;
-    align-items: center;
-    background-color: hsl(0, 0%, 100%);
-    border-color: $orange;
-    max-height: 44px;
-
-    .counter__pizza {
-      margin-left: 7px;
-
-      b {
-        display: inline-block;
-        border-radius: 30px;
-        font-style: normal;
-        font-size: 15px;
-        line-height: 26px;
-        text-align: center;
-        width: 26px;
-        height: 26px;
-        color: hsl(0, 0%, 100%);
-        background-color: $orange;
-        border: 1px solid $orange;
-      }
-    }
-
-    span {
-      font-size: 16px;
-      font-weight: 600;
-      color: $orange;
-    }
-
-    svg {
-      margin-right: 8px;
-
-      path {
-        fill: $orange;
-      }
-    }
-
-    &:hover {
-      background-color: $orange;
-
-      span {
-        color: hsl(0, 0%, 100%);
-      }
-
-      svg {
-        path {
-          fill: hsl(0, 0%, 100%);
-        }
-      }
-
-      .counter__pizza {
-        b {
-          color: $orange;
-          background-color: hsl(0, 0%, 100%);
-        }
-      }
-    }
-
-    &:active {
-      background-color: darken($orange, 10%);
-    }
-
-    &:disabled {
-      cursor: auto;
-      border-color: hsl(0, 0%, 82%);
-      background-color: hsl(0, 0%, 100%);
-
-      svg {
-        path {
-          fill: hsl(0, 0%, 82%);
-        }
-      }
-
-      span {
-        color: hsl(0, 0%, 82%);
-      }
-
-      .counter__pizza {
-        b {
-          color: #ffffff;
-          background-color: #d0d0d0;
-          border-color: #d0d0d0;
-        }
-      }
-    }
-  }
-
-  // go home button in emptyCart component
-  &--emptyCart {
-    width: 200px;
-    color: #ffffff;
-    background-color: #282828;
-
-    &:hover {
-      background-color: lighten(#282828, 7%);
-    }
-
-    &:active {
-      background-color: lighten(#282828, 12%);
-    }
-  }
-
-  // go back cart if cart is not empty
-  &-go-back {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-    border: 1px solid #cacaca;
-
-    span {
-      color: #cacaca;
-      font-weight: 600;
-      font-size: 16px;
-    }
-
-    svg {
-      margin-right: 10px;
-    }
-
-    &:hover {
-      background-color: #282828;
-      border-color: #282828;
-
-      span {
-        color: #ffffff;
-      }
-
-      svg {
-        path {
-          stroke: #ffffff;
-        }
-      }
-    }
-
-    &:active {
-      background-color: lighten(#282828, 10%);
-    }
-  }
-
-  &-make-order {
-    span {
-      color: #ffffff;
-      font-weight: 600;
-      font-size: 16px;
-    }
-  }
-
-  &-order-overlay {
-    max-height: 44px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  &.black {
     width: 100%;
+    max-width: 200px;
+    color: hsl(var(--white));
+    border-color: hsl(var(--black));
+    background-color: hsl(var(--black));
 
-    &:disabled {
-      cursor: auto;
-      background-color: #d0d0d0;
-
-      .counter__overlay {
-        b {
-          color: #d0d0d0;
-        }
-      }
+    &:hover {
+      background-color: hsl(var(--darken-black-hover));
+      border-color: hsl(var(--darken-black-hover));
     }
 
-    span {
-      color: #ffffff;
-      font-weight: 600;
-      font-size: 16px;
-    }
-
-    .counter__overlay {
-      margin-left: 8px;
-
-      b {
-        display: inline-block;
-        border-radius: 30px;
-        font-style: normal;
-        font-size: 15px;
-        line-height: 26px;
-        text-align: center;
-        width: 26px;
-        height: 26px;
-        color: $orange;
-        background-color: #ffffff;
-        border: 1px solid #ffffff;
-      }
+    &:active {
+      background-color: hsl(var(--darken-black-active));
+      border-color: hsl(var(--darken-black-active));
     }
   }
 }

@@ -1,3 +1,4 @@
+import { Plus } from 'lucide-react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -39,8 +40,8 @@ export const Pizza = (pizza: P) => {
   };
 
   return (
-    <div className='pizza-component-parent'>
-      <div className='pizza-component'>
+    <div data-container={'parent'}>
+      <div className='pizza'>
         <img
           onClick={() => {
             dispatch(setPizza(pizza));
@@ -48,12 +49,11 @@ export const Pizza = (pizza: P) => {
 
             document.body.style.overflow = 'hidden';
           }}
-          className='pizza-component__image'
-          alt='pizza-img'
+          alt='pizzaimg'
           src={pizza.imageURL}
         />
-        <h4 className='pizza-component__name'>{pizza.name}</h4>
-        <div className='pizza-component__selector'>
+        <h4>{pizza.name}</h4>
+        <div className='pizza__selector'>
           <ul>
             {pizza.types.map((type, index) => (
               <li
@@ -77,8 +77,8 @@ export const Pizza = (pizza: P) => {
             ))}
           </ul>
         </div>
-        <div className='pizza-component__bottom'>
-          <h4 className='pizza-component__price'>for {calculateCost()} $</h4>
+        <div className='pizza__bottom'>
+          <h4>for {calculateCost()} $</h4>
           <button
             disabled={amount >= 99}
             onClick={() => {
@@ -93,24 +93,11 @@ export const Pizza = (pizza: P) => {
                 })
               );
             }}
-            className='button button--default'
+            className='button'
           >
-            <svg
-              width='12'
-              height='12'
-              viewBox='0 0 12 12'
-              fill='none'
-              xmlns='http://www.w3.org/2000/svg'
-            >
-              <path
-                d='M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z'
-                fill='#EB5A1E'
-              />
-            </svg>
+            <Plus size={19} strokeWidth={3.0} />
             <span>Add</span>
-            {amount > 0 && (
-              <Counter counterStyle={'counter__pizza'} amount={amount} />
-            )}
+            {amount > 0 && <Counter amount={amount} />}
           </button>
         </div>
       </div>

@@ -1,4 +1,5 @@
 .emptyCart {
+  width: 100%;
   max-width: 400px;
   text-align: center;
   margin: 60px auto;
@@ -10,28 +11,7 @@
 
   p {
     font-size: 20px;
-    color: #777777;
+    color: hsl(0, 0%, 47%);
     margin-bottom: 20px;
-  }
-
-  img {
-    margin-bottom: 20px;
-  }
-
-  button {
-    span {
-      font-size: 15px;
-      font-weight: bold;
-    }
-  }
-
-  @media (max-width: 440px) {
-    h2 {
-      font-size: 33px;
-    }
-
-    p {
-      font-size: 17px;
-    }
   }
 }
