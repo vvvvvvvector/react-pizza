@@ -2,21 +2,17 @@
 
 .categories {
   ul {
-    display: flex; // items in one line
+    display: flex;
+    gap: 10px;
 
     li {
-      margin-right: 10px;
+      cursor: pointer;
       background-color: #f9f9f9;
       padding: 13px 30px; // top&bottom left&right
       border-radius: 30px;
       font-weight: bold;
-      cursor: pointer;
       text-align: center;
       transition: background-color $duration ease-in-out;
-
-      &:last-of-type {
-        margin-right: 0px;
-      }
 
       &:hover {
         background-color: darken(#f9f9f9, 2%);

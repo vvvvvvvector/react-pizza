@@ -72,16 +72,16 @@ export const Home = () => {
 
   return (
     <>
-      <div className='content__top'>
+      <div className='above-title'>
         <Categories />
         <Sort />
       </div>
-      <h2 className='content__title'>
+      <h2>
         {searchValue
           ? `All search results for "${searchValue}"`
           : `${categoryName} pizzas`}
       </h2>
-      <div className='content__items'>{renderContentItems()}</div>
+      <div className='pizzas'>{renderContentItems()}</div>
       <Pagination
         pageIndex={currentPage}
         onChangePage={(page: number) => {

@@ -1,67 +1,57 @@
 @import './../../styles/variables';
 
 .content {
+  display: grid;
+  place-items: center;
   padding: 40px 0; // top&bottom left&right
 
   &__container {
     width: $content-width;
-    margin: 0 auto;
-  }
-
-  &__top {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 50px;
 
-    @media (max-width: 830px) {
-      flex-direction: column;
+    .above-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-      .categories {
-        margin-bottom: 25px;
-      }
-    }
+      @media (max-width: 745px) {
+        flex-direction: column;
 
-    @media (max-width: 600px) {
-      .categories {
-        ul {
-          flex-direction: column;
-
-          li {
-            margin-bottom: 20px;
-          }
+        .categories {
+          margin-bottom: 25px;
         }
       }
     }
-  }
 
-  &__title {
-    font-size: 38px;
-    font-weight: 800;
-    margin-bottom: 50px;
-    margin-top: 50px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+    h2 {
+      font-size: 38px;
+      font-weight: 800;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
 
-    @media (max-width: 600px) {
-      text-align: center;
-    }
-  }
-
-  &__items {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-
-    @media (max-width: 1345px) {
-      grid-template-columns: repeat(3, 1fr);
+      @media (max-width: 600px) {
+        text-align: center;
+      }
     }
 
-    @media (max-width: 1035px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    .pizzas {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
 
-    @media (max-width: 745px) {
-      grid-template-columns: repeat(1, 1fr);
+      @media (max-width: 1280px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media (max-width: 980px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (max-width: 645px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
     }
   }
 }
