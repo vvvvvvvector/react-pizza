@@ -6,7 +6,6 @@ import { selectPizza, selectOpened } from '~/redux/overlay/selectors';
 import { selectCartItem } from '~/redux/cart/selectors';
 import { addPizza } from '~/redux/cart/slice';
 import { setOpened } from '~/redux/overlay/slice';
-import { type Pizza } from '~/redux/fetch/types';
 
 import { Counter } from '~/components/counter';
 
@@ -24,12 +23,11 @@ export const Overlay = () => {
 
   const opened = useSelector(selectOpened);
   const pizza = useSelector(selectPizza);
+  const currentPizza = useSelector(
+    selectCartItem(pizza, selectedType, selectedSize)
+  );
 
-  function onClose() {
-    dispatch(setOpened(false));
-
-    document.body.style.overflow = 'visible';
-  }
+  const amount = currentPizza ? currentPizza.amount : 0;
 
   useEffect(() => {
     const onClickOutside = (e: MouseEvent) => {
@@ -39,8 +37,6 @@ export const Overlay = () => {
         mobileWrapperRef.current &&
         !e.composedPath().includes(mobileWrapperRef.current)
       ) {
-        console.log(e.composedPath());
-
         onClose();
       }
     };
@@ -51,74 +47,11 @@ export const Overlay = () => {
       overlayRef.current?.removeEventListener('click', onClickOutside);
   }, []);
 
-  const details = (
-    <PizzaDetails
-      pizza={pizza}
-      selectedType={selectedType}
-      setSelectedSize={setSelectedSize}
-      selectedSize={selectedSize}
-      setSelectedType={setSelectedType}
-    />
-  );
+  function onClose() {
+    dispatch(setOpened(false));
 
-  return (
-    <div ref={overlayRef} className={`overlay ${opened ? 'opened' : ''}`}>
-      <div
-        ref={mobileWrapperRef}
-        className={`pizza-details-mobile-wrapper ${opened ? 'slide-in' : ''}`}
-      >
-        <div className='pizza-details-mobile-wrapper__top'>
-          <img
-            width={pizzaImageSizes[0]}
-            height={pizzaImageSizes[0]}
-            src={pizza.imageURL}
-            alt='pizza'
-          />
-          <XSquare size={27} color={'hsl(0, 0%, 60%)'} onClick={onClose} />
-        </div>
-        <div className='pizza-details-mobile-wrapper__bottom'>{details}</div>
-      </div>
-      <div
-        ref={desktopWrapperRef}
-        className={`pizza-details-desktop-wrapper ${opened ? 'scale-in' : ''}`}
-      >
-        <div className='pizza-details-desktop-wrapper__leftpart'>
-          <img
-            width={pizzaImageSizes[selectedSize]}
-            height={pizzaImageSizes[selectedSize]}
-            alt='pizza'
-            src={pizza.imageURL}
-          />
-        </div>
-        <div className='pizza-details-desktop-wrapper__rightpart'>
-          {details}
-        </div>
-        <XCircle size={35} color={'#ffffff'} onClick={onClose} />
-      </div>
-    </div>
-  );
-};
-
-const PizzaDetails = ({
-  pizza,
-  selectedType,
-  setSelectedType,
-  selectedSize,
-  setSelectedSize
-}: {
-  pizza: Pizza;
-  selectedType: number;
-  setSelectedType: React.Dispatch<React.SetStateAction<number>>;
-  selectedSize: number;
-  setSelectedSize: React.Dispatch<React.SetStateAction<number>>;
-}) => {
-  const dispatch = useDispatch();
-
-  const currentPizza = useSelector(
-    selectCartItem(pizza, selectedType, selectedSize)
-  );
-
-  const amount = currentPizza ? currentPizza.amount : 0;
+    document.body.style.overflow = 'visible';
+  }
 
   function calculateCost() {
     if (pizza.sizes.length === 2) {
@@ -138,7 +71,7 @@ const PizzaDetails = ({
     return pizza.cost * 2;
   }
 
-  return (
+  const Details = () => (
     <>
       <h4>{pizza.name}</h4>
       <span className='characteristics'>
@@ -193,5 +126,44 @@ const PizzaDetails = ({
         {amount > 0 && <Counter amount={amount} />}
       </button>
     </>
+  );
+
+  return (
+    <div ref={overlayRef} className={`overlay ${opened ? 'opened' : ''}`}>
+      <div
+        ref={mobileWrapperRef}
+        className={`pizza-details-mobile-wrapper ${opened ? 'slide-in' : ''}`}
+      >
+        <div className='pizza-details-mobile-wrapper__top'>
+          <img
+            width={pizzaImageSizes[0]}
+            height={pizzaImageSizes[0]}
+            src={pizza.imageURL}
+            alt='pizza'
+          />
+          <XSquare size={27} color={'hsl(0, 0%, 60%)'} onClick={onClose} />
+        </div>
+        <div className='pizza-details-mobile-wrapper__bottom'>
+          <Details />
+        </div>
+      </div>
+      <div
+        ref={desktopWrapperRef}
+        className={`pizza-details-desktop-wrapper ${opened ? 'scale-in' : ''}`}
+      >
+        <div className='pizza-details-desktop-wrapper__leftpart'>
+          <img
+            width={pizzaImageSizes[selectedSize]}
+            height={pizzaImageSizes[selectedSize]}
+            alt='pizza'
+            src={pizza.imageURL}
+          />
+        </div>
+        <div className='pizza-details-desktop-wrapper__rightpart'>
+          <Details />
+        </div>
+        <XCircle size={35} color={'#ffffff'} onClick={onClose} />
+      </div>
+    </div>
   );
 };
