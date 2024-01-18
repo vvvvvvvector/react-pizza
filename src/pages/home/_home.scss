@@ -19,8 +19,8 @@
       @media (max-width: 745px) {
         flex-direction: column;
 
-        .categories {
-          margin-bottom: 25px;
+        .sort {
+          margin-top: 25px;
         }
       }
     }
@@ -38,6 +38,11 @@
     }
 
     .pizzas {
+      [data-container='parent'] {
+        display: flex;
+        justify-content: center;
+      }
+
       display: grid;
       grid-template-columns: repeat(4, 1fr);
 

@@ -163,7 +163,7 @@ const PizzaDetails = ({
 
   return (
     <>
-      <h2>{pizza.name}</h2>
+      <h4>{pizza.name}</h4>
       <span className='characteristics'>
         {`${pizza.diameters[selectedSize]} cm, ${pizza.types[
           selectedType

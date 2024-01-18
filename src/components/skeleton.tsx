@@ -2,7 +2,7 @@ import ContentLoader from 'react-content-loader';
 
 export const Skeleton = () => {
   return (
-    <div className='pizza-component-parent'>
+    <div data-container={'parent'}>
       <ContentLoader
         speed={2}
         width={280}

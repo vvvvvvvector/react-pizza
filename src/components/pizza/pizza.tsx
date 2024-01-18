@@ -40,8 +40,8 @@ export const Pizza = (pizza: P) => {
   };
 
   return (
-    <div className='pizza-component-parent'>
-      <div className='pizza-component'>
+    <div data-container={'parent'}>
+      <div className='pizza'>
         <img
           onClick={() => {
             dispatch(setPizza(pizza));
@@ -49,12 +49,11 @@ export const Pizza = (pizza: P) => {
 
             document.body.style.overflow = 'hidden';
           }}
-          className='pizza-component__image'
-          alt='pizza-img'
+          alt='pizzaimg'
           src={pizza.imageURL}
         />
-        <h4 className='pizza-component__name'>{pizza.name}</h4>
-        <div className='pizza-component__selector'>
+        <h4>{pizza.name}</h4>
+        <div className='pizza__selector'>
           <ul>
             {pizza.types.map((type, index) => (
               <li
@@ -78,7 +77,7 @@ export const Pizza = (pizza: P) => {
             ))}
           </ul>
         </div>
-        <div className='pizza-component__bottom'>
+        <div className='pizza__bottom'>
           <h4>for {calculateCost()} $</h4>
           <button
             disabled={amount >= 99}

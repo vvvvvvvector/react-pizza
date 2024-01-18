@@ -1,6 +1,11 @@
 @import './../../styles/variables';
 
 .categories {
+  @media (max-width: 520px) {
+    width: 300px;
+    overflow-y: scroll;
+  }
+
   ul {
     display: flex;
     gap: 10px;
