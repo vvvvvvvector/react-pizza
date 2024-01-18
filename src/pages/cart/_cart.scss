@@ -1,4 +1,7 @@
-@import './../../styles/variables';
+$clear-button: 0 0% 71%;
+$clear-button-hover: 0 0% 31%;
+
+$go-back-button: 0 0% 79%;
 
 .cart {
   width: 100%;
@@ -17,8 +20,8 @@
       gap: 0.6rem;
 
       span {
-        font-weight: 700;
-        font-size: 32px;
+        font-weight: bold;
+        font-size: 2rem;
       }
     }
 
@@ -29,24 +32,24 @@
       gap: 7px;
 
       span {
-        color: #b6b6b6;
+        color: hsl($clear-button);
         font-size: 18px;
       }
 
       svg {
         path {
-          stroke: #b6b6b6;
+          stroke: hsl($clear-button);
         }
       }
 
       &:hover {
         span {
-          color: darken(#b6b6b6, 50%);
+          color: hsl($clear-button-hover);
         }
 
         svg {
           path {
-            stroke: darken(#b6b6b6, 50%);
+            stroke: hsl($clear-button-hover);
           }
         }
       }
@@ -81,7 +84,7 @@
 
         &:last-of-type {
           b {
-            color: $orange;
+            color: hsl(var(--orange));
           }
         }
       }
@@ -96,45 +99,45 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          background-color: white;
-          border: 1px solid #cacaca;
+          background-color: hsl(var(--white));
+          border: 1px solid hsl($go-back-button);
 
           span {
-            color: #cacaca;
+            color: hsl($go-back-button);
           }
 
           svg {
             margin-right: 10px;
 
             path {
-              stroke: #cacaca;
+              stroke: hsl($go-back-button);
             }
           }
 
           &:hover {
-            background-color: #282828;
-            border-color: #282828;
+            background-color: hsl(var(--black));
+            border-color: hsl(var(--black));
 
             span {
-              color: white;
+              color: hsl(var(--white));
             }
 
             svg {
               path {
-                stroke: white;
+                stroke: hsl(var(--white));
               }
             }
           }
 
           &:active {
-            background-color: lighten(#282828, 10%);
+            background-color: hsl(var(--darken-black-active));
           }
         }
       }
 
       button {
         span {
-          color: white;
+          color: hsl(var(--white));
         }
       }
     }

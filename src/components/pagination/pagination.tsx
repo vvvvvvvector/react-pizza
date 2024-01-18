@@ -28,7 +28,7 @@ export const Pagination = ({
           <li key={index}>
             <button
               onClick={() => onChangePage(index + 1)}
-              className={index === pageIndex - 1 ? 'active' : ''}
+              className={index === pageIndex - 1 ? 'selected' : ''}
             >
               <span>{index + 1}</span>
             </button>

@@ -1,56 +1,44 @@
-@import './../../styles/variables';
-
 .pagination {
   ul {
-    li {
-      margin-right: 10px;
-      display: inline-block; // list items in one line
+    display: inline-flex;
+    gap: 0.8rem;
 
+    li {
       button {
-        background-color: #ffffff;
+        cursor: pointer;
         width: 45px;
         height: 45px;
-        cursor: pointer;
-        text-align: center; // that aligned text in oX
-        line-height: 44px; // that aligned/shifted text in oY
-        border: 1px solid $orange;
-        color: $orange;
-        border-radius: 30px;
-        display: inline-block; // after that, the buttons became round if border radius = x px, if not buttons are square
-        transition: background-color $duration ease-in-out;
-
-        &:disabled {
-          color: #d0d0d0;
-          border-color: #d0d0d0;
-          transform: none;
-
-          &:hover {
-            background-color: #ffffff;
-            color: #d0d0d0;
-          }
-
-          &:active {
-            background-color: #ffffff;
-          }
-        }
+        border-radius: 9999px;
+        background-color: hsl(var(--white));
+        border: 1px solid hsl(var(--orange));
+        color: hsl(var(--orange));
+        transition: background-color var(--colors-transition-duration)
+          ease-in-out;
 
         span {
-          font-size: 15px;
+          font-size: 1rem;
         }
 
-        &:hover {
-          background-color: $orange;
-          color: #ffffff;
+        &:hover:not([disabled]) {
+          color: hsl(var(--white));
+          background-color: hsl(var(--darken-orange-hover));
+          border-color: hsl(var(--darken-orange-hover));
         }
 
-        &:active {
-          background-color: darken($orange, 12%);
+        &:active:not([disabled]) {
+          background-color: hsl(var(--darken-orange-active));
+          border-color: hsl(var(--darken-orange-active));
         }
 
-        &.active {
-          background-color: $orange;
-          color: #ffffff;
+        &:disabled {
+          color: hsl(var(--disabled));
+          border-color: hsl(var(--disabled));
+        }
+
+        &.selected {
           cursor: auto;
+          background-color: hsl(var(--orange));
+          color: hsl(var(--white));
         }
       }
     }

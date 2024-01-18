@@ -1,77 +1,81 @@
-@import './variables';
-
 .button {
   cursor: pointer;
-  background-color: $orange;
-  border: 1px solid transparent;
+  background-color: hsl(var(--orange));
+  border: 1px solid hsl(var(--orange));
   border-radius: 30px;
-  transition: background-color $duration ease-in-out;
   padding: 10px 20px;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1rem;
+
+  transition: background-color var(--colors-transition-duration) ease-in-out;
 
   &:hover {
-    background-color: darken($orange, 8%);
+    background-color: hsl(var(--darken-orange-hover));
+    border-color: hsl(var(--darken-orange-hover));
   }
 
   &:active {
-    background-color: darken($orange, 12%);
+    background-color: hsl(var(--darken-orange-active));
+    border-color: hsl(var(--darken-orange-active));
   }
 
   &.black {
     width: 100%;
     max-width: 200px;
-    color: #ffffff;
-    background-color: #282828;
+    color: hsl(var(--white));
+    border-color: hsl(var(--black));
+    background-color: hsl(var(--black));
 
     &:hover {
-      background-color: lighten(#282828, 7%);
+      background-color: hsl(var(--darken-black-hover));
+      border-color: hsl(var(--darken-black-hover));
     }
 
     &:active {
-      background-color: lighten(#282828, 12%);
+      background-color: hsl(var(--darken-black-active));
+      border-color: hsl(var(--darken-black-active));
     }
   }
 
   &-order-overlay {
+    width: 100%;
     max-height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
 
     &:disabled {
       cursor: auto;
-      background-color: #d0d0d0;
+      background-color: hsl(0, 0%, 82%);
 
       .counter__overlay {
         b {
-          color: #d0d0d0;
+          color: hsl(0, 0%, 82%);
         }
       }
     }
 
     span {
-      color: #ffffff;
+      color: hsl(var(--white));
       font-weight: 600;
-      font-size: 16px;
+      font-size: 1rem;
     }
 
     .counter__overlay {
       margin-left: 8px;
 
       b {
+        width: 26px;
+        height: 26px;
         display: inline-block;
         border-radius: 30px;
         font-style: normal;
-        font-size: 15px;
+        font-size: 1rem;
         line-height: 26px;
         text-align: center;
-        width: 26px;
-        height: 26px;
-        color: $orange;
-        background-color: #ffffff;
-        border: 1px solid #ffffff;
+        color: hsl(var(--orange));
+        background-color: hsl(var(--white));
+        border: 1px solid hsl(var(--white));
       }
     }
   }

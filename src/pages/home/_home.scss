@@ -1,12 +1,10 @@
-@import './../../styles/variables';
-
 .content {
   display: grid;
   place-items: center;
   padding: 40px 0; // top&bottom left&right
 
   &__container {
-    width: $content-width;
+    width: var(--content-width);
     display: flex;
     flex-direction: column;
     gap: 50px;

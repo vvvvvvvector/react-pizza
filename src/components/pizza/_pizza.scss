@@ -25,7 +25,7 @@
   }
 
   &__selector {
-    background-color: #f3f3f3;
+    background-color: hsl(0, 0%, 95%);
     border-radius: 10px;
     padding: 6px;
 
@@ -37,16 +37,16 @@
       }
 
       li {
-        flex: 1; // li takes all allowed width
         cursor: pointer;
+        flex: 1;
         font-weight: 600;
         font-size: 16px;
         padding: 8px;
 
         &.active {
-          background-color: #ffffff;
+          cursor: auto;
+          background-color: hsl(var(--white));
           border-radius: 7px;
-          cursor: auto; // if option already selected -> !cursor: pointer
           box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04); // x, y, blur radius, color
         }
       }
@@ -61,26 +61,26 @@
     h4 {
       margin-left: 5px;
       font-size: 22px;
-      font-weight: 700;
+      font-weight: bold;
     }
 
     button {
-      min-height: 50px;
-      background-color: white;
-      border-color: $orange;
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      min-height: 50px;
+      background-color: hsl(var(--white));
+      border-color: hsl(var(--orange));
 
       span {
-        font-size: 16px;
+        font-size: 1rem;
         font-weight: 600;
-        color: $orange;
+        color: hsl(var(--orange));
       }
 
       svg {
         path {
-          stroke: $orange;
+          stroke: hsl(var(--orange));
         }
       }
 
@@ -90,29 +90,29 @@
           justify-content: center;
           align-items: center;
           border-radius: 9999px;
-          font-size: 15px;
+          font-size: 1rem;
           width: 26px;
           height: 26px;
-          color: white;
-          background-color: $orange;
+          color: hsl(var(--white));
+          background-color: hsl(var(--orange));
         }
       }
 
       &:hover {
         svg {
           path {
-            stroke: white;
+            stroke: hsl(var(--white));
           }
         }
 
         span {
-          color: white;
+          color: hsl(var(--white));
         }
 
         div {
           b {
-            color: $orange;
-            background-color: white;
+            color: hsl(var(--orange));
+            background-color: hsl(var(--white));
           }
         }
       }
@@ -120,24 +120,24 @@
       &:disabled {
         cursor: auto;
 
-        background-color: #ffffff;
-        border-color: #d0d0d0;
+        background-color: hsl(var(--white));
+        border-color: hsl(var(--disabled));
 
         svg {
           path {
-            stroke: hsl(0 0% 82%);
+            stroke: hsl(var(--disabled));
           }
         }
 
         span {
-          color: hsl(0 0% 82%);
+          color: hsl(var(--disabled));
         }
 
         div {
           b {
-            color: #ffffff;
-            background-color: #d0d0d0;
-            border-color: #d0d0d0;
+            color: hsl(var(--white));
+            background-color: hsl(var(--disabled));
+            border-color: hsl(var(--disabled));
           }
         }
       }

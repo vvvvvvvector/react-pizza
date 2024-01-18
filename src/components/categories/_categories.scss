@@ -1,5 +1,3 @@
-@import './../../styles/variables';
-
 .categories {
   @media (max-width: 520px) {
     width: 300px;
@@ -12,25 +10,24 @@
 
     li {
       cursor: pointer;
-      background-color: #f9f9f9;
+      background-color: hsl(0, 0%, 98%);
       padding: 13px 30px; // top&bottom left&right
       border-radius: 30px;
       font-weight: bold;
       text-align: center;
-      transition: background-color $duration ease-in-out;
+      transition: background-color var(--colors-transition-duration) ease-in-out;
 
       &:hover {
-        background-color: darken(#f9f9f9, 2%);
+        background-color: hsl(0, 0%, 95%);
       }
 
       &:active {
-        background-color: darken(#f9f9f9, 7%);
+        background-color: hsl(0, 0%, 92%);
       }
 
-      // selected category
       &.active {
-        background-color: #282828;
-        color: #fff;
+        background-color: hsl(var(--black));
+        color: hsl(var(--white));
       }
     }
   }

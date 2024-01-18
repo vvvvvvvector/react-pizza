@@ -3,10 +3,29 @@
 
 @import './animations';
 @import './utils';
-@import './variables';
+
+:root {
+  --black: 0 0% 15%;
+  --darken-black-hover: 0 0% 12%;
+  --darken-black-active: 0 0% 10%;
+
+  --white: 0 0% 100%;
+
+  --background: 43 100% 77%;
+
+  --orange: 17 99% 56%;
+  --darken-orange-hover: 17 99% 49%;
+  --darken-orange-active: 17 99% 45%;
+
+  --disabled: 0, 0%, 82%;
+
+  --colors-transition-duration: 0.15s;
+
+  --content-width: 90%;
+}
 
 body {
-  background-color: $background;
+  background-color: hsl(var(--background));
 }
 
 #root {
@@ -23,7 +42,7 @@ body {
   width: 100%;
   max-width: 1375px;
   height: 100%;
-  background: #ffffff;
+  background: hsl(var(--white));
   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.03);
-  border-radius: 15px;
+  border-radius: 1rem;
 }
