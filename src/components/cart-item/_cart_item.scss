@@ -22,32 +22,21 @@
   .remove {
     margin-left: 0.5rem;
     display: grid;
-    align-items: center;
+    place-items: center;
 
     button {
-      cursor: pointer;
-      position: relative;
       width: 30px;
       height: 30px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
       background-color: #ffffff;
       border: 2px solid #d0d0d0;
       border-radius: 9999px;
-      transition: all $duration ease-in-out;
 
       svg {
-        position: absolute;
-        top: 8px;
-        right: 8px;
-      }
-
-      &:hover {
-        background-color: #2a2a2a;
-        border-color: #2a2a2a;
-
-        svg {
-          path {
-            fill: #ffffff;
-          }
+        path {
+          stroke: #d0d0d0;
         }
       }
 
@@ -81,69 +70,52 @@
   .amount {
     width: 100%;
     display: flex;
-    gap: 0.8rem;
     justify-content: space-between;
     align-items: center;
+    gap: 0.8rem;
 
     b {
       font-size: 22px;
     }
 
     button {
-      cursor: pointer;
-      position: relative;
       width: 30px;
       height: 30px;
-      background-color: #ffffff;
-      border: 2px solid #d0d0d0;
+      background-color: white;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
       border-radius: 9999px;
-      display: inline-block;
-      transition: all $duration ease-in-out;
+      border: 2px solid $orange;
 
       svg {
-        position: absolute;
-
         path {
-          fill: #d0d0d0;
+          stroke: $orange;
         }
       }
 
-      &:nth-of-type(1) {
-        svg {
-          top: 9px;
-          right: 7px;
-        }
-      }
+      // &:nth-of-type(1) {
+      //   svg {
+      //     top: 5px;
+      //     right: 5px;
+      //   }
+      // }
 
-      &:nth-of-type(2) {
-        svg {
-          top: 8px;
-          right: 7px;
-        }
-      }
+      // &:nth-of-type(2) {
+      //   svg {
+      //     top: 8px;
+      //     right: 7px;
+      //   }
+      // }
 
-      &.active {
-        border-color: $orange;
+      &:disabled {
+        background-color: #ffffff;
+        border-color: #d0d0d0;
 
         svg {
           path {
-            fill: $orange;
+            stroke: #d0d0d0;
           }
-        }
-
-        &:hover {
-          background-color: $orange;
-
-          svg {
-            path {
-              fill: #ffffff;
-            }
-          }
-        }
-
-        &:active {
-          background-color: darken($orange, 10%);
-          border-color: darken($orange, 10%);
         }
       }
     }
@@ -164,6 +136,19 @@
 
   .amount {
     max-width: 120px;
+
+    button {
+      &:active:not([disabled]) {
+        background-color: darken($orange, 5%);
+        border-color: darken($orange, 5%);
+
+        svg {
+          path {
+            stroke: white;
+          }
+        }
+      }
+    }
   }
 
   div:nth-child(1) {
@@ -191,8 +176,43 @@
     height: 80px;
   }
 
+  .remove {
+    button {
+      cursor: pointer;
+
+      &:hover {
+        background-color: #2a2a2a;
+        border-color: #2a2a2a;
+
+        svg {
+          path {
+            stroke: #ffffff;
+          }
+        }
+      }
+    }
+  }
+
   .amount {
     max-width: 130px;
+
+    button {
+      cursor: pointer;
+
+      &:disabled {
+        cursor: auto;
+      }
+
+      &:hover:not([disabled]) {
+        background-color: $orange;
+
+        svg {
+          path {
+            stroke: white;
+          }
+        }
+      }
+    }
   }
 
   @media (min-width: 650px) {
