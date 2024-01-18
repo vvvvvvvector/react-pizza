@@ -70,6 +70,18 @@
     background-color: hsl(var(--orange));
     border-color: hsl(var(--orange));
 
+    &:disabled {
+      cursor: auto;
+      background-color: hsl(var(--disabled));
+      border-color: hsl(var(--disabled));
+
+      div {
+        b {
+          color: hsl(var(--disabled));
+        }
+      }
+    }
+
     span {
       font-size: 1rem;
       font-weight: 600;
