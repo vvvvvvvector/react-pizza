@@ -50,7 +50,7 @@ export const CartItem = ({
           }
         }}
       >
-        <X size={15} strokeWidth={2.5} />
+        <X size={15} strokeWidth={3.0} />
       </button>
     </div>
   );
@@ -61,14 +61,14 @@ export const CartItem = ({
         disabled={amount === 1}
         onClick={() => dispatch(decrementAmount(thisPizza))}
       >
-        <Minus size={15} strokeWidth={2.5} />
+        <Minus size={15} strokeWidth={3.0} />
       </button>
       <b>{amount}</b>
       <button
         disabled={amount >= 99}
         onClick={() => dispatch(incrementAmount(thisPizza))}
       >
-        <Plus size={15} strokeWidth={2.5} />
+        <Plus size={15} strokeWidth={3.0} />
       </button>
     </div>
   );
