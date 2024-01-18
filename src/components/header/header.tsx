@@ -38,7 +38,7 @@ export const Header = () => {
   return (
     <div className='header'>
       <div className='container'>
-        <div className='header__left'>
+        <div className='container__left'>
           <div className='logo'>
             <Pizza size={40} />
             <div>
@@ -90,14 +90,14 @@ export const Header = () => {
           )}
         </div>
         {pathname === '/' && (
-          <div className='header__right'>
+          <div className='container__right'>
             <Link to='/cart'>
-              <div className='button button--cart'>
+              <button className='button'>
                 <span>{orderTotal} $</span>
                 <div></div>
                 <ShoppingCart size={20} color='#ffffff' />
                 <span>{amountTotal}</span>
-              </div>
+              </button>
             </Link>
           </div>
         )}

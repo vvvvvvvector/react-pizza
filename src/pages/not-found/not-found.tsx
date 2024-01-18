@@ -12,9 +12,9 @@ const NotFound = () => {
         onClick={() => {
           navigate('/');
         }}
-        className='button button--emptyCart'
+        className='button black'
       >
-        <span>Go home</span>
+        Go home
       </button>
     </div>
   );

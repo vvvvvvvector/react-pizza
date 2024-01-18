@@ -4,7 +4,8 @@
     justify-content: center;
   }
 
-  width: 260px;
+  width: 100%;
+  max-width: 260px;
   text-align: center;
   padding: 10px;
   margin-bottom: 50px;
@@ -60,11 +61,90 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
 
-  &__price {
-    margin-left: 5px;
-    font-size: 22px;
-    font-weight: 700;
+    h4 {
+      margin-left: 5px;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    button {
+      min-height: 50px;
+      background-color: white;
+      border-color: $orange;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      span {
+        font-size: 16px;
+        font-weight: 600;
+        color: $orange;
+      }
+
+      svg {
+        path {
+          stroke: $orange;
+        }
+      }
+
+      div {
+        b {
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 9999px;
+          font-size: 15px;
+          width: 26px;
+          height: 26px;
+          color: white;
+          background-color: $orange;
+        }
+      }
+
+      &:hover {
+        svg {
+          path {
+            stroke: white;
+          }
+        }
+
+        span {
+          color: white;
+        }
+
+        div {
+          b {
+            color: $orange;
+            background-color: white;
+          }
+        }
+      }
+
+      &:disabled {
+        cursor: auto;
+
+        background-color: #ffffff;
+        border-color: #d0d0d0;
+
+        svg {
+          path {
+            stroke: hsl(0 0% 82%);
+          }
+        }
+
+        span {
+          color: hsl(0 0% 82%);
+        }
+
+        div {
+          b {
+            color: #ffffff;
+            background-color: #d0d0d0;
+            border-color: #d0d0d0;
+          }
+        }
+      }
+    }
   }
 }

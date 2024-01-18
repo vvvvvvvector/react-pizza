@@ -14,12 +14,10 @@
     .title {
       display: flex;
       align-items: center;
+      gap: 0.6rem;
 
-      svg {
-        margin-right: 10px;
-      }
-
-      h2 {
+      span {
+        font-weight: 700;
         font-size: 32px;
       }
     }
@@ -28,17 +26,17 @@
       cursor: pointer;
       display: flex;
       align-items: center;
-
-      span,
-      svg,
-      path {
-        transition: all $duration ease-in-out;
-      }
+      gap: 7px;
 
       span {
         color: #b6b6b6;
-        margin-left: 7px;
         font-size: 18px;
+      }
+
+      svg {
+        path {
+          stroke: #b6b6b6;
+        }
       }
 
       &:hover {
@@ -92,6 +90,53 @@
     .buttons {
       display: flex;
       justify-content: space-between;
+
+      a {
+        button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: white;
+          border: 1px solid #cacaca;
+
+          span {
+            color: #cacaca;
+          }
+
+          svg {
+            margin-right: 10px;
+
+            path {
+              stroke: #cacaca;
+            }
+          }
+
+          &:hover {
+            background-color: #282828;
+            border-color: #282828;
+
+            span {
+              color: white;
+            }
+
+            svg {
+              path {
+                stroke: white;
+              }
+            }
+          }
+
+          &:active {
+            background-color: lighten(#282828, 10%);
+          }
+        }
+      }
+
+      button {
+        span {
+          color: white;
+        }
+      }
     }
   }
 }

@@ -1,12 +1,6 @@
-export const Counter = ({
-  amount,
-  counterStyle
-}: {
-  amount: number;
-  counterStyle: string;
-}) => {
+export const Counter = ({ amount }: { amount: number }) => {
   return (
-    <div className={counterStyle}>
+    <div>
       <b>{amount}</b>
     </div>
   );

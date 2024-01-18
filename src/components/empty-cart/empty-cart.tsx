@@ -12,9 +12,7 @@ export const EmptyCart = () => {
         To order a pizza, go to the home page
       </p>
       <Link to='/'>
-        <button className='button button--emptyCart'>
-          <span>Go home</span>
-        </button>
+        <button className='button black'>Go home</button>
       </Link>
     </div>
   );

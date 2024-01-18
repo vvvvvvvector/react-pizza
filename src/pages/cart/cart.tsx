@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { ShoppingCart, Trash } from 'lucide-react';
+import { ChevronLeft, ShoppingCart, Trash } from 'lucide-react';
 
 import { selectCart } from '~/redux/cart/selectors';
 import { clearCart } from '~/redux/cart/slice';
@@ -19,11 +19,11 @@ const Cart = () => {
     <div className='cart'>
       <div className='cart__top'>
         <div className='title'>
-          <ShoppingCart size={30} color='#000000' strokeWidth={2.0} />
-          <h2>Cart</h2>
+          <ShoppingCart size={30} strokeWidth={2.0} />
+          <span>Cart</span>
         </div>
         <div className='clear'>
-          <Trash size={20} color='#b6b6b6' strokeWidth={1.5} />
+          <Trash size={20} strokeWidth={2.0} />
           <span
             onClick={() => {
               if (window.confirm('Do you really want to clear the cart?')) {
@@ -63,28 +63,14 @@ const Cart = () => {
         </div>
         <div className='buttons'>
           <Link to='/'>
-            <div className='button button-go-back'>
-              <svg
-                width='8'
-                height='14'
-                viewBox='0 0 8 14'
-                fill='none'
-                xmlns='http://www.w3.org/2000/svg'
-              >
-                <path
-                  d='M7 13L1 6.93015L6.86175 1'
-                  stroke='#D3D3D3'
-                  strokeWidth='1.5'
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                />
-              </svg>
-              <span>Go back</span>
-            </div>
+            <button className='button'>
+              <ChevronLeft />
+              <span>Go home</span>
+            </button>
           </Link>
-          <div className='button button-make-order'>
+          <button className='button'>
             <span>Make an order!</span>
-          </div>
+          </button>
         </div>
       </div>
     </div>

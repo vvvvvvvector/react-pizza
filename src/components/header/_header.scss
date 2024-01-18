@@ -6,98 +6,129 @@
   padding: 40px 0;
   border-bottom: 1px solid $gray-line;
 
+  @media (max-width: 940px) {
+    padding: 20px 5px;
+  }
+
   .container {
     display: flex;
     justify-content: space-between;
-    width: $content-width;
     align-items: center;
+    width: $content-width;
+    height: 56px;
 
-    @media (max-width: 945px) {
-      flex-direction: column;
+    &__left {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      gap: 1.25rem;
+      max-width: 600px;
 
-      .header__left {
-        flex-direction: column-reverse;
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
 
-        .search {
-          width: 250px;
-          margin-left: 0px;
-          margin-bottom: 20px;
+        h1 {
+          color: #181818;
+          font-size: 24px;
+          font-weight: 800;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+        }
 
-          input {
-            width: 200px;
+        p {
+          color: #7b7b7b;
+        }
+      }
+
+      .search {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        position: relative;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 15px 20px;
+        transition: border-color $duration ease-in-out;
+
+        &:focus-within {
+          border-color: darken(#f3f3f3, 12%);
+        }
+
+        svg {
+          margin-right: 10px;
+        }
+
+        input {
+          border: 0px;
+          font-size: 16px;
+          width: 100%;
+          margin-right: 10px;
+          outline: none;
+        }
+
+        svg:nth-child(3) {
+          cursor: pointer;
+          position: absolute;
+          right: 10px;
+          width: 21px;
+          height: 21px;
+          opacity: 0.5;
+
+          &:hover {
+            opacity: 0.8;
+          }
+
+          &:active {
+            opacity: 1;
           }
         }
+      }
+    }
+
+    &__right {
+      height: 100%;
+
+      a {
+        button {
+          height: 100%;
+
+          display: flex;
+          align-items: center;
+          padding: 12px 25px;
+
+          span {
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+          }
+
+          div {
+            width: 1px;
+            height: 20px;
+            background-color: hsl(0 0% 90%);
+            margin-left: 14px;
+            margin-right: 14px;
+          }
+
+          svg {
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+
+    @media (max-width: 940px) {
+      height: max-content;
+      flex-direction: column;
+      gap: 1.25rem;
+
+      &__left {
+        flex-direction: column-reverse;
 
         .logo {
-          margin-bottom: 20px;
           justify-content: center;
-        }
-      }
-    }
-  }
-
-  &__left {
-    display: flex;
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-
-      h1 {
-        color: #181818;
-        font-size: 24px;
-        font-weight: 800;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-      }
-
-      p {
-        color: #7b7b7b;
-      }
-    }
-
-    .search {
-      width: 300px;
-      display: flex;
-      align-items: center;
-      margin-left: 30px;
-      position: relative;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      padding: 15px 20px;
-      transition: border-color $duration ease-in-out;
-
-      &:focus-within {
-        border-color: darken(#f3f3f3, 12%);
-      }
-
-      svg {
-        margin-right: 10px;
-      }
-
-      input {
-        border: 0px;
-        font-size: 16px;
-        width: 250px;
-        margin-right: 10px;
-        outline: none;
-      }
-
-      svg:nth-child(3) {
-        cursor: pointer;
-        position: absolute;
-        right: 10px;
-        width: 21px;
-        height: 21px;
-        opacity: 0.5;
-
-        &:hover {
-          opacity: 0.8;
-        }
-
-        &:active {
-          opacity: 1;
         }
       }
     }
