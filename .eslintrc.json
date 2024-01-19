@@ -1,0 +1,23 @@
+{
+  // stop eslint from looking for a configuration file in parent folders
+  "root": true,
+
+  "settings": {
+    "react": {
+      "version": "detect" // Warning: React version not specified in eslint-plugin-react settings
+    }
+  },
+
+  "extends": ["plugin:@typescript-eslint/recommended"],
+  "parser": "@typescript-eslint/parser",
+
+  "plugins": ["react-hooks", "react"],
+
+  "rules": {
+    "no-console": 2, // extends -> 'eslint:recommended'
+    "no-var": 2, // extends -> 'eslint:recommended'
+    "no-const-assign": 2, // extends -> 'eslint:recommended'
+    "react/hook-use-state": [2, { "allowDestructuredState": true }], // extends -> plugin:react-hooks/recommended
+    "react-hooks/rules-of-hooks": 2
+  }
+}

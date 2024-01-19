@@ -52,8 +52,6 @@ export const Home = () => {
       left: 0,
       behavior: 'smooth'
     });
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoryIndex, sortParameterIndex, currentPage]);
 
   const renderContentItems = () => {
