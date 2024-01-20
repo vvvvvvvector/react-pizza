@@ -1,10 +1,9 @@
+import { ChevronUp } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { selectHome } from '~/redux/home/selectors';
 import { setSortParameter } from '~/redux/home/slice';
-
-import arrowSVG from '~/assets/images/categories-arrow.svg';
 
 const sortParameters = [
   'popularity ↑',
@@ -44,7 +43,11 @@ export const Sort = () => {
   return (
     <div ref={popupReference} className='sort'>
       <div className='sort__label'>
-        <img className={showPopup ? 'active' : ''} alt='arrow' src={arrowSVG} />
+        <ChevronUp
+          size={18}
+          strokeWidth={2.75}
+          className={showPopup ? 'active' : ''}
+        />
         <b>Sort by: </b>
         <span onClick={() => setShowPopup(!showPopup)}>
           {sortParameters[sortParameterIndex]}
