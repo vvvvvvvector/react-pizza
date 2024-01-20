@@ -57,5 +57,15 @@
         grid-template-columns: repeat(1, 1fr);
       }
     }
+
+    .no-pizzas {
+      display: grid;
+      place-items: center;
+      padding: 70px 0;
+
+      span {
+        font-size: 7rem;
+      }
+    }
   }
 }
