@@ -68,24 +68,42 @@ export const Home = () => {
     return status === 'pending' ? skeletons : filteredPizzas;
   };
 
+  const items = renderContentItems();
+
+  const itemsLength = items.length;
+
+  const noItems = itemsLength === 0;
+
   return (
     <>
-      <div className='above-title'>
-        <Categories />
-        <Sort />
-      </div>
+      {!noItems && (
+        <div className='above-title'>
+          <Categories />
+          <Sort />
+        </div>
+      )}
       <h2>
         {searchValue
-          ? `Search results for "${searchValue}"`
+          ? !noItems
+            ? `Search results for "${searchValue}":`
+            : 'No results'
           : `${categoryName} pizzas`}
       </h2>
-      <div className='pizzas'>{renderContentItems()}</div>
-      <Pagination
-        pageIndex={currentPage}
-        onChangePage={(page: number) => {
-          dispatch(setCurrentPage(page));
-        }}
-      />
+      {!noItems ? (
+        <div className='pizzas'>{items}</div>
+      ) : (
+        <div className='no-pizzas'>
+          <span>🤷‍♂️</span>
+        </div>
+      )}
+      {!noItems && itemsLength >= 4 && (
+        <Pagination
+          pageIndex={currentPage}
+          onChangePage={(page: number) => {
+            dispatch(setCurrentPage(page));
+          }}
+        />
+      )}
       <Overlay />
     </>
   );
