@@ -76,7 +76,7 @@ export const Home = () => {
       </div>
       <h2>
         {searchValue
-          ? `All search results for "${searchValue}"`
+          ? `Search results for "${searchValue}"`
           : `${categoryName} pizzas`}
       </h2>
       <div className='pizzas'>{renderContentItems()}</div>
