@@ -17,7 +17,6 @@
     &__left {
       display: flex;
       height: 100%;
-      width: 100%;
       gap: 1.25rem;
 
       .logo {
@@ -74,7 +73,6 @@
 
       a {
         button {
-          min-width: 188px;
           height: 100%;
 
           display: flex;
