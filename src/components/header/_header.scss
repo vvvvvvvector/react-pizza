@@ -19,7 +19,6 @@
       height: 100%;
       width: 100%;
       gap: 1.25rem;
-      max-width: 600px;
 
       .logo {
         display: flex;
@@ -40,8 +39,9 @@
       }
 
       .search {
-        display: inline-flex;
         gap: 0.8rem;
+        min-width: 276px;
+        display: inline-flex;
         align-items: center;
         border: 1px solid hsl(0 0% 80%);
         border-radius: 10px;
@@ -54,13 +54,12 @@
 
         input {
           border: 0px;
-          width: calc(100% - 70px);
+          width: calc(100% - 60px);
           font-size: 1rem;
         }
 
         svg:nth-child(3) {
           cursor: pointer;
-          // position: absolute;
           opacity: 0.8;
 
           &:hover {
@@ -75,6 +74,7 @@
 
       a {
         button {
+          min-width: 188px;
           height: 100%;
 
           display: flex;
