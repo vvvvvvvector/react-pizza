@@ -9,15 +9,21 @@
   },
 
   "extends": ["plugin:@typescript-eslint/recommended"],
+
   "parser": "@typescript-eslint/parser",
 
-  "plugins": ["react-hooks", "react"],
+  "plugins": ["react-hooks", "react", "unused-imports"],
 
   "rules": {
     "no-console": 2, // extends -> 'eslint:recommended'
     "no-var": 2, // extends -> 'eslint:recommended'
     "no-const-assign": 2, // extends -> 'eslint:recommended'
     "react/hook-use-state": [2, { "allowDestructuredState": true }], // extends -> plugin:react-hooks/recommended
-    "react-hooks/rules-of-hooks": 2
+    "react-hooks/rules-of-hooks": 2,
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    "@typescript-eslint/no-unused-vars": 0,
+    "unused-imports/no-unused-imports": 2,
+    "unused-imports/no-unused-vars": 2
   }
 }
