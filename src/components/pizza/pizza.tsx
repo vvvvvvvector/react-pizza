@@ -7,6 +7,8 @@ import { addPizza } from '~/redux/cart/slice';
 import { setOpened, setPizza } from '~/redux/overlay/slice';
 import { Pizza as P } from '~/redux/fetch/types';
 
+import { CartItem } from '~/components/cart-item/cart-item';
+
 import { Counter } from '~/components/counter';
 
 export const Pizza = (pizza: P) => {
