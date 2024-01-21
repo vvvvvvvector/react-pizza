@@ -8,11 +8,16 @@
     }
   },
 
-  "extends": ["plugin:@typescript-eslint/recommended"],
+  // "extends": ["plugin:@typescript-eslint/recommended"], // looks like it has ts parser inside or something 🤷‍♂️ despite I don't include parser, .ts, .tsx files will be analyzed if this extension is included
 
-  "parser": "@typescript-eslint/parser",
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parser": "@typescript-eslint/parser" // *.ts, *.tsx files are not parsed without it, errors are not shown
+    }
+  ],
 
-  "plugins": ["react-hooks", "react", "unused-imports"],
+  "plugins": ["react-hooks", "react", "unused-imports", "@typescript-eslint"],
 
   "rules": {
     "no-console": 2, // extends -> 'eslint:recommended'
@@ -22,7 +27,7 @@
     "react-hooks/rules-of-hooks": 2,
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
-    "@typescript-eslint/no-unused-vars": 0,
+    "@typescript-eslint/no-explicit-any": 2,
     "unused-imports/no-unused-imports": 2,
     "unused-imports/no-unused-vars": 2
   }
