@@ -9,7 +9,7 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    name: npm run lint
+    name: pnpm lint
     steps:
       - uses: actions/checkout@v3
         with:
@@ -20,7 +20,14 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: npm i
+      - uses: pnpm/action-setup@v2.2.4
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 8.6.1
+          run_install: false
 
-      - run: npm run lint
+      - name: Install dependencies
+        run: pnpm install
+
+      - run: pnpm lint
