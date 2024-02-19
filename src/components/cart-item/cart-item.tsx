@@ -8,36 +8,33 @@ import {
 } from '~/redux/cart/slice';
 import type { CartItem as CI, UniquePizza } from '~/redux/cart/types';
 
-export const CartItem = ({
-  name,
+const Image = ({ imageURL }: Pick<CI, 'imageURL'>) => (
+  <img src={imageURL} alt='pizzaImg' />
+);
+
+const Info = ({
   type,
   diameter,
-  cost,
-  amount,
-  imageURL
-}: CI) => {
+  name
+}: Pick<CI, 'type' | 'diameter' | 'name'>) => (
+  <div className='info hide-scrollbars'>
+    <h3 className='hide-scrollbars'>{name}</h3>
+    <p className='hide-scrollbars'>
+      {type} dough, {diameter} cm
+    </p>
+  </div>
+);
+
+const Cost = ({ cost, amount }: Pick<CI, 'cost' | 'amount'>) => (
+  <div className='cost'>
+    <b>{cost * amount} $</b>
+  </div>
+);
+
+const RemoveFromCartButton = ({ pizza }: { pizza: UniquePizza }) => {
   const dispatch = useDispatch();
 
-  const thisPizza: UniquePizza = { name, type, diameter };
-
-  const Image = () => <img src={imageURL} alt='pizza' />;
-
-  const Info = () => (
-    <div className='info hide-scrollbars'>
-      <h3 className='hide-scrollbars'>{name}</h3>
-      <p className='hide-scrollbars'>
-        {type} dough, {diameter} cm
-      </p>
-    </div>
-  );
-
-  const Cost = () => (
-    <div className='cost'>
-      <b>{cost * amount} $</b>
-    </div>
-  );
-
-  const RemoveFromCartButton = () => (
+  return (
     <div className='remove'>
       <button
         onClick={() => {
@@ -46,7 +43,7 @@ export const CartItem = ({
               'Do you really want to remove this pizza from the cart?'
             )
           ) {
-            dispatch(removePizza(thisPizza));
+            dispatch(removePizza(pizza));
           }
         }}
       >
@@ -54,46 +51,64 @@ export const CartItem = ({
       </button>
     </div>
   );
+};
 
-  const ChangeAmount = () => (
+const ChangeAmount = ({
+  amount,
+  pizza
+}: Pick<CI, 'amount'> & { pizza: UniquePizza }) => {
+  const dispatch = useDispatch();
+
+  return (
     <div className='amount'>
       <button
         disabled={amount === 1}
-        onClick={() => dispatch(decrementAmount(thisPizza))}
+        onClick={() => dispatch(decrementAmount(pizza))}
       >
         <Minus size={15} strokeWidth={3.0} />
       </button>
       <b>{amount}</b>
       <button
         disabled={amount >= 99}
-        onClick={() => dispatch(incrementAmount(thisPizza))}
+        onClick={() => dispatch(incrementAmount(pizza))}
       >
         <Plus size={15} strokeWidth={3.0} />
       </button>
     </div>
   );
+};
+
+export const CartItem = ({
+  name,
+  type,
+  diameter,
+  cost,
+  amount,
+  imageURL
+}: CI) => {
+  const thisPizza: UniquePizza = { name, type, diameter };
 
   return (
     <>
       <div className='cart-item mobile'>
         <div>
           <div>
-            <Image />
-            <Info />
+            <Image imageURL={imageURL} />
+            <Info type={type} diameter={diameter} name={name} />
           </div>
-          <RemoveFromCartButton />
+          <RemoveFromCartButton pizza={thisPizza} />
         </div>
         <div>
-          <Cost />
-          <ChangeAmount />
+          <Cost cost={cost} amount={amount} />
+          <ChangeAmount amount={amount} pizza={thisPizza} />
         </div>
       </div>
       <div className='cart-item desktop hide-scrollbars'>
-        <Image />
-        <Info />
-        <ChangeAmount />
-        <Cost />
-        <RemoveFromCartButton />
+        <Image imageURL={imageURL} />
+        <Info type={type} diameter={diameter} name={name} />
+        <ChangeAmount amount={amount} pizza={thisPizza} />
+        <Cost cost={cost} amount={amount} />
+        <RemoveFromCartButton pizza={thisPizza} />
       </div>
     </>
   );
