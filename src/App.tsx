@@ -16,33 +16,31 @@ const NotFound = lazy(
 
 export const App = () => {
   return (
-    <>
-      <div className='wrapper'>
-        <Header />
-        <div className='content'>
-          <div className='content__container'>
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route
-                path='/cart'
-                element={
-                  <Suspense fallback={<Loading text='Cart is loading...' />}>
-                    <Cart />
-                  </Suspense>
-                }
-              />
-              <Route
-                path='*'
-                element={
-                  <Suspense fallback={<Loading text='Loading...' />}>
-                    <NotFound />
-                  </Suspense>
-                }
-              />
-            </Routes>
-          </div>
+    <div className='wrapper'>
+      <Header />
+      <div className='content'>
+        <div className='content__container'>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route
+              path='/cart'
+              element={
+                <Suspense fallback={<Loading text='Cart is loading...' />}>
+                  <Cart />
+                </Suspense>
+              }
+            />
+            <Route
+              path='*'
+              element={
+                <Suspense fallback={<Loading text='Loading...' />}>
+                  <NotFound />
+                </Suspense>
+              }
+            />
+          </Routes>
         </div>
       </div>
-    </>
+    </div>
   );
 };
