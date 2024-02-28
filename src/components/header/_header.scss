@@ -49,6 +49,10 @@ $breakpoint: 920px;
         padding: 15px;
         transition: border-color var(--colors-transition-duration) ease-in-out;
 
+        svg:nth-child(1) {
+          flex-shrink: 0;
+        }
+
         &:focus-within {
           border-color: hsl(0 0% 65%);
         }
