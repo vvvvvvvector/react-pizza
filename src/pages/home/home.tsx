@@ -25,6 +25,12 @@ const sortParameters = [
 ] as const;
 
 export const Home = () => {
+  const a = 10;
+
+  var b = 1000;
+
+  a = 'hello world';
+
   const dispatch = useAppDispatch();
 
   const { status, homePizzas } = useSelector(selectFetch);
